@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_wep"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:id="@+id/lnrBillingScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/home_back">
+
+        <LinearLayout
+            android:id="@+id/boxTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:minHeight="40dp"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:weightSum="5">
+
+            <EditText
+                android:id="@+id/etCustGSTIN"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.96"
+                android:gravity="center"
+                android:hint="Customer GSTIN"
+                android:inputType="text"
+                android:maxLength="15"
+                android:minHeight="40dp"
+                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+                android:selectAllOnFocus="true"
+                />
+
+            <EditText
+                android:id="@+id/edtCustName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+
+                android:hint="Name"
+                 />
+
+            <EditText
+                android:id="@+id/edtCustPhoneNo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/searchicon_img"
+                android:gravity="left"
+                android:hint="Mobile No"
+                android:inputType="number"
+                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+                android:maxLength="10"
+                 />
+
+            <EditText
+                android:id="@+id/edtCustAddress"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+                android:gravity="left"
+                android:hint="Address" />
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_DineInAddCustomer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="AddCustomer"
+                android:text="@string/add"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_above="@+id/boxContent"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#000000" />
+
+        <RelativeLayout
+            android:id="@+id/boxContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/boxBtn"
+            android:layout_below="@+id/boxTop">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:weightSum="5">
+
+                <RelativeLayout
+                    android:id="@+id/bx1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:padding="4dp"
+                    android:weightSum="7">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true">
+
+                        <LinearLayout
+                            android:id="@+id/search_boxes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/aCTVSearchItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:completionThreshold="1"
+                                android:drawableRight="@drawable/searchicon_img"
+                                android:gravity="center"
+                                android:hint="Search Item Name"
+                                android:imeOptions="flagNoExtractUi"
+                                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+                                android:minHeight="40dp"
+                                />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/aCTVSearchMenuCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:completionThreshold="1"
+                                android:drawableRight="@drawable/searchicon_img"
+                                android:gravity="center"
+                                android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp"
+                                android:hint="Search Item Code"
+                                android:imeOptions="flagNoExtractUi"
+                                android:inputType="numberSigned"
+                                android:minHeight="40dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/boxFields"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/search_boxes">
+
+                            <LinearLayout
+                                android:id="@+id/relative_interstate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:minHeight="40dp">
+
+                                <CheckBox
+                                    android:id="@+id/checkbox_interstate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.4"
+                                    android:gravity="center"
+                                    android:text="InterState"
+                                    android:textColor="@color/gray"
+                                    android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp" />
+
+                                <Spinner
+                                    android:id="@+id/spnr_pos"
+                                    style="@android:style/Widget.Holo.Light.Spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/textViewLabelOrderNo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Order No"
+                                    android:textSize="@dimen/text_size_14sp_720dp_10sp_600dp" />
+
+                                <EditText
+                                    android:id="@+id/tvBillNumberValue"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:enabled="false"
+                                    android:minWidth="90dp"
+                                    android:textAlignment="center"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_border"
+                            android:layout_above="@+id/order"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@color/black" />
+
+                        <RelativeLayout
+                            android:id="@+id/order"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/boxFields">
+
+                            <TableRow
+                                android:id="@+id/rowBillColumnCaption"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="1dp"
+                                android:background="@color/colorPrimaryLight">
+
+                                <TextView
+
+                                    android:id="@+id/tvColItemName"
+                                    android:layout_width="@dimen/counter_sale_135dp_720dp_105dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Name"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                <TextView
+                                    android:id="@+id/tvColHSN"
+                                    android:layout_width="@dimen/_80dp_720dp_75dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="HSN"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                <TextView
+                                    android:id="@+id/tvColItemQty"
+                                    android:layout_width="@dimen/counter_sale_60dp_720dp_55dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Qty"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                <TextView
+                                    android:id="@+id/tvColRate"
+                                    android:layout_width="@dimen/counter_sale_60dp_720dp_55dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rate"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+
+                                <TextView
+                                    android:layout_width="@dimen/_45dp_720dp_40dp_600dp"
+                                    android:layout_height="wrap_content" />
+
+
+                                <TextView
+                                    android:id="@+id/tvColAmount"
+                                    android:layout_width="@dimen/_70dp_720dp_65dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Amount"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+
+                                <TextView
+                                    android:id="@+id/tvColDelete"
+                                    android:layout_width="@dimen/counter_sale_60dp_720dp_55dp_600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Delete"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/txtColorAccent"
+                                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+                            </TableRow>
+
+                            <TextView
+                                android:id="@+id/tv_border_bel"
+                                android:layout_below="@+id/rowBillColumnCaption"
+                                android:layout_width="match_parent"
+                                android:layout_height="3dp"
+                                android:background="@color/black" />
+
+                            <ScrollView
+                                android:id="@+id/scrlVertOrderItems"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rowBillColumnCaption"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:background="#DDDDDD">
+
+                                <!--<HorizontalScrollView
+                                    android:id="@+id/scrlHrzntlOrderItems"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">-->
+
+                                <TableLayout
+                                    android:id="@+id/tblOrderItems"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:collapseColumns="0,6,7,8,9,10,11,12,13,14,15,16,17,21,22,23,24,25,26" />
+                                <!--</HorizontalScrollView>-->
+                            </ScrollView>
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/wef"
+                            android:layout_above="@+id/boxTaxInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginTop="2dp"
+                            android:background="#000000" />
+
+                        <LinearLayout
+                            android:id="@+id/boxTaxInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:background="@color/azure"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="1dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:id="@+id/idd0"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/idd1"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvIGSTTax"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="IGST-Tax :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvIGSTValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/idd1"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvTaxTotal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="CGST-Tax :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvTaxTotalValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/idd2"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="2.5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvServiceTax"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="SGST-Tax :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvServiceTaxValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvDiscountPercentage"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:background="#ffffff"
+                                            android:gravity="right"
+                                            android:text="0"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="#000000"
+                                            android:visibility="gone" />
+
+                                        <TextView
+                                            android:id="@+id/tvDiscountAmount"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:background="#ffffff"
+                                            android:gravity="right"
+                                            android:text="0"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="#000000"
+                                            android:visibility="gone" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd_date"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/idd3"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="2.5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:visibility="invisible"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvDateHeading"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="Date :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvBillDateValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:id="@+id/idd1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvSubTotal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="Taxable Value :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvSubTotalValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd11"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvcessrate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="cess Tax :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvcessValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/idd1"
+                                        android:layout_marginBottom="2.5dp"
+                                        android:layout_marginTop="2.5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvOtherchanrges"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="0.9"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="Other Charges :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/txtOthercharges"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1.1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/idd4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/idd3"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="2.5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:id="@+id/tvBillTotal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:text="TOTAL :"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+
+                                        <TextView
+                                            android:id="@+id/tvBillTotalValue"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:background="@color/colorPrimaryLight"
+                                            android:gravity="right"
+                                            android:text="0.00"
+                                            android:textAppearance="?android:attr/textAppearanceSmall"
+                                            android:textColor="@color/txtColorAccent"
+                                            android:textSize="@dimen/old_table_text_heading_16sp_720dp_14sp_600dp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/bx2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvdeptline"
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:background="#000000" />
+
+                    <RelativeLayout
+                        android:id="@+id/boxDept"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCard">
+
+                        <Button
+                            android:id="@+id/btnLabel1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:background="@color/colorPrimaryLight"
+                            android:text="Department"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <ListView
+                            android:id="@+id/listViewFilter1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/btnLabel1"
+                            android:divider="#000000"
+                            android:dividerHeight="1dp" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvcategline"
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:background="#000000" />
+
+                    <RelativeLayout
+                        android:id="@+id/boxCat"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCard">
+
+                        <Button
+                            android:id="@+id/btnLabel2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimaryLight"
+                            android:text="Category"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <ListView
+                            android:id="@+id/listViewFilter2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:divider="#000000"
+                            android:dividerHeight="1dp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvitemline"
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:background="#000000" />
+
+                    <RelativeLayout
+                        android:id="@+id/boxItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCard">
+
+
+
+                        <Button
+                            android:id="@+id/btnLabel3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimaryLight"
+                            android:text="Item"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <GridView
+                            android:id="@+id/listViewFilter3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/btnLabel3"
+                            android:numColumns="2" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/boxContent"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:id="@+id/boxBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:weightSum="5">
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_PrintBill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
+                android:layout_weight="1"
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="printBILL"
+                android:text="@string/print_bill"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_PayBill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
+                android:layout_weight="1"
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="Tender"
+                android:text="@string/pay_bill"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_Clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
+                android:layout_weight="1"
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="CLEAR"
+                android:text="@string/clear"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_DeleteBill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
+                android:layout_weight="1"
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="DeleteBill"
+                android:text="@string/delete_bill"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+
+            <com.wep.common.app.views.WepButton
+                android:id="@+id/btn_Reprint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
+                android:layout_weight="1"
+                android:background="@drawable/background_btn"
+                android:gravity="center"
+                android:onClick="ReprintBill"
+                android:text="@string/reprint_bill"
+                android:textAllCaps="false"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>

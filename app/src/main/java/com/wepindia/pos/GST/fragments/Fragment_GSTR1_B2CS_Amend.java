@@ -62,7 +62,8 @@ public class Fragment_GSTR1_B2CS_Amend extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment__gstr1__b2_cs__amend, container, false);
+        // old fragment_fragment__gstr1__b2_cs__amend
+        View view = inflater.inflate(R.layout.test_fragment__gstr1__b2_cs__amend, container, false);
         myContext = getActivity();
         MsgBox = new MessageDialog(myContext);
 

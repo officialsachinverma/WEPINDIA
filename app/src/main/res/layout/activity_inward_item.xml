@@ -38,7 +38,8 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="S.No"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
 
 
@@ -48,43 +49,46 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                     android:layout_width="330dp"
                     android:layout_height="wrap_content"
                     android:text="Item Name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
 
                 <TextView
                     android:id="@+id/Inw_Rate"
-                    android:layout_width="140dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text=" Rate"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Rate"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
-
 
 
                 <TextView
                     android:id="@+id/Inw_Quantity"
-                    android:layout_width="140dp"
+                    android:layout_width="142dp"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="Quantity"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Stock"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
 
                 <TextView
-
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     />
 
                 <TextView
                     android:id="@+id/Inw_AMU"
-                    android:layout_width="110dp"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text=" UoM"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="UoM"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
 
                 <!--<TextView
@@ -102,7 +106,8 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text="Image"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent"
                     android:visibility="invisible" />
 
@@ -112,7 +117,8 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="Delete"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:textColor="@color/txtColorAccent" />
 
             </TableRow>
@@ -148,7 +154,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
             <TextView
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="55dp"
+                android:layout_marginBottom="75dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
                 android:background="#000000" />
@@ -157,16 +163,17 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:layout_marginBottom="55dp"
+                android:layout_marginBottom="75dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="2dp"
                 android:background="#000000" />
 
             <TextView
+                android:id="@+id/tv_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="55dp"
+                android:layout_marginBottom="75dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#000000" />
@@ -176,11 +183,6 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/activity_horizontal_margin1"
                 android:orientation="vertical">
-
-
-
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -201,7 +203,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="0.6"
                             android:gravity="center"
                             android:text="Supply Type (Goods/Supply)"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -210,10 +212,10 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/spnr_supplytype"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="1.3"
+                            android:layout_gravity="center"
                             style="@android:style/Widget.Holo.Light.Spinner"
                             android:entries="@array/g_s">
-
                         </Spinner>
                     </LinearLayout>
 
@@ -231,7 +233,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:gravity="center"
                             android:text="Item Name*"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -240,12 +242,12 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/autocomplete_inw_ItemName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.65"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="1.5"
                             android:completionThreshold="1"
                             android:drawableRight="@drawable/searchicon_img"
                             android:gravity="center"
-                            android:hint="Item  Name"
+                            android:hint="Item Name"
                             android:inputType="text"
                             android:maxLength="20"
                             android:textSize="13dp" />
@@ -303,7 +305,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/tvBarcode"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.87"
+                            android:layout_weight="2.5"
                             android:gravity="center"
                             android:enabled="false"
                             android:text="Barcode"
@@ -314,7 +316,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_weight="0.45"
+                            android:layout_weight="1.5"
                             android:gravity="center"
                             android:enabled="false"
                             android:inputType="numberDecimal"
@@ -331,7 +333,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/tvDeptCode"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.87"
+                            android:layout_weight="2.5"
                             android:gravity="center"
                             android:text="Rate*"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -340,9 +342,9 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/et_inw_rate"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.45"
+                            android:layout_weight="1.5"
                             android:gravity="center"
+                            android:layout_gravity="bottom"
                             android:hint="0.00"
                             android:inputType="numberDecimal"
                             android:maxLength="20"
@@ -358,17 +360,18 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2.5"
                             android:gravity="center"
-                            android:text="Quantity"
+                            android:text="Stock"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <EditText
                             android:id="@+id/et_inw_quantity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.45"
+                            android:layout_weight="1.5"
                             android:gravity="center"
+                            android:layout_gravity="bottom"
                             android:hint="0.00"
                             android:inputType="numberDecimal"
                             android:maxLength="20"
@@ -384,7 +387,7 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2.5"
                             android:gravity="center"
                             android:text="HSNCode"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -393,8 +396,9 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:id="@+id/et_inw_HSNCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
+                            android:layout_weight="1.5"
                             android:gravity="center"
+                            android:layout_gravity="bottom"
                             android:maxLength="8"
                             android:textSize="13dp" />
                     </LinearLayout>
@@ -431,9 +435,9 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         <Spinner
                             android:id="@+id/spnrUOM"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
+                            android:layout_height="42dp"
                             android:layout_weight="1"
+                            android:layout_gravity="center"
                             style="@android:style/Widget.Holo.Light.Spinner"
                             android:entries="@array/UOM" />
 
@@ -628,11 +632,8 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_gravity="bottom"
                         android:id="@+id/Message"
                         android:layout_weight="1">
-
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -668,26 +669,30 @@ tools:context="com.wepindia.pos.InwardItemActivity">
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/buttonUploadExcel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="left"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+
+                            android:textAllCaps="false"
                             android:background="@drawable/background_btn"
                             android:text="Browse File"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/buttonSaveExcel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="right"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
                             android:layout_marginRight="15dp"
-                            android:layout_weight="1"
+
+                            android:textAllCaps="false"
                             android:background="@drawable/background_btn"
                             android:text="Upload File"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
                     </LinearLayout>
@@ -752,20 +757,21 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        >
+                        android:gravity="center_horizontal">
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/btnAddItem"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                             android:background="@drawable/background_btn"
                             android:onClick="AddItem1"
                             android:text="Add"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                            android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
 
@@ -774,13 +780,15 @@ tools:context="com.wepindia.pos.InwardItemActivity">
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
+
                             android:background="@drawable/background_btn"
                             android:onClick="ResetQty"
                             android:text="Reset Qty"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                            android:textAllCaps="false"
                             android:visibility="gone"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
@@ -788,45 +796,51 @@ tools:context="com.wepindia.pos.InwardItemActivity">
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/btnEditItem"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
+
                             android:background="@drawable/background_btn"
                             android:onClick="EditItem1"
                             android:text="Update"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                            android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/btnClearItem"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
+
                             android:background="@drawable/background_btn"
                             android:text="Clear"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                            android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
 
                         <com.wep.common.app.views.WepButton
                             android:id="@+id/btnCloseItem"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                             android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
+
                             android:background="@drawable/background_btn"
                             android:text="Close"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                            android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin" />
                     </LinearLayout>

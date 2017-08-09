@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/boxLabels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".16">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.6">
+
+            <TextView
+                android:id="@+id/tvMenuCode"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/menu_code" />
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tvDineIn1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Rate 1" />
+
+            <TextView
+                android:id="@+id/tvDineIn2"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Rate 2" />
+
+            <TextView
+                android:id="@+id/tvDineIn3"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Rate 3" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="stock" />
+
+            <TextView
+                android:id="@+id/tvUOM"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="UOM"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Image" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/btnItemDelete"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Delete" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".24" />
+
+    </LinearLayout>
+</RelativeLayout>

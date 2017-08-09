@@ -26,13 +26,16 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -77,10 +80,34 @@ public class CustomerDetailActivity extends WepBaseActivity {
 	String Id, Name, Phone, Address, LastTransaction, TotalTransaction, CreditAmount, strUserName = "", strCustGSTIN ="";
     private Toolbar toolbar;
 
+    private float mHeadingTextSize;
+    private float mDataMiniDeviceTextsize;
+    private float mSamsungTab3VDeviceTextsize;
+    private float mSamsungT561DeviceTextsize;
+
+    private int mItemNameWidth;
+    private int mHSNWidth;
+    private int mQuantityWidth;
+    private int mRateWidth;
+    private int mAmountWidth;
+
+    private final static int mSamsungTab3VScreenResolutionWidth = 600;
+    private final static int mSamsungT561ScreenResolutionWidth = 800;
+    private final static int mDataMiniScreenResolutionWidth = 752;
+
+    private TextView mItemNameTextView;
+    private TextView mHSNTextView;
+    private TextView mQuantityTextView;
+    private TextView mRateTextView;
+    private TextView mAmountTextView;
+    private TextView mDeleteTextView;
+
+
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_customerdetail);
+        // old   activity_customerdetail
+		setContentView(R.layout.test_customerdetail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 		/*getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.application_title_bar);
@@ -106,6 +133,13 @@ public class CustomerDetailActivity extends WepBaseActivity {
 		try {
 			dbCustomer.CreateDatabase();
 			dbCustomer.OpenDatabase();
+
+          /*  mItemNameTextView = (TextView) findViewById(R.id.tvColItemName);
+            mHSNTextView = (TextView) findViewById(R.id.tvColHSN);
+            mQuantityTextView = (TextView) findViewById(R.id.tvColItemQty);
+            mRateTextView = (TextView) findViewById(R.id.tvColRate);
+            mAmountTextView = (TextView) findViewById(R.id.tvColAmount);
+            mDeleteTextView = (TextView) findViewById(R.id.tvColDelete);*/
 
             txtAddress = (EditText) findViewById(R.id.etCustomerAddress);
             txtName = (EditText) findViewById(R.id.etCustomerName);
@@ -214,12 +248,71 @@ public class CustomerDetailActivity extends WepBaseActivity {
                     }
                 }
             });
+            getScreenResolutionWidthType(checkScreenResolutionWidthType(this));
 
 			DisplayCustomer();
 		} catch (Exception exp) {
 			Toast.makeText(myContext, "OnCreate: " + exp.getMessage(), Toast.LENGTH_LONG).show();
 		}
 	}
+
+
+    private static int checkScreenResolutionWidthType(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        return height;
+    }
+
+    private void getScreenResolutionWidthType(int screenResolutionType) {
+
+        switch (screenResolutionType) {
+
+            case mSamsungTab3VScreenResolutionWidth:
+                mDataMiniDeviceTextsize = 8;
+                mItemNameWidth = 105;
+                mHSNWidth = 50;
+                mQuantityWidth = 55;
+                mRateWidth = 60;
+                mAmountWidth = 60;
+                break;
+
+            case mSamsungT561ScreenResolutionWidth:
+                mHeadingTextSize = 16;
+                mDataMiniDeviceTextsize = 9;
+                mItemNameWidth = 140;
+                mHSNWidth = 70;
+                mQuantityWidth = 65;
+                mRateWidth = 65;
+                mAmountWidth = 75;
+              /*  mItemNameTextView.setTextSize(mHeadingTextSize);
+                mHSNTextView.setTextSize(mHeadingTextSize);
+                mQuantityTextView.setTextSize(mHeadingTextSize);
+                mRateTextView.setTextSize(mHeadingTextSize);
+                mAmountTextView.setTextSize(mHeadingTextSize);
+                mDeleteTextView.setTextSize(mHeadingTextSize);*/
+                break;
+
+            case mDataMiniScreenResolutionWidth:
+                mHeadingTextSize = 16;
+                mDataMiniDeviceTextsize = 11;
+                mItemNameWidth = 140;
+                mHSNWidth = 70;
+                mQuantityWidth = 65;
+                mRateWidth = 65;
+                mAmountWidth = 85;
+              /*  mItemNameTextView.setTextSize(mHeadingTextSize);
+                mHSNTextView.setTextSize(mHeadingTextSize);
+                mQuantityTextView.setTextSize(mHeadingTextSize);
+                mRateTextView.setTextSize(mHeadingTextSize);
+                mAmountTextView.setTextSize(mHeadingTextSize);
+                mDeleteTextView.setTextSize(mHeadingTextSize);*/
+                break;
+        }
+    }
 
     private void DisplayCustomerSearch(String PhoneNo) {
         Cursor crsrCustomer;
@@ -233,13 +326,13 @@ public class CustomerDetailActivity extends WepBaseActivity {
             if (crsrCustomer.moveToFirst()) {
                 do {
                     rowCustomer = new TableRow(myContext);
-                    rowCustomer.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+                    rowCustomer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
                     rowCustomer.setBackgroundResource(R.drawable.row_background);
 
                     tvSno = new TextView(myContext);
                     tvSno.setTextSize(18);
                     tvSno.setText(String.valueOf(i));
-                    tvSno.setGravity(1);
+                    tvSno.setGravity(Gravity.LEFT);
                     rowCustomer.addView(tvSno);
 
                     tvId = new TextView(myContext);
@@ -254,13 +347,13 @@ public class CustomerDetailActivity extends WepBaseActivity {
 
                     tvLastTransaction = new TextView(myContext);
                     tvLastTransaction.setTextSize(18);
-                    tvLastTransaction.setGravity(1);
+                    tvLastTransaction.setGravity(Gravity.LEFT);
                     tvLastTransaction.setText(crsrCustomer.getString(crsrCustomer.getColumnIndex("LastTransaction")));
                     rowCustomer.addView(tvLastTransaction);
 
                     tvTotalTransaction = new TextView(myContext);
                     tvTotalTransaction.setTextSize(18);
-                    tvTotalTransaction.setGravity(1);
+                    tvTotalTransaction.setGravity(Gravity.LEFT);
                     tvTotalTransaction.setText(crsrCustomer.getString(crsrCustomer.getColumnIndex("TotalTransaction")));
                     rowCustomer.addView(tvTotalTransaction);
 
@@ -395,7 +488,7 @@ public class CustomerDetailActivity extends WepBaseActivity {
                     tvCreditAmount = new TextView(myContext);
                     double amt = crsrCustomer.getDouble(crsrCustomer.getColumnIndex("CreditAmount"));
                     tvCreditAmount.setText(String.format("%.2f",amt));
-                    tvCreditAmount.setGravity(Gravity.END);
+                    tvCreditAmount.setGravity(Gravity.LEFT);
                     tvCreditAmount.setPadding(0,0,10,0);
                     rowCustomer.addView(tvCreditAmount);
 
@@ -490,7 +583,8 @@ public class CustomerDetailActivity extends WepBaseActivity {
                     rowCustomer.setBackgroundResource(R.drawable.row_background);
 
                     tvSno = new TextView(myContext);
-                    tvSno.setTextSize(18);
+                    tvSno.setTextSize(14);
+                    tvSno.setWidth(100);
                     tvSno.setText(String.valueOf(i));
                     tvSno.setGravity(1);
                     rowCustomer.addView(tvSno);
@@ -502,20 +596,21 @@ public class CustomerDetailActivity extends WepBaseActivity {
 
                     tvName = new TextView(myContext);
                     tvName.setTextSize(18);
+                    tvName.setWidth(120);
                     tvName.setText(crsrCustomer.getString(crsrCustomer.getColumnIndex("CustName")));
                     rowCustomer.addView(tvName);
 
                     tvLastTransaction = new TextView(myContext);
                     tvLastTransaction.setTextSize(18);
-                    tvLastTransaction.setGravity(Gravity.END);
-                    tvLastTransaction.setPadding(0,0,10,0);
+                    tvLastTransaction.setGravity(Gravity.LEFT);
+                    tvLastTransaction.setPadding(15,0,0,0);
                     tvLastTransaction.setText(String.format("%.2f",crsrCustomer.getFloat(crsrCustomer.getColumnIndex("LastTransaction"))));
                     rowCustomer.addView(tvLastTransaction);
 
                     tvTotalTransaction = new TextView(myContext);
                     tvTotalTransaction.setTextSize(18);
-                    tvTotalTransaction.setGravity(Gravity.END);
-                    tvTotalTransaction.setPadding(0,0,10,0);
+                    tvTotalTransaction.setGravity(Gravity.LEFT);
+                    tvTotalTransaction.setPadding(38,0,0,0);
                     tvTotalTransaction.setText(String.format("%.2f",crsrCustomer.getFloat(crsrCustomer.getColumnIndex("TotalTransaction"))));
                     rowCustomer.addView(tvTotalTransaction);
 
@@ -531,8 +626,8 @@ public class CustomerDetailActivity extends WepBaseActivity {
                     double amt = crsrCustomer.getDouble(crsrCustomer.getColumnIndex("CreditAmount"));
                     tvCreditAmount.setText(String.format("%.2f",amt));
                     tvCreditAmount.setTextSize(18);
-                    tvCreditAmount.setGravity(Gravity.END);
-                    tvCreditAmount.setPadding(0,0,10,0);
+                    tvCreditAmount.setGravity(Gravity.LEFT);
+                    tvCreditAmount.setPadding(15,0,0,0);
                     rowCustomer.addView(tvCreditAmount);
 
 					// Delete

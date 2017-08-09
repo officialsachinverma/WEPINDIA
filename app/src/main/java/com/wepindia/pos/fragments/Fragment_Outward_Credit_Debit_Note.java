@@ -83,7 +83,8 @@ public class Fragment_Outward_Credit_Debit_Note extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_credit_note, container, false);
+        // old fragment_fragment_credit_note
+        View view = inflater.inflate(R.layout.test_fragment_credit_note, container, false);
         myContext = getActivity();
         MsgBox = new MessageDialog(myContext);
         try{

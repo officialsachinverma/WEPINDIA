@@ -56,7 +56,8 @@ public class FragmentSettingsGST extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_settings_gst, container, false);
+        // old   fragment_fragment_settings_gst
+        View view = inflater.inflate(R.layout.test_fragment_settings_gst, container, false);
         myContext = getActivity();
 
         objBillSettings =  new BillSetting();

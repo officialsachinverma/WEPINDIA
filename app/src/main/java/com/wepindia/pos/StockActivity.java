@@ -88,7 +88,8 @@ public class StockActivity extends WepBaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock);
+        // old activity_stock
+        setContentView(R.layout.test_stock);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         dbStock = new DatabaseHandler(this);

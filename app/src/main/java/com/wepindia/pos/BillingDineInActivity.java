@@ -16,7 +16,9 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -141,6 +144,29 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
     String ownerPos= "";
     int reprintBillingMode =0;
     boolean isReprint = false;
+
+    private float mHeadingTextSize;
+    private float mDataMiniDeviceTextsize;
+    private float mSamsungTab3VDeviceTextsize;
+    private float mSamsungT561DeviceTextsize;
+
+    private int mItemNameWidth;
+    private int mHSNWidth;
+    private int mQuantityWidth;
+    private int mRateWidth;
+    private int mAmountWidth;
+
+    private final static int mSamsungTab3VScreenResolutionWidth = 600;
+    private final static int mSamsungT561ScreenResolutionWidth = 800;
+    private final static int mDataMiniScreenResolutionWidth = 752;
+
+    private TextView mItemNameTextView;
+    private TextView mHSNTextView;
+    private TextView mQuantityTextView;
+    private TextView mRateTextView;
+    private TextView mAmountTextView;
+    private TextView mDeleteTextView;
+
     public void onConfigurationRequired() {
 
     }
@@ -153,7 +179,8 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_billing_dinein);
+        // old  activity_billing_dinein layout
+        setContentView(R.layout.test_billing_dinein);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView textViewCenter = (TextView) toolbar.findViewById(com.wep.common.app.R.id.textViewCenter);
@@ -172,6 +199,7 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
             CharSequence s = DateFormat.format("dd-MM-yyyy", d.getTime());
             com.wep.common.app.ActionBarUtils.setupToolbar(BillingDineInActivity.this,toolbar,getSupportActionBar(),"",strUserName," Date:"+s.toString());
             IntializeViewVariables();
+            getScreenResolutionWidthType(checkScreenResolutionWidthType(this));
             dbBillScreen.OpenDatabase();
             ClearAll();
             crsrSettings = dbBillScreen.getBillSetting();
@@ -524,6 +552,69 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
         }
     }
 
+
+
+    private static int checkScreenResolutionWidthType(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        return height;
+    }
+
+    private void getScreenResolutionWidthType(int screenResolutionType) {
+
+        switch (screenResolutionType) {
+
+            case mSamsungTab3VScreenResolutionWidth:
+                mDataMiniDeviceTextsize = 8;
+                mItemNameWidth = 105;
+                mHSNWidth = 50;
+                mQuantityWidth = 55;
+                mRateWidth = 60;
+                mAmountWidth = 60;
+                break;
+
+            case mSamsungT561ScreenResolutionWidth:
+                mHeadingTextSize = 12;
+                mDataMiniDeviceTextsize = 11;
+
+                mItemNameWidth = 140;
+                mHSNWidth = 70;
+                mQuantityWidth = 65;
+                mRateWidth = 65;
+                mAmountWidth = 85;
+
+              /*  mItemNameTextView.setTextSize(mHeadingTextSize);
+                mHSNTextView.setTextSize(mHeadingTextSize);
+                mQuantityTextView.setTextSize(mHeadingTextSize);
+                mRateTextView.setTextSize(mHeadingTextSize);
+                mAmountTextView.setTextSize(mHeadingTextSize);
+                mDeleteTextView.setTextSize(mHeadingTextSize);*/
+                break;
+
+            case mDataMiniScreenResolutionWidth:
+                mHeadingTextSize = 14;
+                mDataMiniDeviceTextsize = 11;
+
+                mItemNameWidth = 140;
+                mHSNWidth = 70;
+                mQuantityWidth = 65;
+                mRateWidth = 65;
+                mAmountWidth = 85;
+
+               /* mItemNameTextView.setTextSize(mHeadingTextSize);
+                mHSNTextView.setTextSize(mHeadingTextSize);
+                mQuantityTextView.setTextSize(mHeadingTextSize);
+                mRateTextView.setTextSize(mHeadingTextSize);
+                mAmountTextView.setTextSize(mHeadingTextSize);
+                mDeleteTextView.setTextSize(mHeadingTextSize);*/
+                break;
+        }
+    }                                                     /**/
+
     void setInvoiceDate()
     {
         Cursor crsrSetting = dbBillScreen.getBillSetting();
@@ -561,6 +652,14 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
      * appropriate controls
      ************************************************************************************************************************************/
     private void IntializeViewVariables() {
+
+        mItemNameTextView = (TextView) findViewById(R.id.tvColItemName);
+        mHSNTextView = (TextView) findViewById(R.id.tvColHSN);
+        mQuantityTextView = (TextView) findViewById(R.id.tvColItemQty);
+        mRateTextView = (TextView) findViewById(R.id.tvColRate);
+        mAmountTextView = (TextView) findViewById(R.id.tvColAmount);
+        mDeleteTextView = (TextView) findViewById(R.id.tvColDelete);
+
         tvSalesTax = (TextView) findViewById(R.id.tvTaxTotal);
         tvServiceTax = (TextView) findViewById(R.id.tvServiceTax);
         tvcessValue = (TextView) findViewById(R.id.tvcessValue);
@@ -1575,14 +1674,22 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
 
                     // Item Name
                     tvName = new TextView(myContext);
-                    tvName.setWidth(135); // 154px ~= 230dp
-                    tvName.setTextSize(11);
+                   // tvName.setWidth(135); // 154px ~= 230dp
+                 //   tvName.setTextSize(11);
+
+                    tvName.setWidth(mItemNameWidth); // 154px ~= 230dp
+                    tvName.setTextSize(mDataMiniDeviceTextsize);
+
                     tvName.setText(crsrItem.getString(crsrItem.getColumnIndex("ItemName")));
 
                     //hsn code
                     tvHSn = new TextView(myContext);
-                    tvHSn.setWidth(67); // 154px ~= 230dp
-                    tvHSn.setTextSize(11);
+                //    tvHSn.setWidth(67); // 154px ~= 230dp
+                 //   tvHSn.setTextSize(11);
+
+                    tvHSn.setWidth(mHSNWidth); // 154px ~= 230dp
+                    tvHSn.setTextSize(mDataMiniDeviceTextsize);
+
                     tvHSn.setText(crsrItem.getString(crsrItem.getColumnIndex("HSNCode")));
                     if ( !HSNEnable_out.equals("1")) {
                         tvHSn.setVisibility(View.INVISIBLE);
@@ -1590,8 +1697,12 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
 
                     // Quantity
                     etQty = new EditText(myContext);
-                    etQty.setWidth(55); // 57px ~= 85dp
-                    etQty.setTextSize(11);
+                 //   etQty.setWidth(55); // 57px ~= 85dp
+                 //   etQty.setTextSize(11);
+
+                    etQty.setWidth(mQuantityWidth); // 57px ~= 85dp
+                    etQty.setTextSize(mDataMiniDeviceTextsize);
+
                     etQty.setSelectAllOnFocus(true);
                     etQty.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(4,1)});
                     etQty.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
@@ -1633,8 +1744,12 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
 
                     // Rate
                     etRate = new EditText(myContext);
-                    etRate.setWidth(70); // 74px ~= 110dp
-                    etRate.setTextSize(11);
+                  //  etRate.setWidth(70); // 74px ~= 110dp
+                 //   etRate.setTextSize(11);
+
+                    etRate.setWidth(mRateWidth); // 74px ~= 110dp
+                    etRate.setTextSize(mDataMiniDeviceTextsize);
+
                     etRate.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(4,1)});
                     etRate.setSelectAllOnFocus(true);
                     etRate.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
@@ -1665,8 +1780,12 @@ public class BillingDineInActivity extends WepPrinterBaseActivity {
 
                     // Amount
                     tvAmount = new TextView(myContext);
-                    tvAmount.setWidth(60); // 97px ~= 145dp
-                    tvAmount.setTextSize(11);
+                   // tvAmount.setWidth(60); // 97px ~= 145dp
+                   // tvAmount.setTextSize(11);
+
+                    tvAmount.setWidth(mAmountWidth); // 97px ~= 145dp
+                    tvAmount.setTextSize(mDataMiniDeviceTextsize);
+
                     tvAmount.setGravity(Gravity.RIGHT | Gravity.END);
                     tvAmount.setText(String.format("  %.2f", dRate));
 

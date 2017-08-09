@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -18,7 +17,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp"
         android:tag="GST"
-        android:text="GST" />
+        android:text="GST"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_14sp_720dp_12sp_600dp" />
 
     <Button
         android:id="@+id/btnStorage"
@@ -29,6 +30,8 @@
         android:layout_below="@+id/btnGST"
         android:layout_marginTop="47dp"
         android:tag="STORAGE"
-        android:text="Storage" />
+        android:text="Storage"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_14sp_720dp_12sp_600dp" />
 
 </RelativeLayout>

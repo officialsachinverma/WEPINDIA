@@ -56,7 +56,8 @@ public class AddRolesActivity extends WepBaseActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_role);
+        // old  activity_add_role
+        setContentView(R.layout.test_add_role);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         /*TextView tvTitleText = (TextView) findViewById(R.id.tvTitleBarCaption);

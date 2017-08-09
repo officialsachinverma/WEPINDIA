@@ -196,5 +196,38 @@
     <string name="login">Log In</string>
     <string name="exit">Exit</string>
 
+    // counter sale
+    <string name="add">Add</string>
+    <string name="print_bill">Print Bill</string>
+    <string name="pay_bill">Pay Bill</string>
+    <string name="clear">Clear</string>
+    <string name="delete_bill">Delete Bill</string>
+    <string name="reprint_bill">Reprint Bill</string>
+
+
+    //take away
+    <string name="save_kot">Save KOT</string>
+    <string name="print_save_kot">Print / Save KOT</string>
+    <string name="pickup_status">Pickup Status</string>
+
+    // customer orders
+
+
+    <string name="modify_order">Modify Order</string>
+    <string name="tender">Tender</string>
+    <string name="close">Close</string>
+    <string name="cancel_order">Cancel Order</string>
+
+
+
+
+    // table booking
+    <string name="sno">S.No</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="table_for_booking">Table For Booking</string>
+    <string name="table_no">Table No</string>
+    <string name="mobile_no">Mobile No</string>
+
+   <!-- <string name="exit">Exit</string>-->
 
 </resources>

@@ -77,7 +77,7 @@ public class SupplierAdapter extends BaseAdapter {
             viewHolder.tbSupplierGSTIN = (TextView) convertView.findViewById(R.id.tbSupplierGSTIN);
             viewHolder.tvSupplierAddress = (TextView) convertView.findViewById(R.id.tvSupplierAddress);
             viewHolder.imgBtnDelete = (ImageView) convertView.findViewById(R.id.imgBtnDelete);
-            viewHolder.imgBtnDelete.setLayoutParams(new TableRow.LayoutParams(40, 35));
+            viewHolder.imgBtnDelete.setLayoutParams(new TableRow.LayoutParams(45, 35));
             viewHolder.imgBtnDelete.setBackground(activityContext.getResources().getDrawable(R.drawable.delete_icon_border));
             viewHolder.imgBtnDelete.setOnClickListener(mListener);
             viewHolder.imgBtnDelete.setTag(position);

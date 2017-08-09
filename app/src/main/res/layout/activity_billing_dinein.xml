@@ -1144,7 +1144,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
             android:padding="4dp"
-            >
+           >
 
             <com.wep.common.app.views.WepButton
                 android:id="@+id/btn_SaveKOT"
@@ -1253,14 +1253,14 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/btn_marigin"
+                android:layout_marginRight="@dimen/btn_marigin"
                 android:layout_weight="1"
                 android:background="@drawable/background_btn"
                 android:gravity="center"
                 android:onClick="KOTStatus"
-                android:theme="@style/WepButtonWithMarigin"
-                android:layout_marginLeft="@dimen/btn_marigin"
-                android:layout_marginRight="@dimen/btn_marigin"
-                android:text="KOT Status" />
+                android:text="KOT Status"
+                android:theme="@style/WepButtonWithMarigin" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

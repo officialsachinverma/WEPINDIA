@@ -74,7 +74,7 @@ public class HomeActivity extends WepBaseActivity implements HTTPAsyncTask.OnHTT
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.test_home);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         myContext = this;
@@ -834,29 +834,43 @@ public class HomeActivity extends WepBaseActivity implements HTTPAsyncTask.OnHTT
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(myContext);
-            LayoutInflater UserAuthorization = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View vwAuthorization = UserAuthorization.inflate(R.layout.user_authorization, null);
-            final EditText txtUserId = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserId);
-            final EditText txtPassword = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserPassword);
-            final TextView tvAuthorizationUserId= (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserId);
-            final TextView tvAuthorizationUserPassword= (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserPassword);
-            tvAuthorizationUserId.setVisibility(View.GONE);
-            tvAuthorizationUserPassword.setVisibility(View.GONE);
-            txtUserId.setVisibility(View.GONE);
-            txtPassword.setVisibility(View.GONE);
+            AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(this);
             AuthorizationDialog
+                    .setIcon(R.drawable.ic_launcher)
                     .setTitle("Are you sure you want to exit ?")
-                    .setView(vwAuthorization)
                     .setNegativeButton("No", null)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            /*Intent returnIntent =new Intent();
-                            setResult(Activity.RESULT_OK,returnIntent);*/
+							/*Intent returnIntent =new Intent();
+							setResult(Activity.RESULT_OK,returnIntent);*/
                             finish();
                         }
                     })
                     .show();
+
+//            AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(myContext);
+//            LayoutInflater UserAuthorization = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View vwAuthorization = UserAuthorization.inflate(R.layout.user_authorization, null);
+//            final EditText txtUserId = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserId);
+//            final EditText txtPassword = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserPassword);
+//            final TextView tvAuthorizationUserId= (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserId);
+//            final TextView tvAuthorizationUserPassword= (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserPassword);
+//            tvAuthorizationUserId.setVisibility(View.GONE);
+//            tvAuthorizationUserPassword.setVisibility(View.GONE);
+//            txtUserId.setVisibility(View.GONE);
+//            txtPassword.setVisibility(View.GONE);
+//            AuthorizationDialog
+//                    .setTitle("Are you sure you want to exit ?")
+//                    .setView(vwAuthorization)
+//                    .setNegativeButton("No", null)
+//                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            /*Intent returnIntent =new Intent();
+//                            setResult(Activity.RESULT_OK,returnIntent);*/
+//                            finish();
+//                        }
+//                    })
+//                    .show();
         }
 
         return super.onKeyDown(keyCode, event);

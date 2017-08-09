@@ -50,7 +50,8 @@ public class FragmentSettingsMachine extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_settings_machine, container, false);
+        // old   fragment_fragment_settings_machine
+        View view = inflater.inflate(R.layout.test_fragment_settings_machine, container, false);
         dbBackup = new DatabaseHandler(getActivity());
         myContext = getActivity();
         MsgBox = new MessageDialog(myContext);

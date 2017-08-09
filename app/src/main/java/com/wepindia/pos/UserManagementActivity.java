@@ -54,7 +54,8 @@ public class UserManagementActivity extends WepBaseActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_management);
+        // old  activity_user_management
+        setContentView(R.layout.test_user_management);
         /*TextView tvTitleText = (TextView) findViewById(R.id.tvTitleBarCaption);
         TextView tvTitleUserName = (TextView) findViewById(R.id.tvTitleBarUserName);
         TextView tvTitleDate = (TextView) findViewById(R.id.tvTitleBarDate);

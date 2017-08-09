@@ -39,23 +39,22 @@
                 android:id="@+id/linear_inward_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-
-                >
+                android:gravity="center_horizontal|center_vertical">
 
                 <com.wep.common.app.views.WepButton
                     android:id="@+id/btnAddSupplier"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                    android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                     android:background="@drawable/background_btn"
                     android:textColor="@android:color/white"
                     android:theme="@style/WepButtonWithMarigin"
                     android:onClick="AddSupplier"
-                    android:text="Add Supplier" />
+                    android:text="Add Supplier"
+                    android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
 
                 <com.wep.common.app.views.WepButton
@@ -63,57 +62,61 @@
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                    android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                     android:background="@drawable/background_btn"
                     android:textColor="@android:color/white"
                     android:theme="@style/WepButtonWithMarigin"
                     android:onClick="GeneratePO"
-                    android:text="Generate PO" />
+                    android:text="Generate PO"
+                    android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                 <com.wep.common.app.views.WepButton
                     android:id="@+id/btnEditPO"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                    android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                     android:background="@drawable/background_btn"
                     android:textColor="@android:color/white"
                     android:theme="@style/WepButtonWithMarigin"
                     android:onClick="EditPO"
-                    android:text="Update PO" />
+                    android:text="Update PO"
+                    android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                 <com.wep.common.app.views.WepButton
                     android:id="@+id/btnClearItem"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                    android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                     android:background="@drawable/background_btn"
                     android:textColor="@android:color/white"
                     android:theme="@style/WepButtonWithMarigin"
                     android:onClick="Clear_inward"
-                    android:text="Clear" />
+                    android:text="Clear"
+                    android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                 <com.wep.common.app.views.WepButton
                     android:id="@+id/btnCloseItem"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                    android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
+                    android:layout_marginRight="@dimen/_10dp_720dp_7dp_600dp"
                     android:background="@drawable/background_btn"
                     android:textColor="@android:color/white"
                     android:theme="@style/WepButtonWithMarigin"
                     android:onClick="Close_inward"
-                    android:text="Close" />
+                    android:text="Close"
+                    android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -465,11 +468,12 @@
                                 android:layout_width="120dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
                                 android:background="@drawable/background_btn"
                                 android:textColor="@android:color/white"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:text="Add Item" />
+                                android:text="Add Item"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                             <!--<ImageButton
                                 android:id="@+id/btnimage_new_item"
@@ -510,7 +514,7 @@
                                 android:layout_height="match_parent"
                                 android:maxLength="15"
                                 android:paddingLeft="5dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1.3" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -665,6 +669,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Sno." />
 
 
@@ -676,7 +682,9 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:text="HSNCode" />
+                    android:text="HSNCode"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -686,6 +694,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Item Name" />
 
                 <TextView
@@ -696,6 +706,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Rate" />
 
                 <TextView
@@ -706,6 +718,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Qty" />
 
                 <TextView
@@ -716,6 +730,8 @@
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="UoM" />
 
                 <TextView
@@ -726,6 +742,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Taxable Value" />
 
                 <TextView
@@ -736,6 +754,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="IGST Amt" />
 
                 <TextView
@@ -746,6 +766,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="CGST Amt" />
 
                 <TextView
@@ -756,6 +778,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="SGST Amt" />
 
                 <TextView
@@ -766,6 +790,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="cess Amt" />
 
                 <TextView
@@ -776,6 +802,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Amount" />
 
                 <TextView
@@ -786,6 +814,8 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                     android:text="Del" />
             </LinearLayout>
             <!-- end of child 1 : table_heading layout -->

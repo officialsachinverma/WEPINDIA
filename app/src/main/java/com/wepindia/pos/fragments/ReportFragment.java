@@ -84,7 +84,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_report, container, false);
+        // old fragment_report
+        view = inflater.inflate(R.layout.test_report, container, false);
         btn_ReportDateFrom = (Button) view.findViewById(R.id.btn_ReportDateFrom);
         btn_ReportDateFrom.setOnClickListener(this);
         btn_ReportDateTo = (Button) view.findViewById(R.id.btn_ReportDateTo);

@@ -150,7 +150,6 @@ public class InwardItemActivity extends WepBaseActivity {
             count =1;
             DisplayItems(); // display all data
 
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -171,7 +170,7 @@ public class InwardItemActivity extends WepBaseActivity {
             btnEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EditItem1(v);
+                    EditItem1(v, 0);
                 }
             });
             /*btnResetQuantity.setOnClickListener(new View.OnClickListener() {
@@ -1335,7 +1334,7 @@ public class InwardItemActivity extends WepBaseActivity {
     }
 
 
-    private void ReadData(int Type) {
+    private void ReadData(int Type, int pos) {
 
         final String imageURI ="",taxationType="";
         final double igstAmount =0, cgstAmount=0, sgstAmount =0, cessAmount=0;
@@ -1359,19 +1358,19 @@ public class InwardItemActivity extends WepBaseActivity {
 
         // Type 1 - addItem, Type 2 - updateItem
         if (Type == 1) {
-            ItemInward item =  new ItemInward( 0, itemname,  strBarcode, imageURI, HSNCode,averageRate,quantity, uom,
+            ItemInward item =  new ItemInward(0, itemname,  strBarcode, imageURI, HSNCode,averageRate,quantity, uom,
                     igstRate, igstAmount,cgstRate, cgstAmount, sgstRate, sgstAmount, cessRate, cessAmount,taxationType,supplyType);
             long lRowId = dbInwardItem.addItem_InwardDatabase(item);
             if(lRowId>0) {
                 Log.d("Item Inward", "Row Id:" + String.valueOf(lRowId));
                 Long l = dbInwardItem.addIngredient(itemname, quantity, uom, averageRate, 0);
-                UpdateStockInward(itemname,quantity,   averageRate);
+                UpdateStockInward(itemname,quantity, averageRate);
             }
 
         } else if (Type == 2)
         { // update
             int menuCode = Integer.parseInt(tvMenuCode.getText().toString());
-            ItemInward item =  new ItemInward( 0, itemname,  strBarcode, imageURI, HSNCode,averageRate,quantity, uom,
+            ItemInward item =  new ItemInward( menuCode, itemname,  strBarcode, imageURI, HSNCode,averageRate,quantity, uom,
                     igstRate, igstAmount,cgstRate, cgstAmount, sgstRate, sgstAmount, cessRate, cessAmount,
                     taxationType,supplyType);
 
@@ -1604,7 +1603,7 @@ public class InwardItemActivity extends WepBaseActivity {
 
 
         try {
-            ReadData(1); // 1 - addItem
+            ReadData(1, 0); // 1 - addItem
             ClearingAndDisplaying();
             loadSpinnerData();
             //loadAutoCompleteData_item(-1);
@@ -1650,7 +1649,7 @@ public class InwardItemActivity extends WepBaseActivity {
             Toast.makeText(myContext, itemName+" cannot be reset to 0 ", Toast.LENGTH_LONG).show();
         ClearingAndDisplaying();
     }
-    public void EditItem1(View v) {
+    public void EditItem1(View v, int pos) {
         String itemName = autocomplete_inw_ItemName.getText().toString();
         if (itemName.equalsIgnoreCase("")) {
             Toast.makeText(myContext, "Please enter item name", Toast.LENGTH_SHORT).show();
@@ -1679,7 +1678,6 @@ public class InwardItemActivity extends WepBaseActivity {
             MsgBox1.Show("Warning","Please enter item's average rate between 0 and 9999.99");
             return;
         }
-
 
         String CGSTTax_str = et_Inw_CGSTRate.getText().toString();
         if (CGSTTax_str.equalsIgnoreCase("")) {
@@ -1731,7 +1729,7 @@ public class InwardItemActivity extends WepBaseActivity {
         // richa 2712_UOM
 
         try {
-            ReadData(2); // 2 - updateItem
+            ReadData(2, 0); // 2 - updateItem
             ClearingAndDisplaying();
         } catch (Exception exp) {
             Toast.makeText(myContext, exp.getMessage(), Toast.LENGTH_SHORT).show();

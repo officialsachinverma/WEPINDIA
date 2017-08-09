@@ -101,7 +101,7 @@ public class CustomerOrdersActivity extends WepBaseActivity{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customerorders);
+        setContentView(R.layout.test_customer_orders);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -137,7 +137,7 @@ public class CustomerOrdersActivity extends WepBaseActivity{
         	if(BILLING_MODE.equalsIgnoreCase("3")){
         		title = "PickUp";
         		btnDelivery.setVisibility(View.GONE);
-				btnTender.setText("Pay Bill");
+				btnTender.setText(getResources().getString(R.string.pay_bill));
         	} else if(BILLING_MODE.equalsIgnoreCase("4")){
 				title  = "Delivery";
                 btnTender.setText("COD Settlement");

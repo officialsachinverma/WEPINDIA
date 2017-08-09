@@ -26,10 +26,7 @@
             android:layout_alignParentTop="true"
             android:minHeight="40dp"
             android:orientation="horizontal"
-            android:padding="5dp"
-            >
-
-
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="match_parent"

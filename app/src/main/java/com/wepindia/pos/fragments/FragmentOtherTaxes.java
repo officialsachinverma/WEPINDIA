@@ -24,13 +24,10 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.wep.common.app.Database.DatabaseHandler;
 import com.wep.common.app.Database.KOTModifier;
-import com.wep.common.app.views.WepButton;
 import com.wepindia.pos.GenericClasses.EditTextInputHandler;
 import com.wepindia.pos.GenericClasses.MessageDialog;
-import com.wepindia.pos.KOTModifierActivity;
 import com.wepindia.pos.R;
 
 import java.util.ArrayList;
@@ -66,7 +63,8 @@ public class FragmentOtherTaxes extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_other_taxes, container, false);
+        // old       fragment_fragment_other_taxes
+        View view = inflater.inflate(R.layout.test_fragment_other_taxes, container, false);
         myContext = getActivity();
         MsgBox = new MessageDialog(myContext);
         EditTextInputHandler etInputValidate =  new EditTextInputHandler();

@@ -15,7 +15,9 @@
 package com.wepindia.pos;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -23,8 +25,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
@@ -41,9 +43,6 @@ import com.wep.common.app.views.WepButton;
 import com.wepindia.pos.GenericClasses.ImageAdapter;
 import com.wepindia.pos.GenericClasses.MessageDialog;
 import com.wepindia.pos.adapters.WaiterAdapter;
-import com.wepindia.pos.utils.ActionBarUtils;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -61,7 +60,7 @@ public class TableActivity extends WepBaseActivity {
     MessageDialog MsgBox;
     GridView grdTable, grdWaiter;
     TextView tvSelectedTable, tvSelectedWaiter;
-    TextView tv_tablesplit1,tv_tablesplit2,tv_tablesplit3,tv_tablesplit4,tvTableSplitHeading;
+    TextView tv_tablesplit1, tv_tablesplit2, tv_tablesplit3, tv_tablesplit4, tvTableSplitHeading;
     String DISABLE = "0";
     String ENABLE = "1";
     // Variables
@@ -69,25 +68,27 @@ public class TableActivity extends WepBaseActivity {
     public static final String WAITER_NO = "waiter_number";
     public static final String SUBUDF_NO = "subudf_number";
     public static final String TABLE_SPLIT_NO = "table_split_number";
-    ArrayList<Integer> arrlstTableNumbers,arrlstTableNumbers_reserved;
+    ArrayList<Integer> arrlstTableNumbers, arrlstTableNumbers_reserved;
     Cursor crsrSettings = null;
     List<Map<String, String>> lstWaiters;
     String strTableNumber = "_", strWaiterNumber = "", strTableSplitNo = "";
-    int iMaxTables = 0, iMaxWaiters = 0, TableSplitEnable=0;
+    int iMaxTables = 0, iMaxWaiters = 0, TableSplitEnable = 0;
     CheckBox ckSplit1, ckSplit2, ckSplit3, ckSplit4;
     String strBillMode = "", strUserId = "", strUserName = "";
     int iCustId = 0;
-    String[] tableoccupied =new String[4];
-    int  SelectTableSplit = -1;
+    String[] tableoccupied = new String[4];
+    int SelectTableSplit = -1;
     LinearLayout lnrTableSplit;
     FrameLayout frame_split;
     private Toolbar toolbar;
     TextView tvTableSelectVLine, tvVerticalLine;
-    private WepButton btn_DineInTableBooking,btn_TableCancel,btn_TableDineIn,btn_TableOK,btn_DineInTableStatus;
+    private WepButton btn_DineInTableBooking, btn_TableCancel, btn_TableDineIn, btn_TableOK, btn_DineInTableStatus;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        //old layout  activity_table
+        setContentView(R.layout.test_table);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -115,7 +116,7 @@ public class TableActivity extends WepBaseActivity {
         //tvTitleDate.setText("Date : " + s);
 
         try {
-            com.wep.common.app.ActionBarUtils.setupToolbar(TableActivity.this,toolbar,getSupportActionBar(),"Table/Waiter Selection",strUserName," Date:"+s.toString());
+            com.wep.common.app.ActionBarUtils.setupToolbar(TableActivity.this, toolbar, getSupportActionBar(), "Table/Waiter Selection", strUserName, " Date:" + s.toString());
             lnrTableSplit = (LinearLayout) findViewById(R.id.lnrTableSplit);
             frame_split = (FrameLayout) findViewById(R.id.frame_split);
             grdTable = (GridView) findViewById(R.id.grid_Image_Table);
@@ -138,13 +139,13 @@ public class TableActivity extends WepBaseActivity {
             ckSplit4 = (CheckBox) findViewById(R.id.chkSplit4);
 
             tvTableSelectVLine = (TextView) findViewById(R.id.tvTableSelectVLine);
-            tvVerticalLine = (TextView)findViewById(R.id.tvVerticalLine);
+            tvVerticalLine = (TextView) findViewById(R.id.tvVerticalLine);
 
-            btn_DineInTableBooking = (WepButton)findViewById(R.id.btn_DineInTableBooking);
-            btn_TableCancel = (WepButton)findViewById(R.id.btn_TableCancel);
-            btn_TableDineIn = (WepButton)findViewById(R.id.btn_TableDineIn);
-            btn_TableOK = (WepButton)findViewById(R.id.btn_TableOK);
-            btn_DineInTableStatus = (WepButton)findViewById(R.id.btn_DineInTableStatus);
+            btn_DineInTableBooking = (WepButton) findViewById(R.id.btn_DineInTableBooking);
+            btn_TableCancel = (WepButton) findViewById(R.id.btn_TableCancel);
+            btn_TableDineIn = (WepButton) findViewById(R.id.btn_TableDineIn);
+            btn_TableOK = (WepButton) findViewById(R.id.btn_TableOK);
+            btn_DineInTableStatus = (WepButton) findViewById(R.id.btn_DineInTableStatus);
 
             btn_DineInTableBooking.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -178,7 +179,6 @@ public class TableActivity extends WepBaseActivity {
             });
 
 
-
             MsgBox = new MessageDialog(myContext);
 
             getDb().CreateDatabase();
@@ -199,7 +199,7 @@ public class TableActivity extends WepBaseActivity {
             Date previous_time = calendar.getTime();
 
             calendar.setTime(date);
-            calendar.add(Calendar.MINUTE,15);
+            calendar.add(Calendar.MINUTE, 15);
             Date next_time = calendar.getTime();
             //long millis = previous_time.getTime();
 
@@ -215,12 +215,11 @@ public class TableActivity extends WepBaseActivity {
             String strTimeBookingEnd = df.format(next_time);
 
 
-
             Cursor OccupiedTables = getDb().getBookedTableBetweenTime(strTimeBookingStart, strTimeBookingEnd);
 
             //Cursor OccupiedTables = dbTableBooking.getOccupiedTables();
             arrlstTableNumbers_reserved.clear();
-            if (OccupiedTables!= null && OccupiedTables.moveToFirst()) {
+            if (OccupiedTables != null && OccupiedTables.moveToFirst()) {
                 do {
                     // Add table number to array list
                     arrlstTableNumbers_reserved.add(OccupiedTables.getInt(3));
@@ -257,8 +256,7 @@ public class TableActivity extends WepBaseActivity {
                 InitializeTableGrid(iMaxTables);
                 InitializeWaiterGrid(iMaxWaiters);
                 TableSplitEnable = crsrSettings.getInt(crsrSettings.getColumnIndex("TableSpliting"));
-                if( TableSplitEnable == 1)
-                {
+                if (TableSplitEnable == 1) {
                     lnrTableSplit.setVisibility(View.VISIBLE);
                 } else {
                     lnrTableSplit.setVisibility(View.GONE);
@@ -266,7 +264,7 @@ public class TableActivity extends WepBaseActivity {
                     //tvTableSelectVLine.setVisibility(View.GONE);
                     //tvVerticalLine.setVisibility(View.GONE);
                 }
-                int count = setTableSplit(DISABLE,strTableNumber);
+                int count = setTableSplit(DISABLE, strTableNumber);
             }
 
         } catch (Exception e) {
@@ -275,12 +273,12 @@ public class TableActivity extends WepBaseActivity {
         }
     }
 
-    public DatabaseHandler getDb(){
-        if(dbTableWaiter==null){
+    public DatabaseHandler getDb() {
+        if (dbTableWaiter == null) {
             dbTableWaiter = new DatabaseHandler(this);
-            try{
+            try {
                 dbTableWaiter.OpenDatabase();
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -293,7 +291,7 @@ public class TableActivity extends WepBaseActivity {
         String[] TableImage = new String[Limit];
         int[] TableId = new int[Limit];
 
-        selection -=1;
+        selection -= 1;
 
         for (int i = 0; i < Limit; i++) {
             TableText[i] = "Table" + String.valueOf(i + 1);
@@ -314,11 +312,9 @@ public class TableActivity extends WepBaseActivity {
         grdTable.setAdapter(new ImageAdapter(myContext, TableText, TableId, TableImage, Byte.parseByte("2")));
     }
 
-    int setTableSplit(String EnableorDisable, String strTableNumber)
-    {
-        int count =0;
-        if (EnableorDisable.equals(DISABLE))
-        {
+    int setTableSplit(String EnableorDisable, String strTableNumber) {
+        int count = 0;
+        if (EnableorDisable.equals(DISABLE)) {
             tvTableSplitHeading.setTextColor(Color.GRAY);
             tv_tablesplit1.setTextColor(Color.GRAY);
             ckSplit1.setEnabled(false);
@@ -333,8 +329,7 @@ public class TableActivity extends WepBaseActivity {
             ckSplit4.setEnabled(false);
             ckSplit4.setTextColor(Color.GRAY);
 
-        }
-        else {
+        } else {
             tvTableSplitHeading.setTextColor(Color.BLACK);
             tv_tablesplit1.setTextColor(Color.BLACK);
             ckSplit1.setEnabled(true);
@@ -435,10 +430,8 @@ public class TableActivity extends WepBaseActivity {
                     MsgBox.Show("", "This table is booked by the Customer - " + CustName + " at - " + Time);
                 }
 
-                if(TableSplitEnable == 0)
-                {
-                    if (arrlstTableNumbers.contains(Integer.parseInt(strTableNumber)))
-                    {
+                if (TableSplitEnable == 0) {
+                    if (arrlstTableNumbers.contains(Integer.parseInt(strTableNumber))) {
                         MsgBox.Show("", "This table is already in use. Please select another table");
                         return;
                     }
@@ -498,18 +491,17 @@ public class TableActivity extends WepBaseActivity {
             }
             TableId[i] = i + 1;
         }
-        String startTime="0", endTime = "0";
+        String startTime = "0", endTime = "0";
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        cal.add(Calendar.MINUTE,-30);
+        cal.add(Calendar.MINUTE, -30);
         startTime = String.valueOf(cal.getTimeInMillis());
         cal.setTime(date);
-        cal.add(Calendar.MINUTE,+30);
+        cal.add(Calendar.MINUTE, +30);
         endTime = String.valueOf(cal.getTimeInMillis());
         Cursor crsrReservedTable = getDb().getBookedTableBetweenTime(startTime, endTime);
-        while(crsrReservedTable!=null && crsrReservedTable.moveToNext())
-        {
+        while (crsrReservedTable != null && crsrReservedTable.moveToNext()) {
             int tableId = crsrReservedTable.getInt(crsrReservedTable.getColumnIndex("TableId"));
             TableImage[tableId] = String.valueOf(R.drawable.img_table_advance_reserved);
         }
@@ -517,48 +509,41 @@ public class TableActivity extends WepBaseActivity {
         grdTable.setAdapter(new ImageAdapter(myContext, TableText, TableId, TableImage, Byte.parseByte("2")));
     }
 
-    public  void CheckboxEvent (View v)
-    {
-        CheckBox checkBox = (CheckBox)v;
-        if(!checkBox.isChecked()){
+    public void CheckboxEvent(View v) {
+        CheckBox checkBox = (CheckBox) v;
+        if (!checkBox.isChecked()) {
             // checkbox is unchecked
             SelectTableSplit = -1;
             return;
-        }
-        else
-        {
+        } else {
             // checkbox is checked
             int id = v.getId();
-            if(ckSplit1.isEnabled() && ckSplit1.isChecked() )
-            {
-                if(id == R.id.chkSplit1)
+            if (ckSplit1.isEnabled() && ckSplit1.isChecked()) {
+                if (id == R.id.chkSplit1)
                     SelectTableSplit = 1;
                 else
                     ckSplit1.setChecked(false);
             }
-            if(ckSplit2.isEnabled() && ckSplit2.isChecked() )
-            {
-                if(id == R.id.chkSplit2)
+            if (ckSplit2.isEnabled() && ckSplit2.isChecked()) {
+                if (id == R.id.chkSplit2)
                     SelectTableSplit = 2;
                 else
                     ckSplit2.setChecked(false);
             }
-            if(ckSplit3.isEnabled() && ckSplit3.isChecked() )
-            {
-                if(id == R.id.chkSplit3)
+            if (ckSplit3.isEnabled() && ckSplit3.isChecked()) {
+                if (id == R.id.chkSplit3)
                     SelectTableSplit = 3;
                 else
                     ckSplit3.setChecked(false);
             }
-            if(ckSplit4.isEnabled() && ckSplit4.isChecked() )
-            {
-                if(id == R.id.chkSplit4)
+            if (ckSplit4.isEnabled() && ckSplit4.isChecked()) {
+                if (id == R.id.chkSplit4)
                     SelectTableSplit = 4;
                 else
                     ckSplit4.setChecked(false);
             }
-            if(!strTableNumber.equals("-") && SelectTableSplit!= -1 && !strWaiterNumber.equals(""))
-            OK(v);
+            if (!strTableNumber.equals("-") && SelectTableSplit != -1 && !strWaiterNumber.equals(""))
+                OK(v);
         }
     }
 
@@ -581,7 +566,7 @@ public class TableActivity extends WepBaseActivity {
         grdWaiter.setAdapter(new WaiterAdapter(myContext, WaiterText, WaiterId, WaiterImage, Byte.parseByte("2")));
     }
 
-    private void InitializeWaiterGrid1(String selectedWaiter ) {
+    private void InitializeWaiterGrid1(String selectedWaiter) {
 
         String[] WaiterText = new String[iMaxWaiters];
         String[] WaiterImage = new String[iMaxWaiters];
@@ -594,11 +579,10 @@ public class TableActivity extends WepBaseActivity {
                 WaiterText[i] = mapWaiters.get("Name");
                 String id = mapWaiters.get("Id");
 
-                if(id.equalsIgnoreCase(selectedWaiter)) {
+                if (id.equalsIgnoreCase(selectedWaiter)) {
                     WaiterImage[i] = String.valueOf(R.drawable.img_waiter_selected);
                     tvSelectedWaiter.setText("Selected Waiter #: " + WaiterText[i]);
-                }
-                else
+                } else
                     WaiterImage[i] = String.valueOf(R.drawable.img_waiter_idle);
                 WaiterId[i] = Integer.parseInt(mapWaiters.get("Id"));
             }
@@ -606,6 +590,7 @@ public class TableActivity extends WepBaseActivity {
         }
         grdWaiter.setAdapter(new WaiterAdapter(myContext, WaiterText, WaiterId, WaiterImage, Byte.parseByte("2")));
     }
+
     public void OK(View v) {
         if (SelectTableSplit == -1 || strTableNumber.equalsIgnoreCase("_") || strWaiterNumber.equalsIgnoreCase("")) {
             MsgBox.Show("Warning", "Select Table Number, Waiter Number");
@@ -691,7 +676,7 @@ public class TableActivity extends WepBaseActivity {
     }
 
     public void DineInTableStatus(View v) {
-        Intent intentTableStatus = new Intent(myContext,TableStatusActivity.class);
+        Intent intentTableStatus = new Intent(myContext, TableStatusActivity.class);
         intentTableStatus.putExtra("USER_ID", strUserId);//spUser.getString("USER_ID", "GHOST"));
         intentTableStatus.putExtra("USER_NAME", strUserName);//spUser.getString("USER_NAME", "GHOST"));
         intentTableStatus.putExtra("CUST_ID", 0);
@@ -700,12 +685,24 @@ public class TableActivity extends WepBaseActivity {
 
     @Override
     public void onBackPressed() {
-        getDb().CloseDatabase();
         /*Intent intentResult = new Intent();
         intentResult.putExtra("isCancelled",true);
         setResult(RESULT_CANCELED, intentResult);*/
         // finish the activity
-        this.finish();
+        AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(myContext);
+        AuthorizationDialog
+                .setTitle("Are you sure you want to exit ?")
+                .setIcon(R.drawable.ic_launcher)
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+                        getDb().CloseDatabase();
+                        finish();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -717,9 +714,9 @@ public class TableActivity extends WepBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        try{
+        try {
             dbTableWaiter.CloseDatabase();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }

@@ -11,6 +11,9 @@ android {
         versionName "1.0"
         multiDexEnabled = true
     }
+    aaptOptions {
+        cruncherEnabled = false
+    }
     buildTypes {
         release {
             minifyEnabled false

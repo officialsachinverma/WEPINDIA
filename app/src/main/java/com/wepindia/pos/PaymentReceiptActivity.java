@@ -80,7 +80,8 @@ public class PaymentReceiptActivity extends WepBaseActivity{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paymentreceipt);
+		// old  activity_paymentreceipt
+        setContentView(R.layout.test_paymentreceipt);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
         myContext = this;

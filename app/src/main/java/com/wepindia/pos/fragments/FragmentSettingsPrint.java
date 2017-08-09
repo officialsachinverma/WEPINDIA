@@ -43,7 +43,8 @@ public class FragmentSettingsPrint extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_settings_print, container, false);
+        // old    fragment_fragment_settings_print
+        View view = inflater.inflate(R.layout.test_fragment_settings_print, container, false);
         myContext = getActivity();
         messageBox = new MessageDialog(myContext);
         sharedPreferences = Preferences.getSharedPreferencesForPrint(getActivity()); // getSharedPreferences("PrinterConfigurationActivity", Context.MODE_PRIVATE);

@@ -52,7 +52,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wep.common.app.Database.DatabaseHandler;
-import com.wep.common.app.Database.Item;
 import com.wep.common.app.WepBaseActivity;
 import com.wep.common.app.models.ItemOutward;
 import com.wep.common.app.views.WepButton;
@@ -62,7 +61,6 @@ import com.wepindia.pos.GenericClasses.MessageDialog;
 import com.wepindia.pos.adapters.ItemOutwardAdapter;
 import com.wepindia.pos.utils.ActionBarUtils;
 import com.wepindia.pos.utils.StockOutwardMaintain;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -77,60 +75,119 @@ import java.util.List;
 public class ItemManagementActivity extends WepBaseActivity {
 
     Context myContext;
-    BufferedReader buffer ;
+    BufferedReader mBufferReader;
     DatabaseHandler dbItems = new DatabaseHandler(ItemManagementActivity.this);
     MessageDialog MsgBox;
     int ROWCLICKEVENT = 0;
     EditText /*txtLongName,*/ txtShortName, txtBarcode, txtDineIn1, txtDineIn2, txtDineIn3, txtStock;
     WepEditText txtLongName;
-    Spinner spnrDepartment, spnrCategory, spnrKitchen,  spnrOptionalTax1, spnrOptionalTax2;
+    Spinner spnrDepartment, spnrCategory, spnrKitchen, spnrOptionalTax1, spnrOptionalTax2;
     CheckBox chkPriceChange, chkDiscountEnable, chkBillWithStock;
     RadioButton rbForwardTax, rbReverseTax;
-    WepButton btnAdd, btnEdit, btnUploadExcel, btnSaveExcel,btnClearItem,btnCloseItem,btnImageBrowse;
+    WepButton btnAdd, btnEdit, btnClearItem, btnCloseItem, btnImageBrowse;
 
     ImageView imgItemImage;
     TableLayout tblItems;
-    TextView tvDineIn1Caption, tvDineIn2Caption, tvDineIn3Caption, tvFileName;
+    TextView tvDineIn1Caption, tvDineIn2Caption, tvDineIn3Caption, mFileNameTextValue;
     Spinner spnrG_S, spnrMOU, spnrtaxationtype;
-    EditText etRate ,etQuantity ,etHSN ,etGstTax  ;
+    EditText etRate, etQuantity, etHSN, etGstTax;
     FrameLayout frame_rate_nongst, frame_rate_gst, frame_serviceTax, frame_salesTax, frame_GSTTax;
-    EditText edtMenuCode, edtItemCGSTTax, edtItemSGSTTax, edtIGSTTax,edtcessTax;
-    //TextView tvCaptionSNo,tvCaptionLongName,tvCaptionDineInPrice1,tvCaptionDineInPrice2,tvCaptionDineInPrice3,tvCaptionStock, tvCaptionRate,tvCaptionQuanity,tvCaptionMOU,tvCaptionGSTRate,tvCaptionImage,tvCaptionDelete;
-    float fRate =0, fQuantity =0, fGSTTax = 0, fDiscount = 0;
+    EditText edtMenuCode, edtItemCGSTTax, edtItemSGSTTax, edtIGSTTax, edtcessTax;
+    //TextView tvCaptionSNo,tvCaptionLongName,tvCaptionDineInPrice1,tvCaptionDineInPrice2,tvCaptionDineInPrice3,tvCaptionStock, tvCaptionRate,tvCaptionQuanity,tvCaptionMOU,tvCaptionGSTRate,tvCaptionImage,tvCaptionDelete;                                                  F
+    float fRate = 0, fQuantity = 0, fGSTTax = 0, fDiscount = 0;
     String txtHSNCode = "";
     ArrayAdapter<String> adapDeptCode, adapCategCode, adapKitCode, adapTax, adapDiscount;
-    ArrayAdapter<CharSequence> supplytypeAdapter,MOUAdapter, taxationtypeAdapter;
+    ArrayAdapter<CharSequence> supplytypeAdapter, MOUAdapter, taxationtypeAdapter;
     String strItemId, strImageUri = "";
     String strUploadFilepath = "", strUserName = "";
     private List<String> labelsDept;
     private List<String> labelsCateg;
-    String GSTEnable="0", HSNEnable_out="0";
+    String GSTEnable = "0", HSNEnable_out = "0";
     int iMenuCode = 0;
     Cursor crsrSettings = null;
     private Toolbar toolbar;
     String businessDate = "";
-    String itemName_beforeChange_in_update="";
+    String itemName_beforeChange_in_update = "";
     ItemOutwardAdapter itemListAdapter = null;
     private ListView listViewItems;
     ArrayList<ItemOutward> dataList = null;
 
+
+    private WepButton mUploadCSVFileBtn;
+    private WepButton mSaveCVSFileBtn;
+
+
+    private String mUserCSVInvalidValue = "";
+    private boolean mFlag;
+    private int mCheckCSVValueType;
+
+
+    private int mMenuCode;
+    private String mItemName;
+    private String mSupplyType;
+    private double mRate1;
+    private double mRate2;
+    private double mRate3;
+    private double mQuantity;
+    private String mUOM;
+    private double mCGSTRate;
+    private double mSGSTRate;
+    private double mIGSTRate;
+    private double mCESSRate;
+    private double mDiscount;
+
+    private String mCurrentTime;
+    private final int CHECK_INTEGER_VALUE = 0;
+    private final int CHECK_DOUBLE_VALUE = 1;
+    private final int CHECK_STRING_VALUE = 2;
+
+
+    private double IGSTAmt = 0;
+    private double CGSTAmt = 0;
+    private double SGSTAmt = 0;
+    private double cessAmt = 0;
+
+
+    private String mLongName = "Long Name";
+    private int mDeptCode = 0;
+    private int mCategCode = 0;
+    private int mKitchenCode = 0;
+    private String mbarCode = "Bar Code";
+    private String mImageUri = "Image Url";
+    private int mItemId = 0;
+    private String mHSN = "HSN";
+    private String mtaxationType = "taxationType";
+
+    private MessageDialog mDisplayAlertMessage;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_itemmaster);
+        // old       activity_itemmaster
+        setContentView(R.layout.test_itemmaster);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //  InitializeAdapters();
+        InitializeViewVariables();
+        setCVSFile();
+        uploadCVSFile();
+
         setSupportActionBar(toolbar);
 
         myContext = this;
         MsgBox = new MessageDialog(myContext);
 
+        mDisplayAlertMessage = new MessageDialog(myContext);
+
         strUserName = getIntent().getStringExtra("USER_NAME");
         Date d = new Date();
         CharSequence s = DateFormat.format("dd-MM-yyyy", d.getTime());
-        com.wep.common.app.ActionBarUtils.setupToolbar(ItemManagementActivity.this,toolbar,getSupportActionBar(),"Item Master",strUserName," Date:"+s.toString());
+        com.wep.common.app.ActionBarUtils.setupToolbar(ItemManagementActivity.this, toolbar, getSupportActionBar(), "Item Master", strUserName, " Date:" + s.toString());
         try {
 
-            InitializeViewVariables();
+
             ResetItem();
             dbItems.CreateDatabase();
             dbItems.OpenDatabase();
@@ -141,10 +198,9 @@ public class ItemManagementActivity extends WepBaseActivity {
                 tvDineIn3Caption.setText(crsrSettings.getString(crsrSettings.getColumnIndex("DineIn3Caption")));
                 businessDate = crsrSettings.getString(crsrSettings.getColumnIndex("BusinessDate"));
                 GSTEnable = crsrSettings.getString(crsrSettings.getColumnIndex("GSTEnable"));
-                HSNEnable_out =  crsrSettings.getString(crsrSettings.getColumnIndex("HSNCode_Out"));
+                HSNEnable_out = crsrSettings.getString(crsrSettings.getColumnIndex("HSNCode_Out"));
 
-                if(crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("1"))
-                {
+                if (crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("1")) {
                     edtMenuCode.setEnabled(true);
                 } else {
                     edtMenuCode.setEnabled(false);
@@ -160,7 +216,6 @@ public class ItemManagementActivity extends WepBaseActivity {
             loadSpinnerData1();
 
 
-
             spnrtaxationtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 //@Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -168,7 +223,7 @@ public class ItemManagementActivity extends WepBaseActivity {
                     if (choice.equalsIgnoreCase("nonGST") || (choice.equalsIgnoreCase("NilRate")) ||
                             (choice.equalsIgnoreCase("Exempt"))) {
                         MsgBox.setMessage(" For NilRate, nonGST, Exempt, tax will be 0")
-                                .setPositiveButton("OK",null)
+                                .setPositiveButton("OK", null)
                                 .show();
                         edtItemCGSTTax.setText("0.00");
                         edtItemCGSTTax.setEnabled(false);
@@ -176,9 +231,7 @@ public class ItemManagementActivity extends WepBaseActivity {
                         edtItemSGSTTax.setEnabled(false);
                         edtIGSTTax.setText("0.00");
                         //edtIGSTTax.setEnabled(false);
-                    }
-                    else
-                    {
+                    } else {
                         edtItemCGSTTax.setText("0.00");
                         edtItemCGSTTax.setEnabled(true);
                         edtItemSGSTTax.setText("0.00");
@@ -197,229 +250,10 @@ public class ItemManagementActivity extends WepBaseActivity {
             // Upload Excel data to Database
 
 
-            btnUploadExcel.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    //startActivityForResult(new Intent(myContext, UploadFilePickerActivity.class), 1);
-                    Intent intent = new Intent(myContext, FilePickerActivity.class);
-                    intent.putExtra("contentType","csv");
-                    startActivityForResult(intent, FilePickerActivity.FILE_PICKER_CODE);
-                }
-            });
-
-            btnSaveExcel.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-
-                    try {
-                        AssetManager manager = myContext.getAssets();
-                        //Environment.getExternalStorageDirectory() + "/stock1.xls";
-                        //InputStream inputStream = getResources().openRawResource(R.raw.itemdb);
-                        if (strUploadFilepath.equalsIgnoreCase("")) {
-                            Toast.makeText(getApplicationContext(), "No File Found", Toast.LENGTH_SHORT).show();
-                        } else {
-                            //tvFileName.setText(strUploadFilepath);
-                            //String path = Environment.getExternalStorageDirectory() + "/itemdb.csv";
-                            String path = strUploadFilepath;
-                            FileInputStream inputStream = new FileInputStream(path);
-                            buffer = new BufferedReader(new InputStreamReader(inputStream));
-                            Cursor cursor = dbItems.getCurrentDate();
-//                            String currentdate = "";
-//                            if(cursor.moveToNext())
-//                                currentdate = cursor.getString(cursor.getColumnIndex("BusinessDate"));
-                            if (dataList.size()>0)
-                            {
-                                final String current_date = businessDate;
-                                AlertDialog.Builder builder = new AlertDialog.Builder(myContext)
-                                        .setTitle("Replace Item")
-                                        .setMessage(" Are you sure you want to Replace all the existing Items, if any")
-                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                int deleted = dbItems.clearOutwardItemdatabase();
-                                                Log.d("ItemManagement"," Items deleted before uploading excel :"+deleted);
-                                                deleted = dbItems.clearOutwardStock(current_date);
-                                                Log.d("ItemManagement"," Outward Stock deleted before uploading excel :"+deleted);
-                                                new AsyncTask<Void,Void,Void>(){
-                                                    ProgressDialog pd;
-
-                                                    @Override
-                                                    protected void onPreExecute() {
-                                                        super.onPreExecute();
-                                                        pd = new ProgressDialog(ItemManagementActivity.this);
-                                                        pd.setMessage("Loading...");
-                                                        pd.setCancelable(false);
-                                                        pd.show();
-                                                    }
-
-                                                    @Override
-                                                    protected Void doInBackground(Void... params) {
-
-                                                        try {
-                                                            String line = "";
-                                                            int iteration = 0;
-                                                            int i =1;
-                                                            while ((line = buffer.readLine()) != null) {
-                                                                final String[] colums = line.split(",");
-                                                                if (colums.length != 9) {
-                                                                    Log.d("CSVParser", "Skipping Bad CSV Row");
-                                                                    //Toast.makeText(myContext, "Skipping Bad CSV Row", Toast.LENGTH_LONG).show();
-                                                                    continue;
-                                                                }
-                                                                if (iteration == 0) {
-                                                                    iteration++;
-                                                                    continue;
-                                                                }
-
-                                                                ItemOutward item_add = new ItemOutward(i,colums[1].trim(), Double.parseDouble(colums[2].trim()),
-                                                                        Double.parseDouble(colums[3].trim()), Double.parseDouble(colums[4].trim()),Double.parseDouble(colums[5].trim()),
-                                                                        0, 0, 0, "","",i, Double.parseDouble(colums[6].trim()),Double.parseDouble(colums[7].trim()),
-                                                                        Double.parseDouble(colums[6].trim())+ Double.parseDouble(colums[7].trim()),0,
-                                                                        colums[8].trim(), "HSN_"+i,"GST", "G" ) ;
-                                                                long lRowId = dbItems.addItem(item_add);
-
-
-                                                                    /*InsertItem(colums[1].trim(), colums[1].trim(), Float.parseFloat(colums[2].trim()),
-                                                                        Float.parseFloat(colums[3].trim()), Float.parseFloat(colums[4].trim()),
-                                                                        0, 0, 0, Float.parseFloat(colums[5].trim()), 0, 0, 0, 0, 0, 0, 0, 1,
-                                                                        2, 0, 0, 0, "", "",0f,0f,"HSN_"+i,
-                                                                        Float.parseFloat(colums[6].trim())+ Float.parseFloat(colums[7].trim()),
-                                                                        Float.parseFloat(colums[6].trim()),Float.parseFloat(colums[7].trim()),
-                                                                        "G",colums[8].trim(),"", Float.parseFloat(colums[6].trim()),
-                                                                        Float.parseFloat(colums[7].trim()), Integer.valueOf(colums[0].trim()));*/
-                                                                i++;
-                                                            }
-                                                            StockOutwardMaintain stock_outward = new StockOutwardMaintain(myContext, dbItems);
-                                                            stock_outward.saveOpeningStock_Outward(current_date);
-
-                                                        } catch (Exception exp) {
-                                                            exp.printStackTrace();
-                                                            //Toast.makeText(myContext, exp.getMessage(), Toast.LENGTH_SHORT).show();
-                                                        }
-                                                        return null;
-                                                    }
-
-                                                    @Override
-                                                    protected void onPostExecute(Void aVoid) {
-                                                        super.onPostExecute(aVoid);
-                                                        try{
-                                                            ResetItem();
-                                                            //ClearItemTable();
-                                                            DisplayItemList();
-                                                            Toast.makeText(getApplicationContext(), "Items Imported Successfully", Toast.LENGTH_LONG).show();
-                                                            pd.dismiss();
-                                                        }catch (Exception e){
-                                                            e.printStackTrace();
-                                                            //Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }
-                                                }.execute();
-
-
-
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                                //ClearItemTable();
-                                                DisplayItemList();
-                                            }
-                                        });
-                                AlertDialog alert = builder.create();
-                                alert.show();
-                            }
-                            else
-                            {
-                                new AsyncTask<Void,Void,Void>(){
-                                    ProgressDialog pd;
-
-                                    @Override
-                                    protected void onPreExecute() {
-                                        super.onPreExecute();
-                                        pd = new ProgressDialog(ItemManagementActivity.this);
-                                        pd.setMessage("Loading...");
-                                        pd.setCancelable(false);
-                                        pd.show();
-                                    }
-
-                                    @Override
-                                    protected Void doInBackground(Void... params) {
-
-                                        try {
-                                            String line = "";
-                                            int iteration = 0;
-                                            int i = 1;
-
-                                            while ((line = buffer.readLine()) != null) {
-                                                final String[] colums = line.split(",");
-                                                if (colums.length != 9) {
-                                                    Log.d("CSVParser", "Skipping Bad CSV Row");
-                                                    //Toast.makeText(myContext, "Skipping Bad CSV Row", Toast.LENGTH_LONG).show();
-                                                    continue;
-                                                }
-                                                if (iteration == 0) {
-                                                    iteration++;
-                                                    continue;
-                                                }
-//                                                InsertItem(colums[1].trim(), colums[1].trim(), Float.parseFloat(colums[2].trim()),
-//                                                        Float.parseFloat(colums[3].trim()), Float.parseFloat(colums[4].trim()),
-//                                                        0, 0, 0, Float.parseFloat(colums[5].trim()), 0, 0, 0, 0, 0, 0, 0, 1,
-//                                                        2, 0, 0, 0, "", "",0f,0f,"HSN_"+i,
-//                                                        Float.parseFloat(colums[6].trim())+ Float.parseFloat(colums[7].trim()),
-//                                                        Float.parseFloat(colums[6].trim()),Float.parseFloat(colums[7].trim()),
-//                                                        "G",colums[8].trim(),"", Float.parseFloat(colums[6].trim()),
-//                                                        Float.parseFloat(colums[7].trim()), Integer.valueOf(colums[0].trim()));
-                                                ItemOutward item_add = new ItemOutward(i,colums[1].trim(), Double.parseDouble(colums[2].trim()),
-                                                        Double.parseDouble(colums[3].trim()), Double.parseDouble(colums[4].trim()),Double.parseDouble(colums[5].trim()),
-                                                        0, 0, 0, "","",i,Double.parseDouble(colums[6].trim()),
-                                                        Double.parseDouble(colums[7].trim()),Double.parseDouble(colums[6].trim())+ Double.parseDouble(colums[7].trim()),0,
-                                                        colums[8].trim(), "HSN_"+i,"GST", "G" ) ;
-                                                long lRowId = dbItems.addItem(item_add);
-                                                i++;
-                                            }
-                                            final String current_date = businessDate;
-                                            StockOutwardMaintain stock_outward = new StockOutwardMaintain(myContext, dbItems);
-                                            stock_outward.saveOpeningStock_Outward(current_date);
-                                        } catch (Exception exp) {
-                                            Toast.makeText(myContext, exp.getMessage(), Toast.LENGTH_SHORT).show();
-                                            exp.printStackTrace();
-                                        }
-                                        return null;
-                                    }
-
-                                    @Override
-                                    protected void onPostExecute(Void aVoid) {
-                                        super.onPostExecute(aVoid);
-                                        try{
-                                            ResetItem();
-                                            //ClearItemTable();
-                                            DisplayItemList();
-                                            Toast.makeText(myContext, "Items Imported Successfully", Toast.LENGTH_SHORT).show();
-                                            pd.dismiss();
-                                        }catch (Exception e){
-                                            Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-                                }.execute();
-
-                            }
-                        }
-                    } catch (IOException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                    }
-                    finally {
-                        tvFileName.setText("Select FileName");
-                        strUploadFilepath="";
-                    }
-                }
-            });
-
             SetGSTView();
             DisplayItemList();
 
-            tvFileName.setPaintFlags(tvFileName.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            mFileNameTextValue.setPaintFlags(mFileNameTextValue.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         } catch (Exception exp) {
             Toast.makeText(myContext, "OnCreate:" + exp.getMessage(), Toast.LENGTH_SHORT).show();
@@ -427,24 +261,6 @@ public class ItemManagementActivity extends WepBaseActivity {
         }
     }
 
-
-
-    private void SetGSTView()
-    {
-        Cursor crsrSettings = dbItems.getBillSetting();
-        LinearLayout linear_HSN_OUT = (LinearLayout) findViewById(R.id.linear_HSN_OUT);
-        if (crsrSettings.moveToFirst()) {
-            if(HSNEnable_out == null ) {
-                linear_HSN_OUT.setVisibility(View.INVISIBLE);
-            }
-            else if(HSNEnable_out.equalsIgnoreCase("0") ) {
-                linear_HSN_OUT.setVisibility(View.INVISIBLE);
-            }
-            else {
-                linear_HSN_OUT.setVisibility(View.VISIBLE);
-            }
-        }
-    }
 
     private void InitializeViewVariables() {
         EditTextInputHandler etInputValidate = new EditTextInputHandler();
@@ -458,28 +274,27 @@ public class ItemManagementActivity extends WepBaseActivity {
         txtDineIn3 = (EditText) findViewById(R.id.etItemDineInPrice3);
         etInputValidate.ValidateDecimalInput(txtDineIn3);
         txtStock = (EditText) findViewById(R.id.etItemStock);
-        tvFileName = (TextView) findViewById(R.id.tvFileName);
+        mFileNameTextValue = (TextView) findViewById(R.id.tvFileName);
 
         txtStock.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus && btnEdit.isEnabled() ){
-                    try{
+                if (hasFocus && btnEdit.isEnabled()) {
+                    try {
                         Date d = new SimpleDateFormat("dd-MM-yyyy").parse(businessDate);
                         int invoiceno = dbItems.getLastBillNoforDate(String.valueOf(d.getTime()));
-                        if(invoiceno > 0)
-                        {
+                        if (invoiceno > 0) {
                             // since already billing done for this businessdate, hence stock cannot be updated from here.
                             // to update stock , goto Price & Stock module
                             MsgBox.Show("Restriction", "You cannot update stock after making bill for the day. \n\nTo update stock , " +
                                     "please goto Price & Stock module \n\n Or make Day End  to update from here ");
                             return;
                         }
-                    }catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }}
+                    }
+                }
             }
         });
 
@@ -487,32 +302,27 @@ public class ItemManagementActivity extends WepBaseActivity {
         tvDineIn2Caption = (TextView) findViewById(R.id.tvDineInPrice2);
         tvDineIn3Caption = (TextView) findViewById(R.id.tvDineInPrice3);
 
-        btnUploadExcel = (WepButton) findViewById(R.id.buttonUploadExcel);
-        btnSaveExcel = (WepButton) findViewById(R.id.buttonSaveExcel);
+        mUploadCSVFileBtn = (WepButton) findViewById(R.id.buttonUploadExcel);
+        mSaveCVSFileBtn = (WepButton) findViewById(R.id.buttonSaveExcel);
 
         spnrDepartment = (Spinner) findViewById(R.id.spnrItemDeptCode);
         spnrDepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
-                if (ROWCLICKEVENT == 0)
-                {
-                    if(!spnrDepartment.getSelectedItem().toString().equalsIgnoreCase("Select")) {
+                if (ROWCLICKEVENT == 0) {
+                    if (!spnrDepartment.getSelectedItem().toString().equalsIgnoreCase("Select")) {
                         int deptid = dbItems.getDepartmentIdByName(labelsDept.get(spnrDepartment.getSelectedItemPosition()));
                         ArrayList<String> categName = dbItems.getCategoryNameByDeptCode(String.valueOf(deptid));
                     /*int categid = getIndexCateg(categName + "");
                     spnrCategory.setSelection(categid);*/
                         loadSpinnerData_cat(categName);
-                    }
-                    else
-                    {
+                    } else {
                         loadSpinnerData1();
                     }
-                }
-                else
-                {
+                } else {
                     // setting it to 0;
-                    ROWCLICKEVENT =0;
+                    ROWCLICKEVENT = 0;
                 }
             }
 
@@ -540,10 +350,6 @@ public class ItemManagementActivity extends WepBaseActivity {
         spnrOptionalTax1 = (Spinner) findViewById(R.id.spnrItemOptionalTax1);
         spnrOptionalTax2 = (Spinner) findViewById(R.id.spnrItemOptionalTax2);
 
-
-        //chkPriceChange = (CheckBox) findViewById(R.id.chkPriceChange);
-        //chkDiscountEnable = (CheckBox) findViewById(R.id.chkDiscount);
-        //chkBillWithStock = (CheckBox) findViewById(R.id.chkBillwithStock);
 
         rbForwardTax = (RadioButton) findViewById(R.id.rbForwardTax);
         rbReverseTax =
@@ -592,21 +398,13 @@ public class ItemManagementActivity extends WepBaseActivity {
         imgItemImage.setImageResource(R.drawable.img_noimage);
 
 
-
         spnrG_S = (Spinner) findViewById(R.id.spnr_g_s);
         spnrMOU = (Spinner) findViewById(R.id.spnr_UOM);
         spnrtaxationtype = (Spinner) findViewById(R.id.spnr_taxationtype);
         etRate = (EditText) findViewById(R.id.etRate);
         etQuantity = (EditText) findViewById(R.id.et_quantity);
         etHSN = (EditText) findViewById(R.id.etHSNCode);
-        etGstTax = (EditText)findViewById(R.id.etGSTTax);
-
-
-        /*frame_rate_gst = (FrameLayout) findViewById(R.id.frame_rate_gst);
-        frame_rate_nongst  = (FrameLayout) findViewById(R.id.frame_rate_nongst);
-        frame_salesTax = (FrameLayout) findViewById(R.id.frame_salesTax);
-        frame_serviceTax = (FrameLayout) findViewById(R.id.frame_serviceTax);
-        frame_GSTTax = (FrameLayout) findViewById(R.id.frame_GSTTax);*/
+        etGstTax = (EditText) findViewById(R.id.etGSTTax);
 
         edtMenuCode = (EditText) findViewById(R.id.edtMenuCode);
         edtcessTax = (EditText) findViewById(R.id.edtcessTax);
@@ -618,7 +416,8 @@ public class ItemManagementActivity extends WepBaseActivity {
         listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listItemClickEvent(itemListAdapter.getItems(position));
-            }});
+            }
+        });
 
 
         edtItemSGSTTax.addTextChangedListener(new TextWatcher() {
@@ -636,18 +435,19 @@ public class ItemManagementActivity extends WepBaseActivity {
             public void afterTextChanged(Editable s) {
                 String SGST = edtItemSGSTTax.getText().toString();
                 String CGST = edtItemCGSTTax.getText().toString();
-                if(SGST.equals("")){
+                if (SGST.equals("")) {
                     //edtItemSGSTTax.setText("0");
                     SGST = ("0");
                 }
-                if(CGST.equals("")){
+                if (CGST.equals("")) {
                     //edtItemCGSTTax.setText("0");
-                    CGST = ("0");}
+                    CGST = ("0");
+                }
 
                 double sgst_d = Double.parseDouble(SGST);
                 double cgst_d = Double.parseDouble(CGST);
-                double igst_d = sgst_d+cgst_d;
-                edtIGSTTax.setText(String.format("%.2f",igst_d));
+                double igst_d = sgst_d + cgst_d;
+                edtIGSTTax.setText(String.format("%.2f", igst_d));
 
             }
         });
@@ -666,23 +466,464 @@ public class ItemManagementActivity extends WepBaseActivity {
             public void afterTextChanged(Editable s) {
                 String SGST = edtItemSGSTTax.getText().toString();
                 String CGST = edtItemCGSTTax.getText().toString();
-                if(CGST.equals("")) {
+                if (CGST.equals("")) {
                     //edtItemCGSTTax.setText("0");
                     CGST = ("0");
                 }
-                if(SGST.equals("")) {
+                if (SGST.equals("")) {
                     //edtItemSGSTTax.setText("0");
                     SGST = ("0");
                 }
 
                 double sgst_d = Double.parseDouble(SGST);
                 double cgst_d = Double.parseDouble(CGST);
-                double igst_d = sgst_d+cgst_d;
-                edtIGSTTax.setText(String.format("%.2f",igst_d));
+                double igst_d = sgst_d + cgst_d;
+                edtIGSTTax.setText(String.format("%.2f", igst_d));
 
             }
         });
     }
+
+
+    private void SetGSTView() {
+        Cursor crsrSettings = dbItems.getBillSetting();
+        LinearLayout linear_HSN_OUT = (LinearLayout) findViewById(R.id.linear_HSN_OUT);
+        if (crsrSettings.moveToFirst()) {
+            if (HSNEnable_out == null) {
+                linear_HSN_OUT.setVisibility(View.INVISIBLE);
+            } else if (HSNEnable_out.equalsIgnoreCase("0")) {
+                linear_HSN_OUT.setVisibility(View.INVISIBLE);
+            } else {
+                linear_HSN_OUT.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+
+    /**
+     * performing button onclick upload csv file from external or SDCard
+     */
+
+    private void setCVSFile() {
+        mUploadCSVFileBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(myContext, FilePickerActivity.class);
+                intent.putExtra("contentType", "csv");
+                startActivityForResult(intent, FilePickerActivity.FILE_PICKER_CODE);
+            }
+        });
+    }
+
+    /**
+     * performing button onclick save csv file to data base and dispaly on UI
+     */
+
+    private void uploadCVSFile() {
+        mSaveCVSFileBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                    AssetManager manager = myContext.getAssets();
+                    if (strUploadFilepath.equalsIgnoreCase("")) {
+                        Toast.makeText(getApplicationContext(), "No File Found", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String path = strUploadFilepath;
+                        FileInputStream inputStream = new FileInputStream(path);
+                        mBufferReader = new BufferedReader(new InputStreamReader(inputStream));
+                        Cursor cursor = dbItems.getCurrentDate();
+                        setCSVFileToDB(dataList);
+                    }
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                } finally {
+                    mFileNameTextValue.setText(getResources().getString(R.string.select_filename));
+                    strUploadFilepath = "";
+                }
+            }
+        });
+    }
+
+    /**
+     * Display exiting data as well as new data from data base
+     *
+     * @param inwardItemList - List of ItemInward
+     */
+
+    private void setCSVFileToDB(ArrayList<ItemOutward> inwardItemList) {
+
+        if (inwardItemList.size() > 0) {
+            showCSVAlertMessage();
+        } else {
+            downloadCSVData();
+        }
+    }
+
+    /**
+     * Ask User permission to dispaly old data or new data from CSV file
+     */
+
+    private void showCSVAlertMessage() {
+
+        final String current_date = businessDate;
+        AlertDialog.Builder builder = new AlertDialog.Builder(myContext)
+                .setTitle("Replace Item")
+                .setMessage(" Are you sure you want to Replace all the existing Items, if any")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        int deleted = dbItems.clearOutwardItemdatabase();
+                        Log.d("ItemManagement", " Items deleted before uploading excel :" + deleted);
+                        deleted = dbItems.clearOutwardStock(current_date);
+                        Log.d("ItemManagement", " Outward Stock deleted before uploading excel :" + deleted);
+                        downloadCSVData();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        //ClearItemTable();
+                        DisplayItemList();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    /**
+     * Download all data in Background then it will be return to UI
+     */
+
+    private void downloadCSVData() {
+        new AsyncTask<Void, Void, Void>() {
+            ProgressDialog pd;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                pd = new ProgressDialog(ItemManagementActivity.this);
+                pd.setMessage("Loading...");
+                pd.setCancelable(false);
+                pd.show();
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                readCSVValue(mCurrentTime);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                try {
+                    ResetItem();
+                    //ClearItemTable();
+                    DisplayItemList();
+                    Toast.makeText(getApplicationContext(), "Items Imported Successfully", Toast.LENGTH_LONG).show();
+                    pd.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    //Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.execute();
+    }
+
+    /**
+     * Read response from CSV file and set data to in Data base
+     * checking All possible validation
+     *
+     * @param currentDate - need to current date
+     */
+
+    private void readCSVValue(String currentDate) {
+
+        String checkUOMTypye = "Pk Lt Ml Gm Kg Bg Bx No Mt Dz Sa St Bt Pl Pc";
+        String[] checkSupplyType = {"G", "S"};
+        String csvHeading = "MENU CODE,ITEM NAME,SUPPLY TYPE,RATE 1,RATE 2,RATE 3,QUANTITY,UOM,CGST RATE,SGST RATE,IGST RATE,CESS RATE,DISCOUNT PERCENTAGER,IMAGEURL";
+        boolean flag;
+        try {
+            String line;
+            String chechCSVHeaderLine;
+            chechCSVHeaderLine = mBufferReader.readLine();
+
+            flag = csvHeading.equals(chechCSVHeaderLine);
+            mFlag = false;
+            if (!flag) {
+                mFlag = true;
+                mUserCSVInvalidValue = getResources().getString(R.string.header_value_empty) + "\n"
+                        + "MENU CODE,ITEM NAME,SUPPLY TYPE,RATE 1,RATE 2,RATE 3,QUANTITY,UOM,CGST RATE,SGST RATE,IGST RATE,CESS RATE,DISCOUNT PERCENTAGER";
+                return;
+            }
+
+            while ((line = mBufferReader.readLine()) != null) {
+                final String[] colums = line.split(",");
+
+                if (colums[0].length() > 0 && colums[0].trim().length() > 0 && colums[0] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[0]);
+                    if (mCheckCSVValueType == CHECK_INTEGER_VALUE) {
+                        mMenuCode = Integer.parseInt(colums[0]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.menu_code_invalid) + colums[1];
+                        break;
+                    }
+                } else  {
+                    mFlag = true;
+                    if(colums[1].length() > 0  && colums[0].trim().length() > 0 ) {
+                        mUserCSVInvalidValue = getResources().getString(R.string.menu_code_empty) + colums[1];
+                        break;
+                    } else {
+                        mUserCSVInvalidValue = getResources().getString(R.string.please_enter_item_name);
+                        break;
+                    }
+                }
+                if (colums[1].length() > 0 && colums[1].trim().length() > 0 && colums[1] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[1]);
+                    if (mCheckCSVValueType == CHECK_STRING_VALUE) {
+                        mItemName = colums[1];
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.item_name_invalid) + colums[0];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.item_name_empty) + colums[0];
+                    break;
+                }
+
+                if (colums[2].length() > 0 && colums[2].trim().length() > 0 && colums[2] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[2]);
+                    if (mCheckCSVValueType == CHECK_STRING_VALUE) {
+
+                        if (checkSupplyType[0].equals(colums[2])) {
+                            mSupplyType = colums[2];
+                        } else if (checkSupplyType[1].equals(colums[2])) {
+                            mSupplyType = colums[2];
+                        } else {
+                            mFlag = true;
+                            mUserCSVInvalidValue = getResources().getString(R.string.supply_type_invalid) + colums[1] + "e.g " + checkSupplyType;
+                            break;
+                        }
+
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.supply_type_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.supply_type_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[3].length() > 0 && colums[3].trim().length() > 0 && colums[3] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[3]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mRate1 = Double.parseDouble(colums[3]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.rate_1_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.rate_1_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[4].length() > 0 && colums[4].trim().length() > 0 && colums[4] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[4]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mRate2 = Double.parseDouble(colums[4]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.rate_2_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.rate_2_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[5].length() > 0 && colums[5].trim().length() > 0 && colums[5] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[5]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mRate3 = Double.parseDouble(colums[5]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.rate_3_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.rate_3_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[6].length() > 0 && colums[6].trim().length() > 0 && colums[6] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[6]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mQuantity = Double.parseDouble(colums[6]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.quantity_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.quantity_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[7].length() > 0 && colums[7].trim().length() > 0 && colums[7] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[7]);
+                    if (mCheckCSVValueType == CHECK_STRING_VALUE) {
+
+                        if (colums[7].trim().length() == 2 && checkUOMTypye.contains(colums[7])) {
+                            mUOM = colums[7];
+                        } else {
+                            mFlag = true;
+                            mUserCSVInvalidValue = getResources().getString(R.string.uom_invalid) + colums[1] + "e.g " + checkUOMTypye;
+                            break;
+                        }
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.uom_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.uom_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[8].length() > 0 && colums[8].trim().length() > 0 && colums[8] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[8]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mCGSTRate = Double.parseDouble(colums[8]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.cgst_rate_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.cgst_rate_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[9].length() > 0 && colums[9].trim().length() > 0 && colums[9] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[9]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mSGSTRate = Double.parseDouble(colums[9]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.sgst_rate_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.sgst_rate_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[10].length() > 0 && colums[10].trim().length() > 0 && colums[10] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[10]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mIGSTRate = Double.parseDouble(colums[10]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.igst_rate_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.igst_rate_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[11].length() > 0 && colums[11].trim().length() > 0 && colums[11] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[11]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mCESSRate = Double.parseDouble(colums[11]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.cess_rate_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.cess_rate_empty) + colums[1];
+                    break;
+                }
+
+                if (colums[12].length() > 0 && colums[12].trim().length() > 0 && colums[12] != null) {
+                    mCheckCSVValueType = checkCSVTypeValue(colums[12]);
+                    if (mCheckCSVValueType == CHECK_DOUBLE_VALUE) {
+                        mDiscount = Double.parseDouble(colums[12]);
+                    } else {
+                        mFlag = true;
+                        mUserCSVInvalidValue = getResources().getString(R.string.discount_invalid) + colums[1];
+                        break;
+                    }
+                } else {
+                    mFlag = true;
+                    mUserCSVInvalidValue = getResources().getString(R.string.discount_empty) + colums[1];
+                    break;
+                }
+
+
+                // TODO: 7/22/2017 check model class response
+
+              /*  ItemInward itemInwardObj = new ItemInward(mMenuCode, mItemName, "Barcode", colums[6].trim(), "HSNCode",
+                        mRate1, mQuantity, mUOM,
+                        mIGSTRate, IGSTAmt, mCGSTRate, CGSTAmt, mSGSTRate, SGSTAmt, mCESSRate, cessAmt,
+                        "TaxationType", mSupplyType);
+*/
+
+                ItemOutward item_add = new ItemOutward(mMenuCode, mItemName, mRate1, mRate2, mRate3, mQuantity,
+                        mDeptCode, mCategCode, mKitchenCode, mbarCode, mImageUri, mItemId,
+                        mCGSTRate, mSGSTRate, mIGSTRate, mCESSRate, mUOM, mHSN, mtaxationType, mSupplyType);
+
+                long lRowId = dbItems.addItem(item_add);
+            }
+            final String current_date = businessDate;
+            StockOutwardMaintain stock_outward = new StockOutwardMaintain(myContext, dbItems);
+            stock_outward.saveOpeningStock_Outward(current_date);
+
+        } catch (Exception exp) {
+            exp.printStackTrace();
+        }
+    }
+
+    /**
+     * checking types of data validation(Integer , Double , String)
+     *
+     * @param value - csv value
+     */
+
+    public static int checkCSVTypeValue(String value) {
+        int flag;
+        try {
+            Integer.parseInt(value);
+            flag = 0;
+            return flag;
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+        }
+        try {
+            Double.parseDouble(value);
+            flag = 1;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            flag = 2;
+        }
+        return flag;
+    }
+
 
     private void listItemClickEvent(ItemOutward item) {
         edtMenuCode.setText(String.valueOf(item.getMenuCode()));
@@ -711,30 +952,28 @@ public class ItemManagementActivity extends WepBaseActivity {
 
         ArrayList<String> listCateg = dbItems.getCategoryNameByDeptCode(String.valueOf(deptid));
         loadSpinnerData_cat(listCateg);
-        if (deptid ==0) {
+        if (deptid == 0) {
             spnrCategory.setSelection(0);
-        }else {
+        } else {
             Cursor crsrCateg = dbItems.getCategory(Integer.valueOf(item.getCategCode()));
             String categName = "";
             if (crsrCateg.moveToFirst()) {
                 categName = crsrCateg.getString(crsrCateg.getColumnIndex("CategName"));
             }
             boolean bool = false;
-            int i =0;
-            for( i =0; !categName.equals("")&&bool == false && i<listCateg.size();i++)
-            {
-                if(categName.equalsIgnoreCase(listCateg.get(i)))
+            int i = 0;
+            for (i = 0; !categName.equals("") && bool == false && i < listCateg.size(); i++) {
+                if (categName.equalsIgnoreCase(listCateg.get(i)))
                     bool = true;
             }
-            if(bool) // true
+            if (bool) // true
             {
-                spnrCategory.setSelection(i-1);
-            }
-            else
+                spnrCategory.setSelection(i - 1);
+            } else
                 spnrCategory.setSelection(0);
         }
 
-        spnrKitchen.setSelection((item.getKitchenCode()) );
+        spnrKitchen.setSelection((item.getKitchenCode()));
 
 
         imgItemImage.setImageURI(null);
@@ -744,13 +983,13 @@ public class ItemManagementActivity extends WepBaseActivity {
         } else {
             imgItemImage.setImageResource(R.drawable.img_noimage);
         }
-        edtItemCGSTTax.setText(String.format("%.2f",item.getCGSTRate()));
-        edtItemSGSTTax.setText(String.format("%.2f",item.getSGSTRate()));
-        edtIGSTTax.setText(String.format("%.2f",item.getIGSTRate()));
-        edtcessTax.setText(String.format("%.2f",item.getCessRate()));
+        edtItemCGSTTax.setText(String.format("%.2f", item.getCGSTRate()));
+        edtItemSGSTTax.setText(String.format("%.2f", item.getSGSTRate()));
+        edtIGSTTax.setText(String.format("%.2f", item.getIGSTRate()));
+        edtcessTax.setText(String.format("%.2f", item.getCessRate()));
 
         String uom_temp = item.getUOM();
-        String uom = "("+uom_temp+")";
+        String uom = "(" + uom_temp + ")";
         int index = getIndex_uom(uom);
         spnrMOU.setSelection(index);
         strItemId = String.valueOf(item.getItemId());
@@ -763,6 +1002,7 @@ public class ItemManagementActivity extends WepBaseActivity {
 
         //spinnerRole
     }
+
     private void InitializeAdapters() {
         Log.d("Functions", "InitializeAdapters");
         // Cursor variable
@@ -813,8 +1053,7 @@ public class ItemManagementActivity extends WepBaseActivity {
             do {
                 adapKitCode.add(crsrAdapterData.getString(1));
             } while (crsrAdapterData.moveToNext());
-        }else
-        {
+        } else {
             adapKitCode.add("Select");
         }
 
@@ -840,13 +1079,11 @@ public class ItemManagementActivity extends WepBaseActivity {
     }
 
 
-    void DisplayItemList()
-    {
+    void DisplayItemList() {
         dataList = new ArrayList<ItemOutward>();
         Cursor cursorItem = dbItems.getAllItems();
 
-        while(cursorItem!=null && cursorItem.moveToNext())
-        {
+        while (cursorItem != null && cursorItem.moveToNext()) {
             ItemOutward item = new ItemOutward();
             item.setMenuCode(cursorItem.getInt(cursorItem.getColumnIndex("MenuCode")));
             item.setItemName(cursorItem.getString(cursorItem.getColumnIndex("ItemName")));
@@ -871,524 +1108,24 @@ public class ItemManagementActivity extends WepBaseActivity {
             dataList.add(item);
         }
         if (itemListAdapter == null) {
-            itemListAdapter = new ItemOutwardAdapter(ItemManagementActivity.this, dataList,dbItems);
+            itemListAdapter = new ItemOutwardAdapter(ItemManagementActivity.this, dataList, dbItems);
             listViewItems.setAdapter(itemListAdapter);
         } else {
             itemListAdapter.notifyNewDataAdded(dataList);
         }
+
+        if (mFlag) {
+            mDisplayAlertMessage.Show("Note", mUserCSVInvalidValue);
+        }
     }
 
-    @SuppressWarnings("deprecation")
-//    private void DisplayItems() {
-//        Cursor crsrItems = null;
-//
-//        crsrItems = dbItems.getAllItems();
-//        //crsrItems = dbItems.getAllItemswithDeptCategName();
-//        TableRow rowItems = null;
-//
-//        TextView tvSno, tvMenuCode, tvLongName, tvShortName, tvDineIn1, tvDineIn2, tvDineIn3, tvTakeAway, tvPickUp, tvDelivery,
-//                tvStock, tvPriceChange, tvDiscountEnable, tvBillWithStock, tvTaxType, tvDeptCode, tvCategCode,
-//                tvKitchenCode, tvSalesTaxId, tvAdditionalTaxId, tvOptionalTaxId1, tvOptionalTaxId2, tvDiscountId,
-//                tvItemBarcode, tvImageUri, tvSpace, tvDeptName, tvCategName, tvItemId;
-//        TextView tvHSNCode_out,tvMOU,tvRate,tvGSTRate,tvSupplyType, tvSalesTaxPercent, tvServiceTaxPercent;
-//        ImageView imgIcon;
-//        ImageButton btnItemDelete;
-//        int i = 1;
-//
-//        if (crsrItems.moveToFirst()) {
-//            do {
-//                rowItems = new TableRow(myContext);
-//                rowItems.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-//                rowItems.setBackgroundResource(R.drawable.border_itemdatabase);
-//
-//                tvSno = new TextView(myContext);
-//                tvSno.setTextSize(15);
-//                tvSno.setGravity(1);
-//                tvSno.setWidth(105);
-//                tvSno.setTextColor(getResources().getColor(R.color.black));
-//                tvSno.setText(String.valueOf(i));
-//                //rowItems.addView(tvSno);
-//
-//                tvMenuCode = new TextView(myContext);
-//                tvMenuCode.setTextSize(18);
-//                tvMenuCode.setGravity(1);
-//                tvMenuCode.setWidth(160);
-//                tvMenuCode.setText(crsrItems.getString(crsrItems.getColumnIndex("MenuCode")));
-//                //rowItems.addView(tvMenuCode);
-//
-//                tvLongName = new TextView(myContext);
-//                tvLongName.setTextSize(15);
-//                tvLongName.setWidth(360);
-//                //tvLongName.setTypeface(Typeface.DEFAULT_BOLD);
-//                tvLongName.setTextColor(getResources().getColor(R.color.black));
-//                tvLongName.setText(crsrItems.getString(crsrItems.getColumnIndex("ItemName")));
-//                //rowItems.addView(tvLongName);
-//
-//
-//
-//                tvDineIn1 = new TextView(myContext);
-//                //tvDineIn1.setGravity(1);
-//                tvDineIn1.setTextSize(15);
-//                tvDineIn1.setGravity(1);
-//                tvDineIn1.setWidth(110);
-//                //tvDineIn1.setBackgroundResource(R.drawable.border);
-//                tvDineIn1.setText(crsrItems.getString(crsrItems.getColumnIndex("DineInPrice1")));
-//                //rowItems.addView(tvDineIn1);
-//
-//                tvDineIn2 = new TextView(myContext);
-//                tvDineIn2.setGravity(1);
-//                tvDineIn2.setTextSize(15);
-//                tvDineIn2.setWidth(110);
-//                tvDineIn2.setText(crsrItems.getString(crsrItems.getColumnIndex("DineInPrice2")));
-//                //rowItems.addView(tvDineIn2);
-//
-//                tvDineIn3 = new TextView(myContext);
-//                tvDineIn3.setGravity(1);
-//                tvDineIn3.setWidth(110);
-//                tvDineIn3.setTextSize(15);
-//                tvDineIn3.setText(crsrItems.getString(crsrItems.getColumnIndex("DineInPrice3")));
-//                //rowItems.addView(tvDineIn3);
-//
-//
-//
-//                tvStock = new TextView(myContext);
-//                tvStock.setGravity(1);
-//                tvStock.setWidth(110);
-//                tvStock.setTextSize(15);
-//                //tvStock.setTypeface(Typeface.DEFAULT_BOLD);
-//                tvStock.setTextColor(getResources().getColor(R.color.black));
-//                //tvStock.setBackgroundResource(R.drawable.border);
-//                tvStock.setText(crsrItems.getString(crsrItems.getColumnIndex("Quantity")));
-//                //rowItems.addView(tvStock);
-//
-//
-//
-//
-//
-//                tvDeptCode = new TextView(myContext);
-//                tvDeptCode.setText(crsrItems.getString(crsrItems.getColumnIndex("DeptCode")));
-//                //rowItems.addView(tvDeptCode);
-//
-//                tvCategCode = new TextView(myContext);
-//                tvCategCode.setText(crsrItems.getString(crsrItems.getColumnIndex("CategCode")));
-//                //rowItems.addView(tvCategCode);
-//
-//                tvKitchenCode = new TextView(myContext);
-//                tvKitchenCode.setText(crsrItems.getString(crsrItems.getColumnIndex("KitchenCode")));
-//                //rowItems.addView(tvKitchenCode);
-//
-//
-//
-//                tvItemBarcode = new TextView(myContext);
-//                tvItemBarcode.setText(crsrItems.getString(crsrItems.getColumnIndex("ItemBarcode")));
-//                //rowItems.addView(tvItemBarcode);
-//
-//                tvImageUri = new TextView(myContext);
-//                tvImageUri.setText(crsrItems.getString(crsrItems.getColumnIndex("ImageUri")));
-//                //rowItems.addView(tvImageUri);
-//
-//                imgIcon = new ImageView(myContext);
-//                TableRow.LayoutParams rowparams = new TableRow.LayoutParams(60, 40);
-//                rowparams.gravity = Gravity.CENTER;
-//                imgIcon.setLayoutParams(rowparams);
-//                imgIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//                imgIcon.setImageURI(null);
-//                // imgIcon.setBackgroundResource(R.drawable.border);
-//                if (!crsrItems.getString(crsrItems.getColumnIndex("ImageUri")).equalsIgnoreCase("")) { // &&
-//                    // strImageUri.contains("\\")){
-//                    imgIcon.setImageURI(Uri.fromFile(new File(crsrItems.getString(crsrItems.getColumnIndex("ImageUri")))));
-//                } else {
-//                    imgIcon.setImageResource(R.drawable.img_noimage);
-//                }
-//                //rowItems.addView(imgIcon);
-//
-//                tvSupplyType = new TextView(myContext);
-//                tvSupplyType.setGravity(1);
-//                tvSupplyType.setWidth(110);
-//                tvSupplyType.setText(crsrItems.getString(crsrItems.getColumnIndex("SupplyType")));
-//                //rowItems.addView(tvSupplyType);
-//
-//
-//                tvMOU = new TextView(myContext);
-//                tvMOU.setGravity(Gravity.RIGHT|Gravity.END);
-//                tvMOU.setWidth(120);
-//                tvMOU.setTextSize(15);
-//                //tvMOU.setTypeface(Typeface.DEFAULT_BOLD);
-//                tvMOU.setTextColor(getResources().getColor(R.color.black));
-//                //tvMOU.setBackgroundResource(R.drawable.border);
-//                tvMOU.setText(crsrItems.getString(crsrItems.getColumnIndex("UOM")));
-//                //rowItems.addView(tvMOU);
-//
-//
-//
-//                // For Space purpose
-//                tvSpace = new TextView(myContext);
-//                tvSpace.setWidth(49);
-//                tvSpace.setText("");
-//                //tvSpace.setBackgroundResource(R.drawable.border);
-//                //rowItems.addView(tvSpace);
-//
-//                TextView tvSpace1 = new TextView(myContext);
-//                tvSpace1.setText("");
-//                tvSpace1.setWidth(22);
-//
-//                // Delete
-//                int res = getResources().getIdentifier("delete", "drawable", this.getPackageName());
-//                btnItemDelete = new ImageButton(myContext);
-//
-//                TableRow.LayoutParams rowparams1 = new TableRow.LayoutParams(40, 35);
-//                rowparams1.gravity = Gravity.CENTER;
-//                btnItemDelete.setBackground(getResources().getDrawable(R.drawable.delete_icon_border));
-//                //btnItemDelete.setLayoutParams(rowparams1);
-//                btnItemDelete.setLayoutParams(new TableRow.LayoutParams(40, 35));
-//                //btnItemDelete.setOnClickListener(mListener);
-//
-//
-//
-//
-//                TextView tvTaxationType = new TextView(myContext);
-//                tvTaxationType.setText(spnrtaxationtype.getSelectedItem().toString());
-//
-//                tvItemId = new TextView(myContext);
-//                tvItemId.setText(crsrItems.getString(crsrItems.getColumnIndex("ItemId")));
-//
-//                tvSalesTaxPercent = new TextView(myContext);
-//                tvSalesTaxPercent.setText(crsrItems.getString(crsrItems.getColumnIndex("SalesTaxPercent")));
-//
-//                tvServiceTaxPercent = new TextView(myContext);
-//                tvServiceTaxPercent.setText(crsrItems.getString(crsrItems.getColumnIndex("ServiceTaxPercent")));
-//
-//                if(GSTEnable.equals("0")) {
-//
-//                    rowItems.addView(tvSno);//0
-//                    rowItems.addView(tvMenuCode);//1
-//                    rowItems.addView(tvLongName);//2
-//
-//                    rowItems.addView(tvDineIn1);//3
-//                    rowItems.addView(tvDineIn2);//4
-//                    rowItems.addView(tvDineIn3);//5
-//
-//                    rowItems.addView(tvStock);//6
-//
-//                    rowItems.addView(tvDeptCode);//7
-//                    rowItems.addView(tvCategCode);//8
-//                    rowItems.addView(tvKitchenCode);//9
-//
-//                    rowItems.addView(tvItemBarcode);//10
-//                    rowItems.addView(tvImageUri);//11
-//                    rowItems.addView(tvSpace1);//12
-//                    rowItems.addView(imgIcon);//13
-//                    rowItems.addView(tvSpace);//14
-//                    rowItems.addView(btnItemDelete);//15
-//
-//
-//                    rowItems.addView(tvItemId);//16
-//                    rowItems.addView(tvSalesTaxPercent);//17
-//                    rowItems.addView(tvServiceTaxPercent);//18
-//                    rowItems.addView(tvMOU);//19
-//
-//                    rowItems.setOnClickListener(new View.OnClickListener() {
-//
-//                        public void onClick(View v) {
-//                            // TODO Auto-generated method stub
-//
-//                            if (String.valueOf(v.getTag()) == "TAG") {
-//                                TableRow Row = (TableRow) v;
-//                                ROWCLICKEVENT = 1;
-//                                TextView MenuCode = (TextView) Row.getChildAt(1);
-//                                TextView LongName = (TextView) Row.getChildAt(2);
-//                                itemName_beforeChange_in_update = LongName.getText().toString();
-//                                Log.d("Richa",itemName_beforeChange_in_update);
-//                                TextView DineIn1 = (TextView) Row.getChildAt(3);
-//                                TextView DineIn2 = (TextView) Row.getChildAt(4);
-//                                TextView DineIn3 = (TextView) Row.getChildAt(5);
-//                                TextView Stock = (TextView) Row.getChildAt(6);
-//                                TextView DeptCode = (TextView) Row.getChildAt(7);
-//                                TextView CategCode = (TextView) Row.getChildAt(8);
-//                                TextView KitchenCode = (TextView) Row.getChildAt(9);
-//                                TextView Barcode = (TextView) Row.getChildAt(10);
-//                                TextView ImageUri = (TextView) Row.getChildAt(11);
-//                                TextView ItemId = (TextView) Row.getChildAt(16);
-//                                TextView SalesTaxPercent = (TextView) Row.getChildAt(17);
-//                                TextView ServiceTaxPercent = (TextView) Row.getChildAt(18);
-//                                TextView MOU = (TextView) Row.getChildAt(19);
-//
-//                                strItemId = ItemId.getText().toString();
-//                                edtMenuCode.setText(MenuCode.getText().toString());
-//                                txtLongName.setText(LongName.getText());
-//                                itemName_beforeChange_in_update = txtLongName.getText().toString();
-//                                Log.d("Richa1",itemName_beforeChange_in_update);
-//                                //txtShortName.setText(ShortName.getText());
-//                                txtBarcode.setText(Barcode.getText());
-//                                txtDineIn1.setText(DineIn1.getText());
-//                                txtDineIn2.setText(DineIn2.getText());
-//                                txtDineIn3.setText(DineIn3.getText());
-//                                txtStock.setText(Stock.getText());
-//                                strImageUri = ImageUri.getText().toString();
-//
-//                                Cursor crsrDept = dbItems.getDepartment(Integer.valueOf(DeptCode.getText().toString()));
-//                                String deptName = "Select";
-//                                int deptid = 0;
-//                                if (crsrDept.moveToFirst()) {
-//                                    deptName = crsrDept.getString(crsrDept.getColumnIndex("DeptName"));
-//                                    deptid = getIndexDept(deptName + "");
-//                                    spnrDepartment.setSelection(deptid);
-//                                } else {
-//
-//                                    deptid = getIndexDept(deptName + "");
-//                                    spnrDepartment.setSelection(deptid);
-//                                }
-//                                //spnrDepartment.setSelection(Integer.parseInt(DeptCode.getText().toString()));
-//                                ArrayList<String> listCateg = dbItems.getCategoryNameByDeptCode(String.valueOf(deptid));
-//                                loadSpinnerData_cat(listCateg);
-//                                int  deptCode =Integer.parseInt(DeptCode.getText().toString());
-//                                if (deptCode ==0) {
-//                                    spnrCategory.setSelection(0);
-//                                }else {
-//                                    Cursor crsrCateg = dbItems.getCategory(Integer.valueOf(CategCode.getText().toString()));
-//                                    String categName = "";
-//                                    if (crsrCateg.moveToFirst()) {
-//                                        categName = crsrCateg.getString(crsrCateg.getColumnIndex("CategName"));
-//                                    }
-//                                    boolean bool = false;
-//                                    int i =0;
-//                                    for( i =0; !categName.equals("")&&bool == false && i<listCateg.size();i++)
-//                                    {
-//                                        if(categName.equalsIgnoreCase(listCateg.get(i)))
-//                                            bool = true;
-//                                    }
-//                                    /*ArrayAdapter<String> dataAdapter = (ArrayAdapter<String>) spnrCategory.getAdapter();
-//                                    int spinnerPosition = dataAdapter.getPosition(categName);*/
-//                                    if(bool) // true
-//                                    {
-//                                        spnrCategory.setSelection(i-1);
-//                                    }
-//                                    else
-//                                        spnrCategory.setSelection(0);
-//                                }
-//
-//
-//
-//
-//                                spnrKitchen.setSelection(Integer.parseInt(KitchenCode.getText().toString()) );
-//
-//
-//                                imgItemImage.setImageURI(null);
-//                                if (!strImageUri.equalsIgnoreCase("")) { // &&
-//                                    // strImageUri.contains("\\")){
-//                                    imgItemImage.setImageURI(Uri.fromFile(new File(strImageUri)));
-//                                } else {
-//                                    imgItemImage.setImageResource(R.drawable.img_noimage);
-//                                }
-//                                edtItemSalesTax.setText(SalesTaxPercent.getText().toString());
-//                                edtItemServiceTax.setText(ServiceTaxPercent.getText().toString());
-//                                String uom_temp = MOU.getText().toString();
-//                                String uom = "("+uom_temp+")";
-//                                int index = getIndex(uom);
-//                                spnrMOU.setSelection(index);
-//                                btnLinkItem.setEnabled(false);
-//                                btnDelinkItem.setEnabled(true);
-//                            }
-//                        }
-//                    });
-//
-//                    rowItems.setTag("TAG");
-//
-//                    tblItems.addView(rowItems, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-//                    i++;
-//                }
-//                else
-//                {
-//                    // gst enabled
-//
-//                    /*rowItems.addView(tvSno);
-//                    rowItems.addView(tvMenuCode);
-//                    rowItems.addView(tvLongName);
-//                    rowItems.addView(tvShortName);
-//                    rowItems.addView(tvRate);
-//                    rowItems.addView(tvStock);
-//                    rowItems.addView(tvMOU);
-//                    rowItems.addView(tvTakeAway);
-//                    rowItems.addView(tvPickUp);
-//                    rowItems.addView(tvDelivery);
-//                    rowItems.addView(tvGSTRate);
-//                    rowItems.addView(tvPriceChange);
-//                    rowItems.addView(tvDiscountEnable);
-//                    rowItems.addView(tvBillWithStock);
-//                    rowItems.addView(tvTaxType);
-//                    rowItems.addView(tvDeptCode);
-//                    rowItems.addView(tvCategCode);
-//                    rowItems.addView(tvKitchenCode);
-//                    rowItems.addView(tvSalesTaxId);
-//                    rowItems.addView(tvAdditionalTaxId);
-//                    rowItems.addView(tvOptionalTaxId1);
-//                    rowItems.addView(tvOptionalTaxId2);
-//                    rowItems.addView(tvDiscountId);
-//                    rowItems.addView(tvItemBarcode);
-//                    rowItems.addView(tvImageUri);//24
-//                    rowItems.addView(tvSpace1);//25
-//                    rowItems.addView(imgIcon);//26
-//                    rowItems.addView(tvSpace);//27
-//                    rowItems.addView(btnItemDelete);//28
-//                    rowItems.addView(tvHSNCode_out);//29
-//                    rowItems.addView(tvSupplyType);
-//                    rowItems.addView(tvTaxationType);
-//
-//                    // For Space purpose
-//                    tvSpace = new TextView(myContext);
-//                    tvSpace.setText("              ");
-//                    rowItems.addView(tvSpace);
-//                    rowItems.addView(tvItemId);//33
-//                    rowItems.addView(tvSalesTaxPercent);//34
-//                    rowItems.addView(tvServiceTaxPercent);//35
-//
-//                    rowItems.setOnClickListener(new View.OnClickListener() {
-//
-//                        public void onClick(View v) {
-//                            // TODO Auto-generated method stub
-//
-//                            if (String.valueOf(v.getTag()) == "TAG") {
-//                                TableRow Row = (TableRow) v;
-//
-//                                TextView MenuCode = (TextView) Row.getChildAt(1);
-//                                TextView LongName = (TextView) Row.getChildAt(2);
-//                                TextView ShortName = (TextView) Row.getChildAt(3);
-//                                TextView Rate = (TextView) Row.getChildAt(4);
-//                                TextView Quantity = (TextView) Row.getChildAt(5);
-//                                TextView MOU = (TextView) Row.getChildAt(6);
-//                                TextView TakeAway = (TextView) Row.getChildAt(7);
-//                                TextView PickUp = (TextView) Row.getChildAt(8);
-//                                TextView Delivery = (TextView) Row.getChildAt(9);
-//                                TextView GSTRate = (TextView) Row.getChildAt(10);
-//                                TextView PriceChange = (TextView) Row.getChildAt(11);
-//                                TextView DiscountEnable = (TextView) Row.getChildAt(12);
-//                                TextView BillWithStock = (TextView) Row.getChildAt(13);
-//                                TextView TaxType = (TextView) Row.getChildAt(14);
-//                                TextView DeptCode = (TextView) Row.getChildAt(15);
-//                                TextView CategCode = (TextView) Row.getChildAt(16);
-//                                TextView KitchenCode = (TextView) Row.getChildAt(17);
-//                                TextView SalesTaxId = (TextView) Row.getChildAt(18);
-//                                TextView AdditionalTaxId = (TextView) Row.getChildAt(19);
-//                                TextView OptionalTaxId1 = (TextView) Row.getChildAt(20);
-//                                TextView OptionalTaxId2 = (TextView) Row.getChildAt(21);
-//                                TextView DiscountId = (TextView) Row.getChildAt(22);
-//                                TextView Barcode = (TextView) Row.getChildAt(23);
-//                                TextView ImageUri = (TextView) Row.getChildAt(24);
-//                                TextView SupplyType = (TextView) Row.getChildAt(30);
-//                                TextView HSNCode_out = (TextView) Row.getChildAt(29);
-//                                TextView taxationtype =  (TextView) Row.getChildAt(31);
-//                                TextView ItemId = (TextView) Row.getChildAt(33);
-//                                TextView SalesTaxPercent = (TextView) Row.getChildAt(34);
-//                                TextView ServiceTaxPercent = (TextView) Row.getChildAt(35);
-//
-//                                strItemId = ItemId.getText().toString();
-//                                edtMenuCode.setText(MenuCode.getText());
-//                                txtLongName.setText(LongName.getText());
-//                                //txtShortName.setText(ShortName.getText());
-//                                txtBarcode.setText(Barcode.getText());
-//                                *//*txtDineIn1.setText(DineIn1.getText());
-//                                txtDineIn2.setText(DineIn2.getText());
-//                                txtDineIn3.setText(DineIn3.getText());
-//                                txtStock.setText(Stock.getText());*//*
-//                                strImageUri = ImageUri.getText().toString();
-//
-//                                // gst
-//                                etGstTax.setText(GSTRate.getText());
-//                                etRate.setText(Rate.getText());
-//                                etQuantity.setText(Quantity.getText());
-//                                etHSN.setText(HSNCode_out.getText());
-//                                etDiscount.setText(DiscountId.getText());
-//                                // richa to do
-//                                spnrG_S.setSelection(supplytypeAdapter.getPosition(SupplyType.getText().toString()));
-//                                spnrMOU.setSelection(MOUAdapter.getPosition(MOU.getText().toString()));
-//                                spnrtaxationtype.setSelection(taxationtypeAdapter.getPosition(taxationtype.getText().toString()));
-//
-//                                // gst end
-//                                Cursor crsrDept = dbItems.getDepartment(Integer.valueOf(DeptCode.getText().toString()));
-//                                if(crsrDept.moveToFirst()) {
-//                                    String deptName = crsrDept.getString(crsrDept.getColumnIndex("DeptName"));
-//                                    int deptid = getIndexDept(deptName + "");
-//                                    spnrDepartment.setSelection(deptid);
-//                                } else {
-//                                    String deptName = "Select";
-//                                    int deptid = getIndexDept(deptName + "");
-//                                    spnrDepartment.setSelection(deptid);
-//                                }
-//                                //spnrDepartment.setSelection(Integer.parseInt(DeptCode.getText().toString()));
-//                                Cursor crsrCateg = dbItems.getCategory(Integer.valueOf(CategCode.getText().toString()));
-//                                if(crsrCateg.moveToFirst()) {
-//                                    String categName = crsrCateg.getString(crsrCateg.getColumnIndex("CategName"));
-//                                    int categid = getIndexCateg(categName + "");
-//                                    spnrCategory.setSelection(categid);
-//                                } else {
-//                                    String categName = "Select";
-//                                    int categid = getIndexCateg(categName + "");
-//                                    spnrCategory.setSelection(categid);
-//                                }
-//                                //spnrCategory.setSelection(Integer.parseInt(CategCode.getText().toString()));
-//                                spnrKitchen.setSelection(Integer.parseInt(KitchenCode.getText().toString()) - 1);
-//                                spnrSalesTax.setSelection(Integer.parseInt(SalesTaxId.getText().toString()) - 1);
-//                                spnrAdditionalTax.setSelection(Integer.parseInt(AdditionalTaxId.getText().toString()) - 1);
-//                                spnrOptionalTax1.setSelection(Integer.parseInt(OptionalTaxId1.getText().toString()) - 1);
-//                                spnrOptionalTax2.setSelection(Integer.parseInt(OptionalTaxId2.getText().toString()) - 1);
-//                                spnrDiscount.setSelection(Integer.parseInt(DiscountId.getText().toString()) - 1);
-//
-//                                if (PriceChange.getText().toString().equalsIgnoreCase("Yes")) {
-//                                    chkPriceChange.setChecked(true);
-//                                } else {
-//                                    chkPriceChange.setChecked(false);
-//                                }
-//                                if (DiscountEnable.getText().toString().equalsIgnoreCase("Yes")) {
-//                                    chkDiscountEnable.setChecked(true);
-//                                } else {
-//                                    chkDiscountEnable.setChecked(false);
-//                                }
-//                                if (BillWithStock.getText().toString().equalsIgnoreCase("Yes")) {
-//                                    chkBillWithStock.setChecked(true);
-//                                } else {
-//                                    chkBillWithStock.setChecked(false);
-//                                }
-//
-//                                if (TaxType.getText().toString().equalsIgnoreCase("Forward Tax")) {
-//                                    rbForwardTax.setChecked(true);
-//                                } else if (TaxType.getText().toString().equalsIgnoreCase("Reverse Tax")) {
-//                                    rbReverseTax.setChecked(true);
-//                                }
-//
-//                                imgItemImage.setImageURI(null);
-//                                if (!strImageUri.equalsIgnoreCase("")) { // &&
-//                                    // strImageUri.contains("\\")){
-//                                    imgItemImage.setImageURI(Uri.fromFile(new File(strImageUri)));
-//                                } else {
-//                                    imgItemImage.setImageResource(R.drawable.img_noimage);
-//                                }
-//                                edtItemSalesTax.setText(SalesTaxPercent.getText().toString());
-//                                edtItemServiceTax.setText(ServiceTaxPercent.getText().toString());
-//                                btnLinkItem.setEnabled(false);
-//                                btnDelinkItem.setEnabled(true);
-//                            }
-//                        }
-//                    });
-//
-//                    rowItems.setTag("TAG");
-//
-//
-//                    tblItems.addView(rowItems, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-//                    i++;*/
-//                }
-//            } while (crsrItems.moveToNext());
-//        } else {
-//            Log.d("DisplayItem", "No Item found");
-//        }
-//
-//    }
 
-    private int getIndex_uom(String substring){
+    private int getIndex_uom(String substring) {
 
         int index = 0;
-        for (int i = 0; index==0 && i < spnrMOU.getCount(); i++){
+        for (int i = 0; index == 0 && i < spnrMOU.getCount(); i++) {
 
-            if (spnrMOU.getItemAtPosition(i).toString().contains(substring)){
+            if (spnrMOU.getItemAtPosition(i).toString().contains(substring)) {
                 index = i;
             }
 
@@ -1398,12 +1135,12 @@ public class ItemManagementActivity extends WepBaseActivity {
 
     }
 
-    private int getIndex_taxationType(String substring){
+    private int getIndex_taxationType(String substring) {
 
         int index = 0;
-        for (int i = 0; i < spnrtaxationtype.getCount(); i++){
+        for (int i = 0; i < spnrtaxationtype.getCount(); i++) {
 
-            if (spnrtaxationtype.getItemAtPosition(i).toString().contains(substring)){
+            if (spnrtaxationtype.getItemAtPosition(i).toString().contains(substring)) {
                 index = i;
                 break;
             }
@@ -1414,79 +1151,66 @@ public class ItemManagementActivity extends WepBaseActivity {
 
     }
 
-    public int getIndexDept(String item)
-    {
-        for (int i = 0; i < labelsDept.size(); i++)
-        {
+    public int getIndexDept(String item) {
+        for (int i = 0; i < labelsDept.size(); i++) {
             String auction = labelsDept.get(i);
-            if (item.equals(auction))
-            {
+            if (item.equals(auction)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int getIndexCateg(String item)
-    {
-        for (int i = 0; i < labelsCateg.size(); i++)
-        {
+    public int getIndexCateg(String item) {
+        for (int i = 0; i < labelsCateg.size(); i++) {
             String auction = labelsCateg.get(i);
-            if (item.equals(auction))
-            {
+            if (item.equals(auction)) {
                 return i;
             }
         }
         return -1;
     }
-
 
 
     private boolean IsItemExists(String ItemFullName, int MenuCode, int type) {
         boolean isItemExists = false;
 
-        if(type==1){
+        if (type == 1) {
             for (ItemOutward item : dataList) {
-                if ( item.getMenuCode() == (MenuCode) && !item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase())){
+                if (item.getMenuCode() == (MenuCode) && !item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase())) {
                     MsgBox = new MessageDialog(myContext);
-                    MsgBox.Show("Inconsistent"," Menu Code "+MenuCode+" already present for item "+item.getItemName() );
+                    MsgBox.Show("Inconsistent", " Menu Code " + MenuCode + " already present for item " + item.getItemName());
                     isItemExists = true;
                     break;
-                }
-                else if (item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase()) && item.getMenuCode() != (MenuCode)){
+                } else if (item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase()) && item.getMenuCode() != (MenuCode)) {
                     MsgBox = new MessageDialog(myContext);
-                    MsgBox.Show("Inconsistent"," Item "+ItemFullName +" already present with Menu Code "+item.getMenuCode());
+                    MsgBox.Show("Inconsistent", " Item " + ItemFullName + " already present with Menu Code " + item.getMenuCode());
                     isItemExists = true;
                     break;
-                }else if (item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase()) && item.getMenuCode() == (MenuCode)){
+                } else if (item.getItemName().equalsIgnoreCase(ItemFullName.toUpperCase()) && item.getMenuCode() == (MenuCode)) {
                     MsgBox = new MessageDialog(myContext);
-                    MsgBox.Show("Inconsistent"," Item "+ItemFullName +" already present with Menu Code "+item.getMenuCode()+
+                    MsgBox.Show("Inconsistent", " Item " + ItemFullName + " already present with Menu Code " + item.getMenuCode() +
                             "\n Therefore you cannot add it again");
                     isItemExists = true;
                     break;
                 }
             }
-        }else if(type ==2)
-        {
+        } else if (type == 2) {
             List<String> itemlist = dbItems.getAllItemsNames();
             List<String> menuCodelist = dbItems.getAllMenuCode();
             for (ItemOutward item : dataList) {
-                if(itemName_beforeChange_in_update.equalsIgnoreCase(ItemFullName))
-                {
-                    if(item.getMenuCode()==MenuCode && !item.getItemName().equalsIgnoreCase(ItemFullName)){
+                if (itemName_beforeChange_in_update.equalsIgnoreCase(ItemFullName)) {
+                    if (item.getMenuCode() == MenuCode && !item.getItemName().equalsIgnoreCase(ItemFullName)) {
                         MsgBox = new MessageDialog(myContext);
-                        MsgBox.Show("Inconsistent"," Menu Code "+MenuCode+" already present for item "+item.getItemName() );
+                        MsgBox.Show("Inconsistent", " Menu Code " + MenuCode + " already present for item " + item.getItemName());
                         isItemExists = true;
                         break;
                     }
-                }
-                else
-                {
+                } else {
                     // itemname is either the new name or existing name
-                    if(itemlist.contains(ItemFullName))
-                    {
+                    if (itemlist.contains(ItemFullName)) {
                         MsgBox = new MessageDialog(myContext);
-                        MsgBox.Show("Inconsistent"," Item "+ItemFullName +" already present with Menu Code "+item.getMenuCode());
+                        MsgBox.Show("Inconsistent", " Item " + ItemFullName + " already present with Menu Code " + item.getMenuCode());
                         isItemExists = true;
                         break;
                     }/*else if ( menuCodelist.contains(String.valueOf(MenuCode))){
@@ -1512,12 +1236,12 @@ public class ItemManagementActivity extends WepBaseActivity {
                             float DineInPrice3, float TakeAwayPrice, float PickUpPrice, float DeliveryPrice, float Stock,
                             int PriceChange, int DiscountEnable, int BillWithStock, int TaxType, int DeptCode, int CategCode,
                             int KitchenCode, int SalesTaxId, int AdditionalTaxId, int OptionalTaxId1, int OptionalTaxId2, int DiscId,
-                            String ItemBarcode, String ImageUri , Float frate, Float fquantity,String hsnCode, float IGSTRate,
+                            String ItemBarcode, String ImageUri, Float frate, Float fquantity, String hsnCode, float IGSTRate,
                             float CGSTRate, float SGSTRate,
                             String g_s, String MOU_str, String taxationtype, float SalesTaxPercent, float ServiceTaxPercent, int MenuCode) {
 
         long lRowId = 0;
-        float cgsttax=0,sgsttax=0;
+        float cgsttax = 0, sgsttax = 0;
 
         // gst
         /*if (taxationtype.equalsIgnoreCase("GST")) {
@@ -1548,7 +1272,7 @@ public class ItemManagementActivity extends WepBaseActivity {
     private void ReadData(int Type) {
         String strMenuCode = "", strLongName = "", strShortName = "", strBarcode = "";
         int iDeptCode = 0, iCategCode = 0, iKitchenCode = 0, iSalesTaxId = 0, iAdditionalTaxId = 0, iOptionalTaxId1 = 0,
-                iOptionalTaxId2 = 0, iDiscountId = 0, iPriceChange = 0, iDiscountEnable = 0, iBillWithStock = 0,iTaxType = 0;
+                iOptionalTaxId2 = 0, iDiscountId = 0, iPriceChange = 0, iDiscountEnable = 0, iBillWithStock = 0, iTaxType = 0;
         double fDineIn1 = 0, fDineIn2 = 0, fDineIn3 = 0, fTakeAway = 0, fPickUp = 0, fDelivery = 0, fStock = 0;
 
         strMenuCode = edtMenuCode.getText().toString();
@@ -1563,39 +1287,38 @@ public class ItemManagementActivity extends WepBaseActivity {
         fDelivery = 0.00f;
         fStock = Double.parseDouble((txtStock.getText().toString()));
 
-        if(!spnrDepartment.getSelectedItem().toString().equalsIgnoreCase("Select"))
+        if (!spnrDepartment.getSelectedItem().toString().equalsIgnoreCase("Select"))
             iDeptCode = dbItems.getDepartmentIdByName(labelsDept.get(spnrDepartment.getSelectedItemPosition()));
-        if(!spnrCategory.getSelectedItem().toString().equalsIgnoreCase("Select department first"))
+        if (!spnrCategory.getSelectedItem().toString().equalsIgnoreCase("Select department first"))
             iCategCode = dbItems.getCategoryIdByName(String.valueOf(spnrCategory.getSelectedItem()));
-        iKitchenCode = spnrKitchen.getSelectedItemPosition() ;
+        iKitchenCode = spnrKitchen.getSelectedItemPosition();
 
 
-        float frate = 0.0f, fquantity = 0.0f,fgsttax =0.0f;
+        float frate = 0.0f, fquantity = 0.0f, fgsttax = 0.0f;
         String hsnCode = "";
 
         iDiscountId = 0;
         hsnCode = etHSN.getText().toString();
-        if(hsnCode.equals(""))
-            hsnCode= "0";
+        if (hsnCode.equals(""))
+            hsnCode = "0";
         String g_s = spnrG_S.getItemAtPosition(spnrG_S.getSelectedItemPosition()).toString();
         //String MOU_str = spnrMOU.getItemAtPosition(spnrMOU.getSelectedItemPosition()).toString();
         String MOU_str_temp = spnrMOU.getSelectedItem().toString();
-        int length  = MOU_str_temp.length();
-        String MOU_str = MOU_str_temp.substring(length-3, length-1);
+        int length = MOU_str_temp.length();
+        String MOU_str = MOU_str_temp.substring(length - 3, length - 1);
 
         String taxationtype_str = spnrtaxationtype.getItemAtPosition(spnrtaxationtype.getSelectedItemPosition()).toString();
 
         float fSalesTax = 0;
         float fServiceTax = 0;
-        float fCGSTTax = Float.parseFloat(String.format("%.2f",Float.parseFloat(edtItemCGSTTax.getText().toString())));
-        float fSGSTTax = Float.parseFloat(String.format("%.2f",Float.parseFloat(edtItemSGSTTax.getText().toString())));
-        float fIGSTTax = Float.parseFloat(String.format("%.2f",Float.parseFloat(edtIGSTTax.getText().toString())));
-        float fcessTax = Float.parseFloat(String.format("%.2f",Float.parseFloat(edtcessTax.getText().toString())));
-
+        float fCGSTTax = Float.parseFloat(String.format("%.2f", Float.parseFloat(edtItemCGSTTax.getText().toString())));
+        float fSGSTTax = Float.parseFloat(String.format("%.2f", Float.parseFloat(edtItemSGSTTax.getText().toString())));
+        float fIGSTTax = Float.parseFloat(String.format("%.2f", Float.parseFloat(edtIGSTTax.getText().toString())));
+        float fcessTax = Float.parseFloat(String.format("%.2f", Float.parseFloat(edtcessTax.getText().toString())));
 
 
         //Cursor crsrSettings = dbItems.getBillSetting();
-        if(crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("0")) {
+        if (crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("0")) {
             iMenuCode = dbItems.getItemMenuCode();
             iMenuCode++;
         } else {
@@ -1614,67 +1337,60 @@ public class ItemManagementActivity extends WepBaseActivity {
                         MOU_str, taxationtype_str,
                         fSalesTax, fServiceTax, iMenuCode);*/
 
-                ItemOutward item_add = new ItemOutward(iMenuCode,strLongName, fDineIn1, fDineIn2,fDineIn3,fStock,
-                        iDeptCode,iCategCode,iKitchenCode, strBarcode,strImageUri,iMenuCode, fCGSTTax,fSGSTTax,fIGSTTax,fcessTax,
-                        MOU_str, hsnCode,taxationtype_str, g_s ) ;
+                ItemOutward item_add = new ItemOutward(iMenuCode, strLongName, fDineIn1, fDineIn2, fDineIn3, fStock,
+                        iDeptCode, iCategCode, iKitchenCode, strBarcode, strImageUri, iMenuCode, fCGSTTax, fSGSTTax, fIGSTTax, fcessTax,
+                        MOU_str, hsnCode, taxationtype_str, g_s);
                 long lRowId = dbItems.addItem(item_add);
-                if (lRowId>0)
-                {
-                    Log.d("Item Management : ", strLongName+" added sucessfully at Row Id:" + String.valueOf(lRowId));
+                if (lRowId > 0) {
+                    Log.d("Item Management : ", strLongName + " added sucessfully at Row Id:" + String.valueOf(lRowId));
 
                     // inserting new item stock in OutwardStock Table
-                    double rate =0;
-                    if(Double.parseDouble(txtDineIn1.getText().toString()) >0)
+                    double rate = 0;
+                    if (Double.parseDouble(txtDineIn1.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn1.getText().toString());
-                    else if(Double.parseDouble(txtDineIn2.getText().toString()) >0)
+                    else if (Double.parseDouble(txtDineIn2.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn2.getText().toString());
-                    else if(Double.parseDouble(txtDineIn3.getText().toString()) >0)
+                    else if (Double.parseDouble(txtDineIn3.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn3.getText().toString());
 
-                    double quantity =Double.parseDouble(txtStock.getText().toString());
+                    double quantity = Double.parseDouble(txtStock.getText().toString());
 
                     StockOutwardMaintain stock_outward = new StockOutwardMaintain(myContext, dbItems);
-                    stock_outward.addItemToStock_Outward( businessDate, iMenuCode,
-                            strLongName,quantity, rate );
-                }
-                else
-                    Log.d("Item Management : ", strLongName+" cannot be added in Item Outward database");
-            }
-            else if (Type == 2)
-            {
+                    stock_outward.addItemToStock_Outward(businessDate, iMenuCode,
+                            strLongName, quantity, rate);
+                } else
+                    Log.d("Item Management : ", strLongName + " cannot be added in Item Outward database");
+            } else if (Type == 2) {
                 int iRowId = dbItems.updateItem(Integer.parseInt(edtMenuCode.getText().toString()), strLongName, strShortName, strBarcode,
                         iDeptCode, iCategCode, iKitchenCode, fDineIn1, fDineIn2, fDineIn3, fTakeAway, fPickUp, fDelivery,
                         iSalesTaxId, iAdditionalTaxId, iOptionalTaxId1, iOptionalTaxId2, iDiscountId, fStock, iPriceChange,
                         iDiscountEnable, iBillWithStock, strImageUri, iTaxType, frate, hsnCode, g_s, MOU_str,
-                        taxationtype_str, fIGSTTax, fCGSTTax, fSGSTTax,fcessTax,
+                        taxationtype_str, fIGSTTax, fCGSTTax, fSGSTTax, fcessTax,
                         fSalesTax, fServiceTax, Integer.valueOf(strItemId));
-                if (iRowId > 0)
-                {
+                if (iRowId > 0) {
                     Log.d("Item Management : ", "Updated Rows: " + String.valueOf(iRowId));
                     // updating outwardStock table
-                    double rate =0;
-                    if(Double.parseDouble(txtDineIn1.getText().toString()) >0)
+                    double rate = 0;
+                    if (Double.parseDouble(txtDineIn1.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn1.getText().toString());
-                    else if(Double.parseDouble(txtDineIn2.getText().toString()) >0)
+                    else if (Double.parseDouble(txtDineIn2.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn2.getText().toString());
-                    else if(Double.parseDouble(txtDineIn3.getText().toString()) >0)
+                    else if (Double.parseDouble(txtDineIn3.getText().toString()) > 0)
                         rate = Double.parseDouble(txtDineIn3.getText().toString());
 
-                    double quantity =Double.parseDouble(txtStock.getText().toString());
+                    double quantity = Double.parseDouble(txtStock.getText().toString());
 
                     StockOutwardMaintain stock_outward = new StockOutwardMaintain(myContext, dbItems);
-                    stock_outward.updateOpeningStock_Outward( businessDate, Integer.parseInt(strMenuCode),
-                            strLongName,quantity, rate );
-                    stock_outward.updateClosingStock_Outward( businessDate, Integer.parseInt(strMenuCode),
-                            strLongName,quantity);
-                }else
-                {
-                    Log.d("Item Management : ", " Item data cannot be updated" );
+                    stock_outward.updateOpeningStock_Outward(businessDate, Integer.parseInt(strMenuCode),
+                            strLongName, quantity, rate);
+                    stock_outward.updateClosingStock_Outward(businessDate, Integer.parseInt(strMenuCode),
+                            strLongName, quantity);
+                } else {
+                    Log.d("Item Management : ", " Item data cannot be updated");
                 }
 
             }
-        }
-        else {
+        } else {
             ResetItem();
             Toast.makeText(myContext, " Negative Values not allowed for GST Tax and Quantity", Toast.LENGTH_SHORT).show();
         }
@@ -1693,8 +1409,8 @@ public class ItemManagementActivity extends WepBaseActivity {
         txtStock.setText("0.00");
         btnAdd.setEnabled(true);
         btnEdit.setEnabled(false);
-        tvFileName.setText("Select FileName");
-        strUploadFilepath="";
+        mFileNameTextValue.setText("Select FileName");
+        strUploadFilepath = "";
         edtItemCGSTTax.setText("0.00");
         edtItemSGSTTax.setText("0.00");
         edtIGSTTax.setText("0.00");
@@ -1705,15 +1421,15 @@ public class ItemManagementActivity extends WepBaseActivity {
         etQuantity.setText("0");
         etHSN.setText("0");
         etGstTax.setText("0");
-        itemName_beforeChange_in_update="";
+        itemName_beforeChange_in_update = "";
         spnrMOU.setSelection(0);
         spnrG_S.setSelection(0);
         spnrCategory.setSelection(0);
         spnrDepartment.setSelection(0);
         spnrKitchen.setSelection(0);
         spnrtaxationtype.setSelection(0);
-        fRate =0;
-        fQuantity =0;
+        fRate = 0;
+        fQuantity = 0;
         txtHSNCode = "";
         fGSTTax = 0;
         fDiscount = 0;
@@ -1724,45 +1440,39 @@ public class ItemManagementActivity extends WepBaseActivity {
 
     public void Browse(View v) {
         Intent intent = new Intent(myContext, FilePickerActivity.class);
-        intent.putExtra("contentType","image");
+        intent.putExtra("contentType", "image");
         startActivityForResult(intent, FilePickerActivity.PICK_IMAGE_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            if (requestCode == FilePickerActivity.FILE_PICKER_CODE)
-            {
+            if (requestCode == FilePickerActivity.FILE_PICKER_CODE) {
                 strImageUri = data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH);
                 Log.d("FilePicker Result", "Path + FileName:" + strImageUri);
                 // Toast.makeText(myContext, "Image Path:" + strImageUri,
                 // Toast.LENGTH_LONG).show();
-                if(!strImageUri.equalsIgnoreCase(""))
-                {
+                if (!strImageUri.equalsIgnoreCase("")) {
                     imgItemImage.setImageURI(null);
                     imgItemImage.setImageURI(Uri.fromFile(new File(strImageUri)));
-                }
-                else
-                {
+                } else {
                     imgItemImage.setImageResource(R.drawable.img_noimage);
                 }
                 strUploadFilepath = data.getStringExtra(UploadFilePickerActivity.EXTRA_FILE_PATH);
-                tvFileName.setText(strUploadFilepath.substring(strUploadFilepath.lastIndexOf("/")+1));
-            }
-            else if (requestCode == FilePickerActivity.PICK_IMAGE_CODE)
-            {
+                mFileNameTextValue.setText(strUploadFilepath.substring(strUploadFilepath.lastIndexOf("/") + 1));
+            } else if (requestCode == FilePickerActivity.PICK_IMAGE_CODE) {
                 strImageUri = data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH);
                 Log.d("FilePicker Result", "Path + FileName:" + strImageUri);
                 // Toast.makeText(myContext, "Image Path:" + strImageUri,
                 // Toast.LENGTH_LONG).show();
-                if(!strImageUri.equalsIgnoreCase("")) {
+                if (!strImageUri.equalsIgnoreCase("")) {
                     imgItemImage.setImageURI(null);
                     imgItemImage.setImageURI(Uri.fromFile(new File(strImageUri)));
-                }else{
+                } else {
                     imgItemImage.setImageResource(R.drawable.img_noimage);
                 }
                 strUploadFilepath = data.getStringExtra(UploadFilePickerActivity.EXTRA_FILE_PATH);
-                tvFileName.setText(strUploadFilepath.substring(strUploadFilepath.lastIndexOf("/")+1));
+                mFileNameTextValue.setText(strUploadFilepath.substring(strUploadFilepath.lastIndexOf("/") + 1));
             }
         }
     }
@@ -1774,33 +1484,29 @@ public class ItemManagementActivity extends WepBaseActivity {
             return;
         }
 
-        if (spnrMOU.getSelectedItem().toString().equalsIgnoreCase("") ||spnrMOU.getSelectedItem().toString().equalsIgnoreCase("Select") ) {
+        if (spnrMOU.getSelectedItem().toString().equalsIgnoreCase("") || spnrMOU.getSelectedItem().toString().equalsIgnoreCase("Select")) {
             MsgBox.Show("Warning", "Please Select Item UOM");
             return;
         }
 
 
-        if(crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("1")) {
+        if (crsrSettings.getString(crsrSettings.getColumnIndex("ItemNoReset")).equalsIgnoreCase("1")) {
             if (edtMenuCode.getText().toString().equalsIgnoreCase("")) {
                 MsgBox.Show("Warning", "Please Enter Item Code");
                 return;
-            }
-            else {
+            } else {
                 iMenuCode = Integer.valueOf(edtMenuCode.getText().toString());
                 String ItemFullName = txtLongName.getText().toString().toUpperCase();
-                if(IsItemExists( ItemFullName,  iMenuCode,1))
-                {
+                if (IsItemExists(ItemFullName, iMenuCode, 1)) {
                     return;
                 }
             }
-        }else
-        {
+        } else {
             String ItemFullName = txtLongName.getText().toString().toUpperCase();
             List<String> itemlist = dbItems.getAllItemsNames();
-            if(itemlist.contains(ItemFullName))
-            {
+            if (itemlist.contains(ItemFullName)) {
                 MsgBox = new MessageDialog(myContext);
-                MsgBox.Show("Inconsistent"," Item "+ItemFullName +" already present ");
+                MsgBox.Show("Inconsistent", " Item " + ItemFullName + " already present ");
                 return;
             }
         }
@@ -1826,11 +1532,10 @@ public class ItemManagementActivity extends WepBaseActivity {
 
         if (txtStock.getText().toString().equalsIgnoreCase("")) {
             txtStock.setText("0");
-        }else
-        {
+        } else {
             double stock = Double.parseDouble(txtStock.getText().toString());
-            if(stock>9999.99){
-                MsgBox.Show("Warning","Please enter stock between 0 and 9999.99");
+            if (stock > 9999.99) {
+                MsgBox.Show("Warning", "Please enter stock between 0 and 9999.99");
                 return;
             }
         }
@@ -1855,41 +1560,37 @@ public class ItemManagementActivity extends WepBaseActivity {
         String salesTax_str = edtItemCGSTTax.getText().toString();
         if (salesTax_str.equalsIgnoreCase("")) {
             edtItemCGSTTax.setText("0");
-        }else if (Double.parseDouble(salesTax_str)< 0 || Double.parseDouble(salesTax_str)>99.99)
-        {
-            MsgBox.Show("Warning","Please enter CGST Rate between 0 and 99.99");
+        } else if (Double.parseDouble(salesTax_str) < 0 || Double.parseDouble(salesTax_str) > 99.99) {
+            MsgBox.Show("Warning", "Please enter CGST Rate between 0 and 99.99");
             return;
         }
 
         String serviceTax_str = edtItemSGSTTax.getText().toString();
         if (serviceTax_str.equalsIgnoreCase("")) {
             edtItemSGSTTax.setText("0");
-        }else if (Double.parseDouble(serviceTax_str) <0 || Double.parseDouble(serviceTax_str)> 99.99)
-        {
-            MsgBox.Show("Warning","Please enter SGST Rate between 0 and 99.99");
+        } else if (Double.parseDouble(serviceTax_str) < 0 || Double.parseDouble(serviceTax_str) > 99.99) {
+            MsgBox.Show("Warning", "Please enter SGST Rate between 0 and 99.99");
             return;
         }
 
         String IGST_str = edtIGSTTax.getText().toString();
         if (IGST_str.equalsIgnoreCase("")) {
             edtIGSTTax.setText("0");
-        }else if (Double.parseDouble(IGST_str) <0 || Double.parseDouble(IGST_str)> 99.99)
-        {
-            MsgBox.Show("Warning","Please enter IGST Rate between 0 and 99.99");
+        } else if (Double.parseDouble(IGST_str) < 0 || Double.parseDouble(IGST_str) > 99.99) {
+            MsgBox.Show("Warning", "Please enter IGST Rate between 0 and 99.99");
             return;
         }
 
         String cess_str = edtcessTax.getText().toString();
         if (cess_str.equalsIgnoreCase("")) {
             edtIGSTTax.setText("0");
-        }else if (Double.parseDouble(cess_str) <0 || Double.parseDouble(cess_str)> 99.99)
-        {
-            MsgBox.Show("Warning","Please enter cess Rate between 0 and 99.99");
+        } else if (Double.parseDouble(cess_str) < 0 || Double.parseDouble(cess_str) > 99.99) {
+            MsgBox.Show("Warning", "Please enter cess Rate between 0 and 99.99");
             return;
         }
 
 
-        new AsyncTask<Void,Void,Void>(){
+        new AsyncTask<Void, Void, Void>() {
             ProgressDialog pd;
 
             @Override
@@ -1919,13 +1620,13 @@ public class ItemManagementActivity extends WepBaseActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                try{
+                try {
                     ResetItem();
                     //ClearItemTable();
                     DisplayItemList();
                     //Toast.makeText(myContext, "Item Added Successfully", Toast.LENGTH_LONG).show();
                     pd.dismiss();
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
@@ -1967,19 +1668,16 @@ public class ItemManagementActivity extends WepBaseActivity {
                     iMenuCode = Integer.valueOf(edtMenuCode.getText().toString());
                     iMenuCode = Integer.valueOf(edtMenuCode.getText().toString());
                     String ItemFullName = txtLongName.getText().toString().toUpperCase();
-                    if(IsItemExists( ItemFullName,  iMenuCode,2))
-                    {
+                    if (IsItemExists(ItemFullName, iMenuCode, 2)) {
                         return;
                     }
                 }
-            }else
-            {
+            } else {
                 String ItemFullName = txtLongName.getText().toString().toUpperCase();
                 List<String> itemlist = dbItems.getAllItemsNames();
-                if(itemlist.contains(ItemFullName) && !itemName_beforeChange_in_update.equalsIgnoreCase(ItemFullName))
-                {
+                if (itemlist.contains(ItemFullName) && !itemName_beforeChange_in_update.equalsIgnoreCase(ItemFullName)) {
                     MsgBox = new MessageDialog(myContext);
-                    MsgBox.Show("Inconsistent"," Item "+ItemFullName +" already present ");
+                    MsgBox.Show("Inconsistent", " Item " + ItemFullName + " already present ");
                     return;
                 }
             }
@@ -2021,35 +1719,31 @@ public class ItemManagementActivity extends WepBaseActivity {
             String CGSTTax_str = edtItemCGSTTax.getText().toString();
             if (CGSTTax_str.equalsIgnoreCase("")) {
                 edtItemCGSTTax.setText("0");
-            }else if (Double.parseDouble(CGSTTax_str)< 0 || Double.parseDouble(CGSTTax_str)>99.99)
-            {
-                MsgBox.Show("Warning","Please enter CST Rate between 0 and 99.99");
+            } else if (Double.parseDouble(CGSTTax_str) < 0 || Double.parseDouble(CGSTTax_str) > 99.99) {
+                MsgBox.Show("Warning", "Please enter CST Rate between 0 and 99.99");
                 return;
             }
 
             String SGSTTax_str = edtItemSGSTTax.getText().toString();
             if (SGSTTax_str.equalsIgnoreCase("")) {
                 edtItemSGSTTax.setText("0");
-            }else if (Double.parseDouble(SGSTTax_str) <0 || Double.parseDouble(SGSTTax_str)> 99.99)
-            {
-                MsgBox.Show("Warning","Please enter SGST Rate between 0 and 99.99");
+            } else if (Double.parseDouble(SGSTTax_str) < 0 || Double.parseDouble(SGSTTax_str) > 99.99) {
+                MsgBox.Show("Warning", "Please enter SGST Rate between 0 and 99.99");
                 return;
             }
             String IGSTTax_str = edtIGSTTax.getText().toString();
             if (IGSTTax_str.equalsIgnoreCase("")) {
                 edtIGSTTax.setText("0.00");
-            }else if (Double.parseDouble(IGSTTax_str) <0 || Double.parseDouble(IGSTTax_str)> 99.99)
-            {
-                MsgBox.Show("Warning","Please enter IGST Rate between 0 and 99.99");
+            } else if (Double.parseDouble(IGSTTax_str) < 0 || Double.parseDouble(IGSTTax_str) > 99.99) {
+                MsgBox.Show("Warning", "Please enter IGST Rate between 0 and 99.99");
                 return;
             }
 
             String cess_str = edtcessTax.getText().toString();
             if (cess_str.equalsIgnoreCase("")) {
                 edtIGSTTax.setText("0");
-            }else if (Double.parseDouble(cess_str) <0 || Double.parseDouble(cess_str)> 99.99)
-            {
-                MsgBox.Show("Warning","Please enter cess Rate between 0 and 99.99");
+            } else if (Double.parseDouble(cess_str) < 0 || Double.parseDouble(cess_str) > 99.99) {
+                MsgBox.Show("Warning", "Please enter cess Rate between 0 and 99.99");
                 return;
             }
 
@@ -2097,8 +1791,7 @@ public class ItemManagementActivity extends WepBaseActivity {
                     }
                 }
             }.execute();
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -2117,7 +1810,7 @@ public class ItemManagementActivity extends WepBaseActivity {
     private void loadSpinnerData() {
         labelsDept = dbItems.getAllDeptforCateg();
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, labelsDept);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, labelsDept);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
@@ -2125,30 +1818,27 @@ public class ItemManagementActivity extends WepBaseActivity {
     }
 
     private void loadSpinnerData1() {
-        if (spnrDepartment.getSelectedItem().toString().equals("Select"))
-        {
+        if (spnrDepartment.getSelectedItem().toString().equals("Select")) {
             labelsCateg = new ArrayList<String>();
             labelsCateg.add("Select department first");
-        }
-        else
-        {
+        } else {
             labelsCateg = dbItems.getAllCategforDept();
         }
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, labelsCateg);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, labelsCateg);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
         spnrCategory.setAdapter(dataAdapter);
     }
-    private void loadSpinnerData_cat(ArrayList<String>categName) {
-        if (categName.size() ==0)
-        {
+
+    private void loadSpinnerData_cat(ArrayList<String> categName) {
+        if (categName.size() == 0) {
             return;
         }
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, categName);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categName);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
@@ -2158,7 +1848,7 @@ public class ItemManagementActivity extends WepBaseActivity {
     private void loadSpinnerData1_old() {
         labelsCateg = dbItems.getAllCategforDept();
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, labelsCateg);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, labelsCateg);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
@@ -2177,7 +1867,7 @@ public class ItemManagementActivity extends WepBaseActivity {
                 tvStock, tvPriceChange, tvDiscountEnable, tvBillWithStock, tvTaxType, tvDeptCode, tvCategCode,
                 tvKitchenCode, tvSalesTaxId, tvAdditionalTaxId, tvOptionalTaxId1, tvOptionalTaxId2, tvDiscountId,
                 tvItemBarcode, tvImageUri, tvSpace, tvDeptName, tvCategName, tvItemId;
-        TextView tvHSNCode_out,tvMOU,tvRate,tvGSTRate,tvSupplyType;
+        TextView tvHSNCode_out, tvMOU, tvRate, tvGSTRate, tvSupplyType;
         ImageView imgIcon;
         ImageButton btnItemDelete;
         int i = 1;
@@ -2331,22 +2021,17 @@ public class ItemManagementActivity extends WepBaseActivity {
                 tvGSTRate = new TextView(myContext);
                 tvGSTRate.setGravity(1);
                 tvGSTRate.setWidth(110);
-                Float fGSTRate =0.0f;
+                Float fGSTRate = 0.0f;
                 String IGSTRate_str = crsrItems.getString(crsrItems.getColumnIndex("IGSTRate"));
-                if ((IGSTRate_str != null)&&Float.parseFloat(IGSTRate_str) == 0)
-                {
+                if ((IGSTRate_str != null) && Float.parseFloat(IGSTRate_str) == 0) {
                     String CGSTRate_str = crsrItems.getString(crsrItems.getColumnIndex("CGSTRate"));
-                    if((CGSTRate_str!= null )&&(Float.parseFloat(IGSTRate_str)> 0)) {
+                    if ((CGSTRate_str != null) && (Float.parseFloat(IGSTRate_str) > 0)) {
                         Float fCgst = Float.parseFloat(CGSTRate_str);
                         fGSTRate = 2 * fCgst;
-                    }
-                    else
-                    {
+                    } else {
                         fGSTRate = Float.parseFloat(IGSTRate_str);
                     }
-                }
-                else
-                {
+                } else {
                     fGSTRate = Float.parseFloat(IGSTRate_str);
                 }
                 tvGSTRate.setText(fGSTRate.toString());
@@ -2445,7 +2130,7 @@ public class ItemManagementActivity extends WepBaseActivity {
 
                             // gst end
                             Cursor crsrDept = dbItems.getDepartment(Integer.valueOf(DeptCode.getText().toString()));
-                            if(crsrDept.moveToFirst()) {
+                            if (crsrDept.moveToFirst()) {
                                 String deptName = crsrDept.getString(crsrDept.getColumnIndex("DeptName"));
                                 int deptid = getIndexDept(deptName + "");
                                 spnrDepartment.setSelection(deptid);
@@ -2456,7 +2141,7 @@ public class ItemManagementActivity extends WepBaseActivity {
                             }
                             //spnrDepartment.setSelection(Integer.parseInt(DeptCode.getText().toString()));
                             Cursor crsrCateg = dbItems.getCategory(Integer.valueOf(CategCode.getText().toString()));
-                            if(crsrCateg.moveToFirst()) {
+                            if (crsrCateg.moveToFirst()) {
                                 String categName = crsrCateg.getString(crsrCateg.getColumnIndex("CategName"));
                                 int categid = getIndexCateg(categName + "");
                                 spnrCategory.setSelection(categid);
@@ -2520,15 +2205,41 @@ public class ItemManagementActivity extends WepBaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
+//            AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(myContext);
+//            LayoutInflater UserAuthorization = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View vwAuthorization = UserAuthorization.inflate(R.layout.user_authorization, null);
+//            final EditText txtUserId = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserId);
+//            final EditText txtPassword = (EditText) vwAuthorization.findViewById(R.id.etAuthorizationUserPassword);
+//            final TextView tvAuthorizationUserId = (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserId);
+//            final TextView tvAuthorizationUserPassword = (TextView) vwAuthorization.findViewById(R.id.tvAuthorizationUserPassword);
+//            tvAuthorizationUserId.setVisibility(View.GONE);
+//            tvAuthorizationUserPassword.setVisibility(View.GONE);
+//            txtUserId.setVisibility(View.GONE);
+//            txtPassword.setVisibility(View.GONE);
+//            AuthorizationDialog
+//                    .setTitle("Are you sure you want to exit ?")
+//                    .setView(vwAuthorization)
+//                    .setNegativeButton("No", null)
+//                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            /*Intent returnIntent =new Intent();
+//                            setResult(Activity.RESULT_OK,returnIntent);*/
+//                            finish();
+//                        }
+//                    })
+//                    .show();
+
             AlertDialog.Builder AuthorizationDialog = new AlertDialog.Builder(myContext);
             AuthorizationDialog
-                    .setTitle("Are you sure you want to exit ?")
                     .setIcon(R.drawable.ic_launcher)
+                    .setTitle("Are you sure you want to exit ?")
                     .setNegativeButton("No", null)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            /*Intent returnIntent =new Intent();
-                            setResult(Activity.RESULT_OK,returnIntent);*/
+							/*Intent returnIntent =new Intent();
+							setResult(Activity.RESULT_OK,returnIntent);*/
+                            txtLongName.clearFocus();
+                            txtLongName.setCursorVisible(false);
                             dbItems.CloseDatabase();
                             finish();
                         }
@@ -2560,20 +2271,13 @@ public class ItemManagementActivity extends WepBaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == android.R.id.home)
-        {
+        if (id == android.R.id.home) {
             finish();
-        }
-        else if (id == R.id.action_home)
-        {
+        } else if (id == R.id.action_home) {
             onHomePressed();
-        }
-        else if (id == R.id.action_screen_shot)
-        {
-            com.wep.common.app.ActionBarUtils.takeScreenshot(this,findViewById(android.R.id.content).getRootView());
-        }
-        else if (id == R.id.action_clear)
-        {
+        } else if (id == R.id.action_screen_shot) {
+            com.wep.common.app.ActionBarUtils.takeScreenshot(this, findViewById(android.R.id.content).getRootView());
+        } else if (id == R.id.action_clear) {
             new AlertDialog.Builder(this)
                     .setTitle("Confirmation")
                     .setMessage("Are you sure to delete all the existing Items?")
@@ -2582,14 +2286,14 @@ public class ItemManagementActivity extends WepBaseActivity {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             //Toast.makeText(myContext, "clear", Toast.LENGTH_SHORT).show();
                             long lResult = dbItems.deleteAllOutwardItem();
-                            if(lResult>0)
-                            {
+                            if (lResult > 0) {
                                 itemListAdapter.notifyDataSetChanged(dbItems.getAllItem());
                                 dataList.clear();
                                 ResetItem();
                                 Toast.makeText(myContext, "Items Deleted Successfully", Toast.LENGTH_SHORT).show();
                             }
-                        }})
+                        }
+                    })
                     .setNegativeButton(android.R.string.no, null).show();
         }
         return super.onOptionsItemSelected(item);

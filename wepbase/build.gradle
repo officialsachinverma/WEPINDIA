@@ -9,6 +9,9 @@ android {
         targetSdkVersion 25
 
     }
+    aaptOptions {
+        cruncherEnabled = false
+    }
     buildTypes {
         release {
             minifyEnabled false

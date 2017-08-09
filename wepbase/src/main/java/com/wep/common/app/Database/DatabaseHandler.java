@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TBL_PURCHASEORDER = "PurchaseOrder";
     private static final String TBL_GOODSINWARD = "GoodsInward";
     private static final String TBL_INGREDIENTS = "Ingredients";
-    private static final String TBL_SupplierItemLinkage= "SupplierItemLinkage";
+    private static final String TBL_SupplierItemLinkage = "SupplierItemLinkage";
 
 
     // Column Names for the tables
@@ -671,28 +671,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     String QUERY_CREATE_TABLE_OWNER_DETAILS = "CREATE TABLE " + TBL_OWNER_DETAILS + " ( " +
             KEY_GSTIN + " TEXT, " + KEY_Owner_Name + "  TEXT, " + KEY_FIRM_NAME + " TEXT, " + KEY_PhoneNo + " TEXT, " +
-            KEY_POS +" TEXT,"+ KEY_DeviceId+" Text, "+KEY_DeviceName+" Text, "+KEY_USER_EMAIL+" TEXT, "+
-            KEY_REFERENCE_NO+" TEXT, "+ KEY_BillNoPrefix +" TEXT, "+
+            KEY_POS + " TEXT," + KEY_DeviceId + " Text, " + KEY_DeviceName + " Text, " + KEY_USER_EMAIL + " TEXT, " +
+            KEY_REFERENCE_NO + " TEXT, " + KEY_BillNoPrefix + " TEXT, " +
             KEY_Address + " TEXT, " + KEY_TINCIN + " TEXT, " + KEY_IsMainOffice + "  TEXT ) ";
 
     String QUERY_CREATE_TABLE_Stock_Outward = "CREATE TABLE " + TBL_StockOutward + " ( " +
-            KEY_BusinessDate +" TEXT, "+KEY_MenuCode + " INTEGER, " + KEY_ItemName + "  TEXT, " + KEY_OpeningStock + " REAL, " +
+            KEY_BusinessDate + " TEXT, " + KEY_MenuCode + " INTEGER, " + KEY_ItemName + "  TEXT, " + KEY_OpeningStock + " REAL, " +
             KEY_ClosingStock + " REAL, " + KEY_Rate + " REAL ) ";
 
     String QUERY_CREATE_TABLE_Stock_Inward = "CREATE TABLE " + TBL_StockInward + " ( " +
-            KEY_BusinessDate +" TEXT, "+KEY_MenuCode + " INTEGER, " + KEY_ItemName + "  TEXT, " + KEY_OpeningStock + " REAL, " +
+            KEY_BusinessDate + " TEXT, " + KEY_MenuCode + " INTEGER, " + KEY_ItemName + "  TEXT, " + KEY_OpeningStock + " REAL, " +
             KEY_ClosingStock + " REAL, " + KEY_Rate + " REAL ) ";
 
     String QUERY_CREATE_TABLE_ITEM_Inward = "CREATE TABLE " + TBL_ITEM_Inward + "( " + KEY_MenuCode +
             " INTEGER PRIMARY KEY, " + KEY_TaxationType + " TEXT, " +
             KEY_SupplyType + " TEXT, " + KEY_SupplierCode + " INTEGER, " + KEY_SUPPLIERNAME + " TEXT, " +
             KEY_HSNCode + " TEXT, " + KEY_ItemName + " TEXT, " + KEY_IGSTRate + " REAL, " + KEY_IGSTAmount + " REAL, " +
-            KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL,"+
+            KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL," +
             KEY_cessRate + " REAL, " + KEY_cessAmount + " REAL," +
-            KEY_ImageUri + " TEXT, " + KEY_Quantity + " REAL, " + KEY_UOM + " TEXT, " + KEY_ItemBarcode + " TEXT, "+
-            KEY_Rate + " REAL, "  +
-            KEY_DiscId + " NUMERIC, " + KEY_DiscountEnable + " NUMERIC, "  +
-            KEY_Count+" INTEGER, "+ KEY_AverageRate+" REAL, "+KEY_TaxType + " NUMERIC )";
+            KEY_ImageUri + " TEXT, " + KEY_Quantity + " REAL, " + KEY_UOM + " TEXT, " + KEY_ItemBarcode + " TEXT, " +
+            KEY_Rate + " REAL, " +
+            KEY_DiscId + " NUMERIC, " + KEY_DiscountEnable + " NUMERIC, " +
+            KEY_Count + " INTEGER, " + KEY_AverageRate + " REAL, " + KEY_TaxType + " NUMERIC )";
 
     String QUERY_CREATE_TABLE_ITEM_Outward = "CREATE TABLE " + TBL_ITEM_Outward + "( "
             + KEY_TaxType + " NUMERIC, "
@@ -832,7 +832,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             KEY_SubTotal + " REAl, " + KEY_BillingMode + " TEXT, " + KEY_ServiceTaxAmount + " REAL, " +
             KEY_ServiceTaxPercent + " REAL," + KEY_ModifierAmount + " REAL, " + KEY_TaxType + " NUMERIC, " +
             KEY_KitchenCode + " NUMERIC, " + KEY_CategCode + " NUMERIC, " + KEY_DeptCode + " NUMERIC, " +
-            KEY_DiscountPercent + " REAL, " + KEY_DiscountAmount + " REAL, " + KEY_TaxAmount + " REAL, " + KEY_BillStatus+" INTEGER, "+
+            KEY_DiscountPercent + " REAL, " + KEY_DiscountAmount + " REAL, " + KEY_TaxAmount + " REAL, " + KEY_BillStatus + " INTEGER, " +
             KEY_TaxPercent + " REAL)";
 
     String QUERY_CREATE_TABLE_Outward_Supply_Items_Details = " CREATE TABLE " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + "( "
@@ -847,11 +847,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_TaxableValue + " TEXT, "
             + KEY_SubTotal + " REAl, "
             + KEY_BillStatus + " NUMERIC,"
-           // + KEY_IGSTRate + " REAL,"
+            // + KEY_IGSTRate + " REAL,"
             + KEY_IGSTAmount + " REAL,"
-           // + KEY_CGSTRate + " REAL,"
+            // + KEY_CGSTRate + " REAL,"
             + KEY_CGSTAmount + " REAL, "
-           // + KEY_SGSTRate + " REAL,"
+            // + KEY_SGSTRate + " REAL,"
             + KEY_SGSTAmount + " REAL,"
             + KEY_cessAmount + " REAL,"
             + KEY_GrandTotal + " REAL, "
@@ -877,17 +877,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_PettyCashPayment + " REAL, "
             + KEY_PaidTotalPayment + " REAL, "
             + KEY_ChangePayment + " REAL, "
-            + KEY_TableNo +" TEXT, "
-            + KEY_Table_Split_No+" TEXT "
-            +")";
+            + KEY_TableNo + " TEXT, "
+            + KEY_Table_Split_No + " TEXT "
+            + ")";
 
     String QUERY_CREATE_TABLE_OUTWARD_SUPPLY_AMMEND = " CREATE TABLE " + TBL_GSTR1_AMEND + " (" +
-            KEY_GSTIN + "  TEXT, " + KEY_CustName + " TEXT, " + KEY_CustStateCode+" TEXT, "+
+            KEY_GSTIN + "  TEXT, " + KEY_CustName + " TEXT, " + KEY_CustStateCode + " TEXT, " +
             KEY_MONTH + " TEXT, " + KEY_SupplyType + " TEXT, " +
             KEY_HSNCode + " TEXT, " + KEY_POS + "  TEXT, " + KEY_SupplyType_REV + " TEXT, " +
             KEY_HSNCode_REV + " TEXT, " + KEY_POS_REV + "  TEXT, " + KEY_TaxableValue + " REAL, " +
             KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL, " +
-            KEY_IGSTRate + " REAL, " +KEY_IGSTAmount + " REAL , " + KEY_cessRate + " REAL," + KEY_cessAmount + " REAL," +
+            KEY_IGSTRate + " REAL, " + KEY_IGSTAmount + " REAL , " + KEY_cessRate + " REAL," + KEY_cessAmount + " REAL," +
             KEY_ProvisionalAssess + "  TEXT, " + KEY_BusinessType + " TEXT,  " +
             KEY_OriginalInvoiceNo + " TEXT , " +
             KEY_OriginalInvoiceDate + " TEXT , " + KEY_InvoiceNo + " TEXT , " + KEY_InvoiceDate + " TEXT , " +
@@ -900,14 +900,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     String QUERY_CREATE_TABLE_CREDITDEBIT_OUTWARD = " CREATE TABLE " + TBL_CreditDebit_Outward + " (" +
             KEY_GSTIN + "  TEXT, " + KEY_CustName + " TEXT, " + KEY_NoteType + " TEXT, " + KEY_NoteNo + " TEXT, " +
             KEY_NoteDate + " TEXT, " + KEY_InvoiceNo + " TEXT , " + KEY_InvoiceDate + " TEXT , " +
-            KEY_AttractsReverseCharge + " TEXT, " + KEY_Reason+" TEXT, "+ KEY_DifferentialValue + " TEXT, " + KEY_CGSTRate + " REAL," +
-            KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL, " +KEY_cessRate + " REAL, " +
-            KEY_cessAmount + " REAL, " + KEY_IGSTRate + " REAL, " +KEY_IGSTAmount + " REAL )";
+            KEY_AttractsReverseCharge + " TEXT, " + KEY_Reason + " TEXT, " + KEY_DifferentialValue + " TEXT, " + KEY_CGSTRate + " REAL," +
+            KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL, " + KEY_cessRate + " REAL, " +
+            KEY_cessAmount + " REAL, " + KEY_IGSTRate + " REAL, " + KEY_IGSTAmount + " REAL )";
 
     String QUERY_CREATE_TABLE_CREDITDEBIT_Inward = " CREATE TABLE " + TBL_CreditDebit_Inward + " (" +
             KEY_GSTIN + "  TEXT, " + KEY_CustName + " TEXT, " + KEY_NoteType + " TEXT, " + KEY_NoteNo + " TEXT, " +
             KEY_NoteDate + " TEXT, " + KEY_InvoiceNo + " TEXT , " + KEY_InvoiceDate + " TEXT , " +
-            KEY_AttractsReverseCharge + " TEXT, " + KEY_Reason+" TEXT, "+
+            KEY_AttractsReverseCharge + " TEXT, " + KEY_Reason + " TEXT, " +
             KEY_DifferentialValue + " TEXT, " + KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAL," + KEY_SGSTRate + " REAL, " +
             KEY_SGSTAmount + " REAL, " + KEY_IGSTRate + " REAL, " + KEY_IGSTAmount + " REAL " + KEY_ITC_Eligible + " TEXT, " +
             KEY_Total_ITC_IGST + " TEXT, " + KEY_Total_ITC_CGST + " TEXT, " + KEY_Total_ITC_SGST + " TEXT, " +
@@ -921,11 +921,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     String QUERY_CREATE_TABLE_GSTR2_AMMEND = " CREATE TABLE " + TBL_GSTR2_AMEND + " ( " +
             KEY_GSTIN_Ori + " TEXT," + KEY_CustName + " TEXT, " + KEY_SupplierType + " TEXT, " + KEY_SupplyType + "  TEXT, " +
             KEY_TaxationType + " TEXT, " + KEY_OriginalInvoiceNo + " TEXT, " + KEY_OriginalInvoiceDate + " TEXT, " +
-            KEY_GSTIN+" TEXT, "+
+            KEY_GSTIN + " TEXT, " +
             KEY_InvoiceNo + " TEXT, " + KEY_InvoiceDate + " TEXT, " + KEY_HSNCode + " TEXT, " + KEY_ItemName + " TEXT, " +
             KEY_Quantity + " NUMERIC, " + KEY_UOM + " TEXT, " + KEY_Value + " REAL, " +
             KEY_DiscountPercent + " NUMERIC, " + KEY_TaxableValue + " REAL, " + KEY_IGSTRate + " REAL, " + KEY_IGSTAmount + " REAL, " +
-            KEY_CGSTRate + " REAL , " + KEY_CGSTAmount + " REAL, " + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL, " +KEY_cessAmount + " REAL, " +
+            KEY_CGSTRate + " REAL , " + KEY_CGSTAmount + " REAL, " + KEY_SGSTRate + " REAL, " + KEY_SGSTAmount + " REAL, " + KEY_cessAmount + " REAL, " +
             KEY_POS + " TEXT, " + KEY_ITC_Eligible + " TEXT, " + KEY_Total_ITC_IGST + " REAL, " + KEY_Total_ITC_CGST + " REAL, " +
             KEY_Total_ITC_SGST + " TEXT, " +
             KEY_MONTH_ITC_IGSTAMT + " TEXT, " + KEY_MONTH_ITC_CGSTAMT + " TEXT, " + KEY_MONTH_ITC_SGSTAMT + " TEXT )";
@@ -959,18 +959,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     String QUERY_CREATE_TABLE_PURCHASE_ORDER = " CREATE TABLE " + TBL_PURCHASEORDER + " ( " +
             KEY_PurchaseOrderNo + " INTEGER, " + KEY_InvoiceNo + " TEXT, " + KEY_InvoiceDate + " TEXT, " +
             KEY_SupplierCode + " INTEGER, " + KEY_SUPPLIERNAME + " TEXT, " + KEY_SupplierPhone + " TEXT, " +
-            KEY_SupplierAddress + " TEXT, " + KEY_GSTIN+" TEXT, "+KEY_SupplierType+" TEXT, "+
-            KEY_SupplierPOS+" TEXT, "+
-            KEY_MenuCode + " INTEGER, " + KEY_SupplyType + " TEXT , " + KEY_HSNCode+" TEXT, "+
+            KEY_SupplierAddress + " TEXT, " + KEY_GSTIN + " TEXT, " + KEY_SupplierType + " TEXT, " +
+            KEY_SupplierPOS + " TEXT, " +
+            KEY_MenuCode + " INTEGER, " + KEY_SupplyType + " TEXT , " + KEY_HSNCode + " TEXT, " +
             KEY_ItemName + " TEXT, " + KEY_Value + " REAL, " + KEY_Quantity + " REAL, " + KEY_UOM + "  TEXT, " + KEY_TaxableValue + " REAL, " +
-            KEY_IGSTRate + " REAL," + KEY_IGSTAmount + " REAl, "+KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAl, "+
-            KEY_SGSTRate + " REAL," + KEY_SGSTAmount + " REAl, "+ KEY_cessRate + " REAL," + KEY_cessAmount + " REAl, "+
+            KEY_IGSTRate + " REAL," + KEY_IGSTAmount + " REAl, " + KEY_CGSTRate + " REAL," + KEY_CGSTAmount + " REAl, " +
+            KEY_SGSTRate + " REAL," + KEY_SGSTAmount + " REAl, " + KEY_cessRate + " REAL," + KEY_cessAmount + " REAl, " +
             KEY_SalesTax + " REAL," + KEY_ServiceTaxAmount + " REAl, " + KEY_Amount + " REAL," + KEY_AdditionalChargeName + " TEXT, " +
             KEY_AdditionalChargeAmount + " REAL , " + KEY_isGoodinward + " INTEGER )";
 
     String QUERY_CREATE_TABLE_GOODS_INWARD = " CREATE TABLE " + TBL_GOODSINWARD + " ( " +
             KEY_MenuCode + " INTEGER PRIMARY KEY,  " + KEY_SupplyType + " TEXT , " + KEY_ItemName + " TEXT, " + KEY_Value + " REAL, " +
-            KEY_Quantity + " REAL, " + KEY_UOM + "  TEXT, "+KEY_SupplierCount+" INTEGER )";
+            KEY_Quantity + " REAL, " + KEY_UOM + "  TEXT, " + KEY_SupplierCount + " INTEGER )";
 
     String QUERY_CREATE_TABLE_INGREDIENTS = " CREATE TABLE " + TBL_INGREDIENTS + " ( " +
             KEY_MenuCode + " INTEGER, " + KEY_ItemName + " TEXT, " + KEY_Quantity + " REAL, " + KEY_UOM + "  TEXT, " +
@@ -1750,7 +1750,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TBL_REPORTSMASTER, null, cvDbValues);
 
 
-
         // Tax Config
         cvDbValues = new ContentValues();
         cvDbValues.put("TaxDescription", "Sales");
@@ -1816,10 +1815,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         long result = dbFNB.insert(TBL_CreditDebit_Inward, null, contentValues);
         return result;
     }
+
     public long editDebit(GSTR1_CDN_Details note, String reason) {
 
-        String whereClause = KEY_InvoiceNo+" LIKE '"+note.getInum()+"' AND "+KEY_InvoiceDate+" LIKE '"+note.getIdt()+"' AND "
-                +KEY_NoteNo+" LIKE '"+note.getNt_num()+"' AND "+KEY_NoteDate+" LIKE '"+note.getNt_dt()+"'";
+        String whereClause = KEY_InvoiceNo + " LIKE '" + note.getInum() + "' AND " + KEY_InvoiceDate + " LIKE '" + note.getIdt() + "' AND "
+                + KEY_NoteNo + " LIKE '" + note.getNt_num() + "' AND " + KEY_NoteDate + " LIKE '" + note.getNt_dt() + "'";
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_Reason, reason);
         contentValues.put(KEY_DifferentialValue, note.getVal());
@@ -1830,9 +1830,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put(KEY_CGSTRate, note.getCrt());
         contentValues.put(KEY_CGSTAmount, note.getSamt());
 
-        long result = dbFNB.update(TBL_CreditDebit_Inward, contentValues,whereClause,null);
+        long result = dbFNB.update(TBL_CreditDebit_Inward, contentValues, whereClause, null);
         return result;
     }
+
     public long addCredit(GSTR1_CDN_Details note, String name, String reason, String reverseCharge) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_GSTIN, name);
@@ -1861,8 +1862,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public long editCredit(GSTR1_CDN_Details note, String reason) {
 
-        String whereClause = KEY_InvoiceNo+" LIKE '"+note.getInum()+"' AND "+KEY_InvoiceDate+" LIKE '"+note.getIdt()+"' AND "
-                +KEY_NoteNo+" LIKE '"+note.getNt_num()+"' AND "+KEY_NoteDate+" LIKE '"+note.getNt_dt()+"'";
+        String whereClause = KEY_InvoiceNo + " LIKE '" + note.getInum() + "' AND " + KEY_InvoiceDate + " LIKE '" + note.getIdt() + "' AND "
+                + KEY_NoteNo + " LIKE '" + note.getNt_num() + "' AND " + KEY_NoteDate + " LIKE '" + note.getNt_dt() + "'";
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_Reason, reason);
         contentValues.put(KEY_DifferentialValue, note.getVal());
@@ -1875,75 +1876,78 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put(KEY_cessRate, note.getCsrt());
         contentValues.put(KEY_cessAmount, note.getCsamt());
 
-        long result = dbFNB.update(TBL_CreditDebit_Outward, contentValues,whereClause,null);
+        long result = dbFNB.update(TBL_CreditDebit_Outward, contentValues, whereClause, null);
         return result;
     }
 
-    public Cursor getCreditDetails(String invoiceNo, String invoiceDate,String type,String custgstin) {
+    public Cursor getCreditDetails(String invoiceNo, String invoiceDate, String type, String custgstin) {
         String selectQuery = "SELECT * FROM " + TBL_CreditDebit_Outward + " WHERE " + KEY_InvoiceDate + " LIKE '" + invoiceDate +
-                "' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_NoteType+" LIKE '"+type+"' AND "+
-                KEY_CustName+" LIKE '"+custgstin+"'";
+                "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_NoteType + " LIKE '" + type + "' AND " +
+                KEY_CustName + " LIKE '" + custgstin + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
-    public Cursor getDebitDetails(String invoiceNo, String invoiceDate,String type,String supplier_gstin) {
+
+    public Cursor getDebitDetails(String invoiceNo, String invoiceDate, String type, String supplier_gstin) {
         String selectQuery = "SELECT * FROM " + TBL_CreditDebit_Inward + " WHERE " + KEY_InvoiceDate + " LIKE '" + invoiceDate +
-                "' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_NoteType+" LIKE '"+type+"' AND "+KEY_GSTIN+" LIKE '"+supplier_gstin+"'";
+                "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_NoteType + " LIKE '" + type + "' AND " + KEY_GSTIN + " LIKE '" + supplier_gstin + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
 
-    public int DeleteOutwardNote(String invoiceNo, String invoiceDate,String creditNo, String creditDate, String noteType) {
+    public int DeleteOutwardNote(String invoiceNo, String invoiceDate, String creditNo, String creditDate, String noteType) {
 
-        String deleteQuery = KEY_InvoiceDate + " LIKE '" + invoiceDate +"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+
-                "' AND "+KEY_NoteNo+" LIKE '"+creditNo+"' AND "+KEY_NoteDate+" LIKE '"+creditDate+"' AND "+KEY_NoteType+" LIKE '"+noteType+"'";
+        String deleteQuery = KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo +
+                "' AND " + KEY_NoteNo + " LIKE '" + creditNo + "' AND " + KEY_NoteDate + " LIKE '" + creditDate + "' AND " + KEY_NoteType + " LIKE '" + noteType + "'";
         return dbFNB.delete(TBL_CreditDebit_Outward, deleteQuery, null);
     }
+
     public int DeleteInwardNote(String invoiceNo, String invoiceDate, String creditNo, String creditDate, String noteType) {
 
-        String deleteQuery = KEY_InvoiceDate + " LIKE '" + invoiceDate +"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+
-                "' AND "+KEY_NoteNo+" LIKE '"+creditNo+"' AND "+KEY_NoteDate+" LIKE '"+creditDate+"' AND "+KEY_NoteType+" LIKE '"+noteType+"'";
+        String deleteQuery = KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo +
+                "' AND " + KEY_NoteNo + " LIKE '" + creditNo + "' AND " + KEY_NoteDate + " LIKE '" + creditDate + "' AND " + KEY_NoteType + " LIKE '" + noteType + "'";
         return dbFNB.delete(TBL_CreditDebit_Inward, deleteQuery, null);
     }
 
     public int getCreditNoteNo(String invoiceNo, String invoiceDate) {
         int max = 1;
-        String whereClause = "SELECT NoteNo FROM "+TBL_CreditDebit_Outward+" WHERE "+KEY_InvoiceNo+" LIKE '"+
-                invoiceNo+"' AND "+KEY_InvoiceDate+" LIKE '"+invoiceDate+"'";
+        String whereClause = "SELECT NoteNo FROM " + TBL_CreditDebit_Outward + " WHERE " + KEY_InvoiceNo + " LIKE '" +
+                invoiceNo + "' AND " + KEY_InvoiceDate + " LIKE '" + invoiceDate + "'";
         Cursor cursor = dbFNB.rawQuery(whereClause, null);
-        if(cursor.moveToNext())
-            max = cursor.getInt(cursor.getColumnIndex("NoteNo")) ;
-        else
-        {
-            cursor = dbFNB.rawQuery("SELECT max(NoteNo) as NoteNo FROM "+TBL_CreditDebit_Outward, null);
-            while(cursor.moveToNext())
-                max = cursor.getInt(cursor.getColumnIndex("NoteNo")) +1 ;
+        if (cursor.moveToNext())
+            max = cursor.getInt(cursor.getColumnIndex("NoteNo"));
+        else {
+            cursor = dbFNB.rawQuery("SELECT max(NoteNo) as NoteNo FROM " + TBL_CreditDebit_Outward, null);
+            while (cursor.moveToNext())
+                max = cursor.getInt(cursor.getColumnIndex("NoteNo")) + 1;
         }
         return max;
     }
+
     public int getMaxCreditNoteNo() {
         int max = 0;
-        Cursor cursor = dbFNB.rawQuery("SELECT NoteNo FROM "+TBL_CreditDebit_Outward, null);
-        while(cursor.moveToNext())
-            max = cursor.getInt(cursor.getColumnIndex("NoteNo")) ;
-        return max+1;
+        Cursor cursor = dbFNB.rawQuery("SELECT NoteNo FROM " + TBL_CreditDebit_Outward, null);
+        while (cursor.moveToNext())
+            max = cursor.getInt(cursor.getColumnIndex("NoteNo"));
+        return max + 1;
     }
+
     public int getMaxDebitNoteNo() {
         int max = 0;
-        Cursor cursor = dbFNB.rawQuery("SELECT NoteNo FROM "+TBL_CreditDebit_Inward, null);
-        while(cursor.moveToNext())
-            max = cursor.getInt(cursor.getColumnIndex("NoteNo")) ;
-        return max+1;
+        Cursor cursor = dbFNB.rawQuery("SELECT NoteNo FROM " + TBL_CreditDebit_Inward, null);
+        while (cursor.moveToNext())
+            max = cursor.getInt(cursor.getColumnIndex("NoteNo"));
+        return max + 1;
     }
 
-    public Cursor getdebitdetails(String invoiceNo, String invoiceDate,String supplierGSTIN)
-    {
+    public Cursor getdebitdetails(String invoiceNo, String invoiceDate, String supplierGSTIN) {
 
-        String selectQuery = "SELECT * FROM " + TBL_CreditDebit_Inward+ " WHERE " + KEY_InvoiceDate + " LIKE '" + invoiceDate +
-                "' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_GSTIN+" LIKE '"+supplierGSTIN+"'";
+        String selectQuery = "SELECT * FROM " + TBL_CreditDebit_Inward + " WHERE " + KEY_InvoiceDate + " LIKE '" + invoiceDate +
+                "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_GSTIN + " LIKE '" + supplierGSTIN + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getInward_taxed(String StartDate, String EndDate) {
         String selectQuery = "SELECT * FROM " + TBL_INWARD_SUPPLY_ITEMS_DETAILS + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + StartDate +
                 "' AND '" + EndDate + "'";
@@ -1987,7 +1991,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String b2b = "B2B";
 
         String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + StartDate +
-                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2B' AND BillStatus =1"+
+                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2B' AND BillStatus =1" +
                 " order by GSTIN asc";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
@@ -1995,36 +1999,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Cursor getitems_b2b(String No, String Date, String cust_GSTIN) {
         String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE " + KEY_InvoiceNo + " Like '" + No + "' AND " +
-                KEY_InvoiceDate + " LIKE '" + Date + "' AND "/*+KEY_GSTIN+" LIKE '"+cust_GSTIN+"' AND "+*/+
-                KEY_BusinessType+" LIKE 'B2B'";
+                KEY_InvoiceDate + " LIKE '" + Date + "' AND "/*+KEY_GSTIN+" LIKE '"+cust_GSTIN+"' AND "+*/ +
+                KEY_BusinessType + " LIKE 'B2B'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getitems_outward_details(String Startdate, String Enddate) {
-        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" +Enddate+"' ";
+        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" + Enddate + "' ";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getitems_outward_details_withDept(String Startdate, String Enddate) {
-        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " , "+TBL_DEPARTMENT+"  WHERE " +KEY_BillStatus+" = 1 AND "+
-                KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" +Enddate+"' AND "+TBL_OUTWARD_SUPPLY_LEDGER+"."+KEY_DeptCode+" = "+TBL_DEPARTMENT+"."+KEY_DeptCode;
+        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " , " + TBL_DEPARTMENT + "  WHERE " + KEY_BillStatus + " = 1 AND " +
+                KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" + Enddate + "' AND " + TBL_OUTWARD_SUPPLY_LEDGER + "." + KEY_DeptCode + " = " + TBL_DEPARTMENT + "." + KEY_DeptCode;
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getitems_outward_details_withCateg(String Startdate, String Enddate) {
-        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " , "+TBL_CATEGORY+"  WHERE " +KEY_BillStatus+" = 1 AND "+
-                KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" +Enddate+"' AND "+TBL_OUTWARD_SUPPLY_LEDGER+"."+KEY_CategCode+" = "+TBL_CATEGORY+"."+KEY_CategCode;
+        String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " , " + TBL_CATEGORY + "  WHERE " + KEY_BillStatus + " = 1 AND " +
+                KEY_InvoiceDate + " BETWEEN '" + Startdate + "' AND '" + Enddate + "' AND " + TBL_OUTWARD_SUPPLY_LEDGER + "." + KEY_CategCode + " = " + TBL_CATEGORY + "." + KEY_CategCode;
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
 
 
-
-    public Cursor getitems_b2ba(String No_ori, String Date_ori,String No, String Date, String cust_GSTIN, String custStateCode) {
+    public Cursor getitems_b2ba(String No_ori, String Date_ori, String No, String Date, String cust_GSTIN, String custStateCode) {
         String selectQuery = "SELECT * FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_InvoiceNo + " Like '" + No + "' AND " +
-                KEY_InvoiceDate + " LIKE '" + Date + "' AND "+KEY_GSTIN+" LIKE '"+cust_GSTIN+"' AND "+ KEY_OriginalInvoiceNo+" LIKE '"+No_ori+"' AND "+KEY_OriginalInvoiceDate
-                +" LIKE '"+Date_ori+"' AND "+KEY_BusinessType+" LIKE 'B2BA' AND "+
-                KEY_CustStateCode+" LIKE '"+custStateCode+"'";
+                KEY_InvoiceDate + " LIKE '" + Date + "' AND " + KEY_GSTIN + " LIKE '" + cust_GSTIN + "' AND " + KEY_OriginalInvoiceNo + " LIKE '" + No_ori + "' AND " + KEY_OriginalInvoiceDate
+                + " LIKE '" + Date_ori + "' AND " + KEY_BusinessType + " LIKE 'B2BA' AND " +
+                KEY_CustStateCode + " LIKE '" + custStateCode + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
@@ -2042,7 +2048,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         /*String selectQuery = "SELECT * FROM "+ TBL_OUTWARD_SUPPLY_LEDGER + " WHERE BusinessType LIKE '"+b2c+"'"; // AND GrandTotal > 250000 AND IGSTRate > 0";*/
         String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + startDate +
                 "' AND '" + endDate + "' AND " + KEY_BusinessType + " LIKE 'B2C' AND " + KEY_SubTotal + " > 250000 "
-                +" AND BillStatus =1 Order By CustStateCode asc";
+                + " AND BillStatus =1 Order By CustStateCode asc";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
@@ -2055,10 +2061,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
-    public Cursor getitems_b2cl_withoutCustName(String No, String Date,  String statecode_str) {
+
+    public Cursor getitems_b2cl_withoutCustName(String No, String Date, String statecode_str) {
         //No = String.valueOf(160005);
         String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE " + KEY_InvoiceNo + " LIKE '" + No + "' AND " +
-                KEY_InvoiceDate + " LIKE '" + Date + "' AND " +  KEY_CustStateCode + " LIKE '" +
+                KEY_InvoiceDate + " LIKE '" + Date + "' AND " + KEY_CustStateCode + " LIKE '" +
                 statecode_str + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
@@ -2131,7 +2138,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public long add_GSTR1_B2CSAmmend(GSTR2_B2B_Amend ammend) {
         ContentValues contentValues = new ContentValues();
-        long result =0;
+        long result = 0;
         try {
             contentValues.put(KEY_MONTH, ammend.getTaxMonth());
             contentValues.put(KEY_HSNCode, ammend.getHsn_ori());
@@ -2157,43 +2164,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
             result = dbFNB.insert(TBL_GSTR1_AMEND, null, contentValues);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
 
     }
-    public Cursor getAmmends_GSTR1_b2cs(String hsn_ori, String taxMonth)
-    {
-        String whereClause = "Select * FROM "+TBL_GSTR1_AMEND+" WHERE "+ KEY_MONTH+" LIKE '"+taxMonth+"' AND "
-                +KEY_HSNCode+" LIKE '"+hsn_ori+"' AND "+KEY_BusinessType+" LIKE 'B2CSA'";
+
+    public Cursor getAmmends_GSTR1_b2cs(String hsn_ori, String taxMonth) {
+        String whereClause = "Select * FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_MONTH + " LIKE '" + taxMonth + "' AND "
+                + KEY_HSNCode + " LIKE '" + hsn_ori + "' AND " + KEY_BusinessType + " LIKE 'B2CSA'";
         return dbFNB.rawQuery(whereClause, null);
     }
-    public long DeleteAmmend_GSTR1_B2CSA(String taxMonth, String hsn_ori, double taxableVal,String pos_ori, String custStateCode,
-                                         double IGSTAmt,double CGSTAmt,double SGSTAmt,double cessAmt)
-    {
-        String deleteClause = KEY_MONTH+" LIKE '"+taxMonth+"' AND "+
-                KEY_HSNCode+" LIKE '"+hsn_ori+"' AND "+KEY_TaxableValue+" = "+taxableVal+" AND "+
-                KEY_IGSTAmount+" = "+IGSTAmt+" AND "+KEY_CGSTAmount+" = "+CGSTAmt+" AND "+
-                KEY_SGSTAmount+" = "+SGSTAmt+" AND "+KEY_cessAmount+" = "+cessAmt+" AND "+
-                KEY_POS+" LIKE '"+pos_ori+"' AND "+KEY_CustStateCode+" LIKE '"+custStateCode+"' AND "+
-                KEY_BusinessType+" LIKE 'B2CSA'";
+
+    public long DeleteAmmend_GSTR1_B2CSA(String taxMonth, String hsn_ori, double taxableVal, String pos_ori, String custStateCode,
+                                         double IGSTAmt, double CGSTAmt, double SGSTAmt, double cessAmt) {
+        String deleteClause = KEY_MONTH + " LIKE '" + taxMonth + "' AND " +
+                KEY_HSNCode + " LIKE '" + hsn_ori + "' AND " + KEY_TaxableValue + " = " + taxableVal + " AND " +
+                KEY_IGSTAmount + " = " + IGSTAmt + " AND " + KEY_CGSTAmount + " = " + CGSTAmt + " AND " +
+                KEY_SGSTAmount + " = " + SGSTAmt + " AND " + KEY_cessAmount + " = " + cessAmt + " AND " +
+                KEY_POS + " LIKE '" + pos_ori + "' AND " + KEY_CustStateCode + " LIKE '" + custStateCode + "' AND " +
+                KEY_BusinessType + " LIKE 'B2CSA'";
         return dbFNB.delete(TBL_GSTR1_AMEND, deleteClause, null);
     }
 
 
     public long add_GSTR2_B2BAmmend(GSTR2_B2B_Amend ammend) {
         ContentValues contentValues = new ContentValues();
-        long result =0;
+        long result = 0;
         try {
             contentValues.put(KEY_GSTIN_Ori, ammend.getGstin_ori());
             contentValues.put(KEY_OriginalInvoiceNo, ammend.getInvoiceNo_ori());
-            Date  d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
+            Date d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
             contentValues.put(KEY_OriginalInvoiceDate, d.getTime());
             contentValues.put(KEY_GSTIN, ammend.getGstin_rev());
             contentValues.put(KEY_InvoiceNo, ammend.getInvoiceNo_rev());
-             d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_rev());
+            d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_rev());
             contentValues.put(KEY_InvoiceDate, d.getTime());
             contentValues.put(KEY_HSNCode, ammend.getHSn());
             contentValues.put(KEY_SupplyType, ammend.getType());
@@ -2211,9 +2217,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             //contentValues.put(KEY_BusinessType,bussinessType);
 
 
-             result = dbFNB.insert(TBL_GSTR2_AMEND, null, contentValues);
-        }catch (Exception e)
-        {
+            result = dbFNB.insert(TBL_GSTR2_AMEND, null, contentValues);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -2222,12 +2227,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public long add_GSTR1_B2CLAmmend(GSTR2_B2B_Amend ammend) {
         ContentValues contentValues = new ContentValues();
-        long result =0;
+        long result = 0;
         try {
             contentValues.put(KEY_CustName, ammend.getRecipientName());
             contentValues.put(KEY_CustStateCode, ammend.getCustStateCode());
             contentValues.put(KEY_OriginalInvoiceNo, ammend.getInvoiceNo_ori());
-            Date  d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
+            Date d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
             contentValues.put(KEY_OriginalInvoiceDate, d.getTime());
 
             contentValues.put(KEY_InvoiceNo, ammend.getInvoiceNo_rev());
@@ -2248,40 +2253,39 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
             result = dbFNB.insert(TBL_GSTR1_AMEND, null, contentValues);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
 
     }
+
     public Cursor getAmmends_GSTR1_b2cl(String recipientName, String recipientStateCode, String inv_no_ori,
-                                        String inv_date_ori, String CustStateCode)
-    {
-        String whereClause = "Select * FROM "+TBL_GSTR1_AMEND+" WHERE "+ KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "
-                +KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+"' AND "/*+KEY_POS+" LIKE '"+pos+*/+
-                /*"' AND "+*/KEY_CustName+" LIKE '"+recipientName+"' AND "+
-                KEY_CustStateCode+" LIKE '"+CustStateCode+"' AND "+KEY_BusinessType+" LIKE 'B2CLA'";
+                                        String inv_date_ori, String CustStateCode) {
+        String whereClause = "Select * FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND "
+                + KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori + "' AND "/*+KEY_POS+" LIKE '"+pos+*/ +
+                /*"' AND "+*/KEY_CustName + " LIKE '" + recipientName + "' AND " +
+                KEY_CustStateCode + " LIKE '" + CustStateCode + "' AND " + KEY_BusinessType + " LIKE 'B2CLA'";
         return dbFNB.rawQuery(whereClause, null);
     }
-    public long DeleteAmmend_GSTR1_b2cl(String inv_no_ori, String inv_date_ori,String inv_no_rev,
-                                        String inv_date_rev,String hsn, double taxableVal,double IGSTAmount,double cessAmount)
-    {
-        String deleteClause = KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "+KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+"' AND "+
-                KEY_InvoiceNo+" LIKE '"+inv_no_rev+"' AND "+KEY_InvoiceDate+" LIKE '"+inv_date_rev+"' AND "+
-                KEY_IGSTAmount+" = "+IGSTAmount+" AND "+KEY_cessAmount+" ="+cessAmount+" AND "+
-                KEY_HSNCode+" LIKE '"+hsn+"' AND "+KEY_TaxableValue+" = "+taxableVal+" AND "+KEY_BusinessType+" LIKE 'B2CLA'";
+
+    public long DeleteAmmend_GSTR1_b2cl(String inv_no_ori, String inv_date_ori, String inv_no_rev,
+                                        String inv_date_rev, String hsn, double taxableVal, double IGSTAmount, double cessAmount) {
+        String deleteClause = KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND " + KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori + "' AND " +
+                KEY_InvoiceNo + " LIKE '" + inv_no_rev + "' AND " + KEY_InvoiceDate + " LIKE '" + inv_date_rev + "' AND " +
+                KEY_IGSTAmount + " = " + IGSTAmount + " AND " + KEY_cessAmount + " =" + cessAmount + " AND " +
+                KEY_HSNCode + " LIKE '" + hsn + "' AND " + KEY_TaxableValue + " = " + taxableVal + " AND " + KEY_BusinessType + " LIKE 'B2CLA'";
         return dbFNB.delete(TBL_GSTR1_AMEND, deleteClause, null);
     }
 
 
     public long add_GSTR1_B2BAmmend(GSTR2_B2B_Amend ammend) {
         ContentValues contentValues = new ContentValues();
-        long result =0;
+        long result = 0;
         try {
             contentValues.put(KEY_GSTIN, ammend.getGstin_ori());
             contentValues.put(KEY_OriginalInvoiceNo, ammend.getInvoiceNo_ori());
-            Date  d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
+            Date d = new SimpleDateFormat("dd-MM-yyyy").parse(ammend.getInvoiceDate_ori());
             contentValues.put(KEY_OriginalInvoiceDate, d.getTime());
             contentValues.put(KEY_Ecom_GSTIN, ammend.getGstin_rev());
             contentValues.put(KEY_InvoiceNo, ammend.getInvoiceNo_rev());
@@ -2305,59 +2309,56 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
             result = dbFNB.insert(TBL_GSTR1_AMEND, null, contentValues);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
 
     }
-    public Cursor getAmmends_GSTR1_b2b(String gstin, String inv_no_ori, String inv_date_ori)
-    {
-        String whereClause = "Select * FROM "+TBL_GSTR1_AMEND+" WHERE "+ KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "+KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+
-                "' AND "+KEY_GSTIN+" LIKE '"+gstin+"' AND "+KEY_BusinessType+" LIKE 'B2BA'";
+
+    public Cursor getAmmends_GSTR1_b2b(String gstin, String inv_no_ori, String inv_date_ori) {
+        String whereClause = "Select * FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND " + KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori +
+                "' AND " + KEY_GSTIN + " LIKE '" + gstin + "' AND " + KEY_BusinessType + " LIKE 'B2BA'";
         return dbFNB.rawQuery(whereClause, null);
     }
-    public long DeleteAmmend_GSTR1_B2BA(String inv_no_ori, String inv_date_ori,String inv_no_rev,
-                                        String inv_date_rev,String hsn, double taxableVal,
-                                        double IgstAmt, double CgstAmt, double SgstAmt)
-    {
-        String deleteClause = KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "+KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+"' AND "+
-                KEY_InvoiceNo+" LIKE '"+inv_no_rev+"' AND "+KEY_InvoiceDate+" LIKE '"+inv_date_rev+"' AND "+
-                KEY_HSNCode+" LIKE '"+hsn+"' AND "+KEY_TaxableValue+" = "+taxableVal+" AND "+
-                KEY_IGSTAmount+" = "+IgstAmt+" AND "+KEY_CGSTAmount+" = "+CgstAmt+" AND "+KEY_SGSTAmount+" = "+SgstAmt+" AND "+
-                KEY_BusinessType+" LIKE 'B2BA'";
+
+    public long DeleteAmmend_GSTR1_B2BA(String inv_no_ori, String inv_date_ori, String inv_no_rev,
+                                        String inv_date_rev, String hsn, double taxableVal,
+                                        double IgstAmt, double CgstAmt, double SgstAmt) {
+        String deleteClause = KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND " + KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori + "' AND " +
+                KEY_InvoiceNo + " LIKE '" + inv_no_rev + "' AND " + KEY_InvoiceDate + " LIKE '" + inv_date_rev + "' AND " +
+                KEY_HSNCode + " LIKE '" + hsn + "' AND " + KEY_TaxableValue + " = " + taxableVal + " AND " +
+                KEY_IGSTAmount + " = " + IgstAmt + " AND " + KEY_CGSTAmount + " = " + CgstAmt + " AND " + KEY_SGSTAmount + " = " + SgstAmt + " AND " +
+                KEY_BusinessType + " LIKE 'B2BA'";
         return dbFNB.delete(TBL_GSTR1_AMEND, deleteClause, null);
     }
 
-    public  String getSupplierGSTIN(String supplierCode)
-    {
-        String whereClause = "Select  GSTIN from "+TBL_Supplier+" WHERE "+KEY_SupplierCode+" LIKE '"+supplierCode+"'";
-        Cursor cursor = dbFNB.rawQuery(whereClause,null);
+    public String getSupplierGSTIN(String supplierCode) {
+        String whereClause = "Select  GSTIN from " + TBL_Supplier + " WHERE " + KEY_SupplierCode + " LIKE '" + supplierCode + "'";
+        Cursor cursor = dbFNB.rawQuery(whereClause, null);
         String gstin = "";
-        if(cursor!=null && cursor.moveToFirst())
+        if (cursor != null && cursor.moveToFirst())
             gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
-        if(gstin==null)
-            gstin="";
+        if (gstin == null)
+            gstin = "";
         return gstin;
 
     }
-    public long DeleteAmmend_GSTR2_B2BA(String inv_no_ori, String inv_date_ori,String inv_no_rev,
-                                        String inv_date_rev,String hsn, double taxableVal,
-                                        double IgstAmt, double CgstAmt, double SgstAmt)
-    {
-        String deleteClause = KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "+KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+"' AND "+
-                KEY_InvoiceNo+" LIKE '"+inv_no_rev+"' AND "+KEY_InvoiceDate+" LIKE '"+inv_date_rev+"' AND "+
-                KEY_IGSTAmount+" = "+IgstAmt+" AND "+KEY_CGSTAmount+" = "+CgstAmt+" AND "+KEY_SGSTAmount+" = "+SgstAmt+" AND "+
-                KEY_HSNCode+" LIKE '"+hsn+"' AND "+KEY_TaxableValue+" = "+taxableVal;
+
+    public long DeleteAmmend_GSTR2_B2BA(String inv_no_ori, String inv_date_ori, String inv_no_rev,
+                                        String inv_date_rev, String hsn, double taxableVal,
+                                        double IgstAmt, double CgstAmt, double SgstAmt) {
+        String deleteClause = KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND " + KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori + "' AND " +
+                KEY_InvoiceNo + " LIKE '" + inv_no_rev + "' AND " + KEY_InvoiceDate + " LIKE '" + inv_date_rev + "' AND " +
+                KEY_IGSTAmount + " = " + IgstAmt + " AND " + KEY_CGSTAmount + " = " + CgstAmt + " AND " + KEY_SGSTAmount + " = " + SgstAmt + " AND " +
+                KEY_HSNCode + " LIKE '" + hsn + "' AND " + KEY_TaxableValue + " = " + taxableVal;
         return dbFNB.delete(TBL_GSTR2_AMEND, deleteClause, null);
     }
 
-    public Cursor getAmmends_GSTR2_b2b(String gstin, String inv_no_ori, String inv_date_ori,String supplierType)
-    {
-        String whereClause = "Select * FROM "+TBL_GSTR2_AMEND+" WHERE "+ KEY_OriginalInvoiceNo+" LIKE '"+inv_no_ori+"' AND "+
-                KEY_OriginalInvoiceDate+" LIKE '"+inv_date_ori+"' AND "+KEY_GSTIN_Ori+" LIKE '"+gstin+"'  AND "+
-                KEY_SupplierType+" LIKE '"+supplierType+"'";
+    public Cursor getAmmends_GSTR2_b2b(String gstin, String inv_no_ori, String inv_date_ori, String supplierType) {
+        String whereClause = "Select * FROM " + TBL_GSTR2_AMEND + " WHERE " + KEY_OriginalInvoiceNo + " LIKE '" + inv_no_ori + "' AND " +
+                KEY_OriginalInvoiceDate + " LIKE '" + inv_date_ori + "' AND " + KEY_GSTIN_Ori + " LIKE '" + gstin + "'  AND " +
+                KEY_SupplierType + " LIKE '" + supplierType + "'";
         return dbFNB.rawQuery(whereClause, null);
     }
 
@@ -2400,8 +2401,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return gstin;
 
     }
+
     public String getOwnerReferenceNo() {
-        String Selectquery = "Select "+KEY_REFERENCE_NO+" FROM " + TBL_OWNER_DETAILS + " WHERE IsMainOffice='YES'";
+        String Selectquery = "Select " + KEY_REFERENCE_NO + " FROM " + TBL_OWNER_DETAILS + " WHERE IsMainOffice='YES'";
         Cursor result = dbFNB.rawQuery(Selectquery, null);
         String refno = null;
         if (result != null) {
@@ -2411,45 +2413,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return refno;
 
     }
+
     public Cursor getOwnerDetail() {
-        String Selectquery = "Select * FROM " + TBL_OWNER_DETAILS ;
+        String Selectquery = "Select * FROM " + TBL_OWNER_DETAILS;
         Cursor result = dbFNB.rawQuery(Selectquery, null);
 
         return result;
 
     }
+
     public Cursor getOwnerDetail_counter() {
         SQLiteDatabase db = getReadableDatabase();
-        String Selectquery = "Select * FROM " + TBL_OWNER_DETAILS ;
+        String Selectquery = "Select * FROM " + TBL_OWNER_DETAILS;
         Cursor result = null;
         try {
             result = db.rawQuery(Selectquery, null);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             result = null;
-        }finally {
+        } finally {
             return result;
         }
-
 
 
     }
 
     public int deleteOwnerDetails() {
         SQLiteDatabase db = getWritableDatabase();
-        int result=0;
-        try{
-             result = db.delete(TBL_OWNER_DETAILS, null, null);
+        int result = 0;
+        try {
+            result = db.delete(TBL_OWNER_DETAILS, null, null);
             return result;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            result =0;
+            result = 0;
 
-        }finally {
+        } finally {
             return result;
         }
     }
+
     public String gettaxeename() {
         String Selectquery = "Select " + KEY_Owner_Name + " FROM " + TBL_OWNER_DETAILS + " WHERE " + KEY_IsMainOffice + " LIKE 'yes'";
         Cursor result = dbFNB.rawQuery(Selectquery, null);
@@ -4037,7 +4040,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cvDbValues.put("DineInPrice2", objItem.getDineIn2());
         cvDbValues.put("DineInPrice3", objItem.getDineIn3());
         cvDbValues.put("PickUpPrice", 0);
-        cvDbValues.put("TakeAwayPrice",0);
+        cvDbValues.put("TakeAwayPrice", 0);
         cvDbValues.put("DeliveryPrice", 0);
         cvDbValues.put("Quantity", objItem.getStock());
         cvDbValues.put("ImageUri", objItem.getImageUri());
@@ -4229,6 +4232,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Cursor getCategoryItems(int DeptCode) {
         return dbFNB.rawQuery("Select CategCode as _id, CategName, DeptCode from Category where DeptCode=" + DeptCode, null);
     }
+
     public Cursor getAllCategories() {
         return dbFNB.rawQuery("Select CategCode as _id, CategName, DeptCode from Category ", null);
     }
@@ -4326,7 +4330,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                           double TakeAwayPrice, double PickUpPrice, double DeliveryPrice, int SalesTaxId, int AdditionalTaxId,
                           int OptionalTaxId1, int OptionalTaxId2, int DiscId, double Stock, int PriceChange, int DiscountEnable,
                           int BillWithStock, String ImageUri, int TaxType, double frate, String hsnCode,
-                          String g_s, String MOU_str, String taxationtype_str, double IGSTRate, double CGSTRate, double SGSTRate,double cessRate,
+                          String g_s, String MOU_str, String taxationtype_str, double IGSTRate, double CGSTRate, double SGSTRate, double cessRate,
                           float fSalesTax, float fServiceTax, int ItemId) {
 
         cvDbValues = new ContentValues();
@@ -4395,7 +4399,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return dbFNB.update(TBL_ITEM_Inward, cvDbValues, "MenuCode=" + objItem.getMenuCode(), null);
     }
 
-    public int updateItem_Inw(int supplierCode, int menuCode, String itemName , float quantity, float rate ) {
+    public int updateItem_Inw(int supplierCode, int menuCode, String itemName, float quantity, float rate) {
         cvDbValues = new ContentValues();
         cvDbValues.put(KEY_Rate, rate);
         cvDbValues.put(KEY_Quantity, quantity);
@@ -4440,10 +4444,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return dbFNB.delete(TBL_ITEM_Inward, "MenuCode=" + MenuCode, null);
     }
+
     public long DeleteSupplierItems_suppliercode(int suppliercode) {
 
         return dbFNB.delete(TBL_SupplierItemLinkage, "SupplierCode=" + suppliercode, null);
     }
+
     public long deleteSupplierItemLinkforItem(int menucode) {
 
         return dbFNB.delete(TBL_SupplierItemLinkage, "MenuCode=" + menucode, null);
@@ -4522,60 +4528,59 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public long addKOT_new(PendingKOT objPendingKOT) {
 
-        long result =0;
+        long result = 0;
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-        cvDbValues = new ContentValues();
+            cvDbValues = new ContentValues();
 
-        cvDbValues.put("TokenNumber", objPendingKOT.getTokenNumber());
-        cvDbValues.put("TableNumber", objPendingKOT.getTableNumber());
-        cvDbValues.put("SubUdfNumber", objPendingKOT.getSubUdfNumber());
-        cvDbValues.put("EmployeeId", objPendingKOT.getEmployeeId());
-        cvDbValues.put("CustId", objPendingKOT.getCusId());
-        cvDbValues.put("Time", objPendingKOT.getTime());
-        cvDbValues.put("ItemNumber", objPendingKOT.getItemNumber());
-        cvDbValues.put("ItemName", objPendingKOT.getItemName());
-        cvDbValues.put("Quantity", objPendingKOT.getQuantity());
-        cvDbValues.put("Rate", objPendingKOT.getRate());
-        cvDbValues.put("Amount", objPendingKOT.getAmount());
-        cvDbValues.put("TaxPercent", objPendingKOT.getTaxPercent());
-        cvDbValues.put("TaxAmount", objPendingKOT.getTaxAmount());
-        cvDbValues.put("DiscountPercent", objPendingKOT.getDiscountPercent());
-        cvDbValues.put("DiscountAmount", objPendingKOT.getDiscountAmount());
-        cvDbValues.put("ModifierAmount", objPendingKOT.getModifierAmount());
-        cvDbValues.put("ServiceTaxPercent", objPendingKOT.getServiceTaxPercent());
-        cvDbValues.put("ServiceTaxAmount", objPendingKOT.getServiceTaxAmount());
-        cvDbValues.put("TaxType", objPendingKOT.getTaxType());
-        cvDbValues.put("DeptCode", objPendingKOT.getDeptCode());
-        cvDbValues.put("CategCode", objPendingKOT.getCategCode());
-        cvDbValues.put("KitchenCode", objPendingKOT.getKitchenCode());
-        cvDbValues.put("OrderMode", objPendingKOT.getOrderMode());
-        cvDbValues.put("IsCheckedOut", objPendingKOT.getIsCheckedOut());
-        cvDbValues.put("TableSplitNo", objPendingKOT.getTableSplitNo());
-        cvDbValues.put("PrintKOTStatus", objPendingKOT.getPrintKOTStatus());
-        cvDbValues.put(KEY_HSNCode, objPendingKOT.getHSNCode());
-        cvDbValues.put(KEY_UOM, objPendingKOT.getUOM());
-        cvDbValues.put(KEY_POS, objPendingKOT.getPOS());
-        cvDbValues.put(KEY_SupplyType, objPendingKOT.getSupplyType());
-        cvDbValues.put(KEY_IGSTRate, objPendingKOT.getIGSTRate());
-        cvDbValues.put(KEY_IGSTAmount, objPendingKOT.getIGSTAmount());
-        cvDbValues.put(KEY_cessRate, objPendingKOT.getCessRate());
-        cvDbValues.put(KEY_cessAmount, objPendingKOT.getCessAmount());
+            cvDbValues.put("TokenNumber", objPendingKOT.getTokenNumber());
+            cvDbValues.put("TableNumber", objPendingKOT.getTableNumber());
+            cvDbValues.put("SubUdfNumber", objPendingKOT.getSubUdfNumber());
+            cvDbValues.put("EmployeeId", objPendingKOT.getEmployeeId());
+            cvDbValues.put("CustId", objPendingKOT.getCusId());
+            cvDbValues.put("Time", objPendingKOT.getTime());
+            cvDbValues.put("ItemNumber", objPendingKOT.getItemNumber());
+            cvDbValues.put("ItemName", objPendingKOT.getItemName());
+            cvDbValues.put("Quantity", objPendingKOT.getQuantity());
+            cvDbValues.put("Rate", objPendingKOT.getRate());
+            cvDbValues.put("Amount", objPendingKOT.getAmount());
+            cvDbValues.put("TaxPercent", objPendingKOT.getTaxPercent());
+            cvDbValues.put("TaxAmount", objPendingKOT.getTaxAmount());
+            cvDbValues.put("DiscountPercent", objPendingKOT.getDiscountPercent());
+            cvDbValues.put("DiscountAmount", objPendingKOT.getDiscountAmount());
+            cvDbValues.put("ModifierAmount", objPendingKOT.getModifierAmount());
+            cvDbValues.put("ServiceTaxPercent", objPendingKOT.getServiceTaxPercent());
+            cvDbValues.put("ServiceTaxAmount", objPendingKOT.getServiceTaxAmount());
+            cvDbValues.put("TaxType", objPendingKOT.getTaxType());
+            cvDbValues.put("DeptCode", objPendingKOT.getDeptCode());
+            cvDbValues.put("CategCode", objPendingKOT.getCategCode());
+            cvDbValues.put("KitchenCode", objPendingKOT.getKitchenCode());
+            cvDbValues.put("OrderMode", objPendingKOT.getOrderMode());
+            cvDbValues.put("IsCheckedOut", objPendingKOT.getIsCheckedOut());
+            cvDbValues.put("TableSplitNo", objPendingKOT.getTableSplitNo());
+            cvDbValues.put("PrintKOTStatus", objPendingKOT.getPrintKOTStatus());
+            cvDbValues.put(KEY_HSNCode, objPendingKOT.getHSNCode());
+            cvDbValues.put(KEY_UOM, objPendingKOT.getUOM());
+            cvDbValues.put(KEY_POS, objPendingKOT.getPOS());
+            cvDbValues.put(KEY_SupplyType, objPendingKOT.getSupplyType());
+            cvDbValues.put(KEY_IGSTRate, objPendingKOT.getIGSTRate());
+            cvDbValues.put(KEY_IGSTAmount, objPendingKOT.getIGSTAmount());
+            cvDbValues.put(KEY_cessRate, objPendingKOT.getCessRate());
+            cvDbValues.put(KEY_cessAmount, objPendingKOT.getCessAmount());
 
-        result = db.insert(TBL_PENDINGKOT, null, cvDbValues);
-    }catch(Exception e )
-    {
-        result = 0;
-        e.printStackTrace();
-    }finally
+            result = db.insert(TBL_PENDINGKOT, null, cvDbValues);
+        } catch (Exception e) {
+            result = 0;
+            e.printStackTrace();
+        } finally
 
-    {
-        return result;
+        {
+            return result;
+        }
     }
-}
 
     public long updateKOT(int ItemNo, float Qty, float Amount, float TaxAmt, float SerTaxAmt, int OrderMode, int PrintKOTStatus
-                    ,float IAmt, float cessAmt) {
+            , float IAmt, float cessAmt) {
         cvDbValues = new ContentValues();
         cvDbValues.put("Quantity", Qty);
         cvDbValues.put("Amount", Amount);
@@ -4587,11 +4592,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public long updateKOT_new(int ItemNo, float Qty, float Amount, float TaxAmt, float SerTaxAmt, int OrderMode, int PrintKOTStatus
-                    ,float IAmt, float cessAmt) {
+            , float IAmt, float cessAmt) {
         SQLiteDatabase db = this.getWritableDatabase();
-        long result =0;
-        try
-        {
+        long result = 0;
+        try {
             cvDbValues = new ContentValues();
             cvDbValues.put("Quantity", Qty);
             cvDbValues.put("Amount", Amount);
@@ -4599,12 +4603,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cvDbValues.put("ServiceTaxAmount", SerTaxAmt);
             cvDbValues.put(KEY_IGSTAmount, IAmt);
             cvDbValues.put(KEY_cessAmount, cessAmt);
-            result =  db.update(TBL_PENDINGKOT, cvDbValues, "ItemNumber=" + ItemNo + " AND OrderMode=" + OrderMode, null);// AND PrintKOTStatus = " + PrintKOTStatus, null);
-        }catch (Exception e)
-        {
+            result = db.update(TBL_PENDINGKOT, cvDbValues, "ItemNumber=" + ItemNo + " AND OrderMode=" + OrderMode, null);// AND PrintKOTStatus = " + PrintKOTStatus, null);
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return result;
         }
 
@@ -4635,6 +4637,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         " AND ItemNumber=" + ItemNo + " AND OrderMode=" + OrderMode + " AND PrintKOTStatus = " + PrintStatus
                 , null, null, null, null);
     }
+
     public Cursor getItemsForUpdatingKOT_new(int TableNo, int SubUdfNo, int TableSplitNo, int ItemNo, int OrderMode) {
         int PrintStatus = 0;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -4644,12 +4647,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "TableNumber=" + TableNo + " AND SubUdfNumber=" + SubUdfNo + " AND TableSplitNo=" + TableSplitNo +
                             " AND ItemNumber=" + ItemNo + " AND OrderMode=" + OrderMode + " AND PrintKOTStatus = " + PrintStatus
                     , null, null, null, null);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             cursor = null;
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return cursor;
         }
     }
@@ -4670,97 +4671,82 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor crsr = null;
-        try
-        {
+        try {
             crsr = db.rawQuery("Select * from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "' AND "
-                    +KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null);
-        }
-        catch(Exception e)
-        {
+                    + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null);
+        } catch (Exception e) {
             e.printStackTrace();
             crsr = null;
-        }
-        finally {
-            return crsr;
-        }
-    }public Cursor getItemsFromBillItem(int InvoiceNo, String InvoiceDate) {
-        // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
-        /*SQLiteDatabase db = this.getReadableDatabase();*/
-        Cursor crsr = null;
-        try
-        {
-            crsr = dbFNB.rawQuery("Select * from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "' AND "
-                    +KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            crsr = null;
-        }
-        finally {
+        } finally {
             return crsr;
         }
     }
+
+    public Cursor getItemsFromBillItem(int InvoiceNo, String InvoiceDate) {
+        // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
+        /*SQLiteDatabase db = this.getReadableDatabase();*/
+        Cursor crsr = null;
+        try {
+            crsr = dbFNB.rawQuery("Select * from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "' AND "
+                    + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            crsr = null;
+        } finally {
+            return crsr;
+        }
+    }
+
     public int getBillingModeBillNumber(int InvoiceNo) {
         // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor crsr = null;
-        int discount  = 0;
-        try
-        {
+        int discount = 0;
+        try {
             crsr = db.rawQuery("Select * from " + TBL_BILLDETAIL + " where InvoiceNo = '" + InvoiceNo + "'", null);
-            if(crsr!= null && crsr.moveToFirst())
+            if (crsr != null && crsr.moveToFirst())
                 discount = crsr.getInt(crsr.getColumnIndex(KEY_BillingMode));
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             discount = 0;
-        }
-        finally {
+        } finally {
             return discount;
         }
     }
+
     public float getDiscountAmountForBillNumber(int InvoiceNo) {
         // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor crsr = null;
-        float discount  = 0;
-        try
-        {
+        float discount = 0;
+        try {
             crsr = db.rawQuery("Select * from " + TBL_BILLDETAIL + " where InvoiceNo = '" + InvoiceNo + "'", null);
-            if(crsr!= null && crsr.moveToFirst())
+            if (crsr != null && crsr.moveToFirst())
                 discount = crsr.getFloat(crsr.getColumnIndex("TotalDiscountAmount"));
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             discount = 0;
-        }
-        finally {
+        } finally {
             return discount;
         }
     }
+
     public float getDiscountPercentForBillNumber(int InvoiceNo) {
         // return dbFNB.rawQuery("Select * from BillItem, BillDetail where BillDetail.BillNumber = '" + BillNumber + "' AND BillItem.BillNumber = BillDetail.BillNumber", null);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor crsr = null;
-        float discount  = 0;
-        try
-        {
+        float discount = 0;
+        try {
             crsr = db.rawQuery("Select * from " + TBL_BILLDETAIL + " where InvoiceNo = '" + InvoiceNo + "'", null);
-            if(crsr!= null && crsr.moveToFirst())
+            if (crsr != null && crsr.moveToFirst())
                 discount = crsr.getFloat(crsr.getColumnIndex(KEY_DiscPercentage));
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             discount = 0;
-        }
-        finally {
+        } finally {
             return discount;
         }
     }
@@ -4774,7 +4760,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Cursor getItemsForOtherChargesPrint(String jBillingMode) {
 
         return dbFNB.rawQuery("Select * from " + TBL_KOTMODIFIER + " where ModifierModes LIKE '" +
-                jBillingMode+ "' AND "+KEY_IsChargeable+" LIKE '1'", null);
+                jBillingMode + "' AND " + KEY_IsChargeable + " LIKE '1'", null);
     }
 
     // -----Retrieve KOT items for service tax print
@@ -4811,19 +4797,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return dbFNB.delete(TBL_PENDINGKOT, "ItemNumber=" + ItemNumber + " AND TokenNumber=" + TokenNumber + " AND SubUdfNumber=" + SubUdfNumber, null);
     }
- public int deleteKOTItemsByItemToken_new(String ItemNumber, int TokenNumber, int SubUdfNumber) {
 
-     SQLiteDatabase db = this.getWritableDatabase();
-     int result =0;
-     try {
-         result = db.delete(TBL_PENDINGKOT, "ItemNumber=" + ItemNumber + " AND TokenNumber=" + TokenNumber + " AND SubUdfNumber=" + SubUdfNumber, null);
-     }catch (Exception e)
-     {
-         e.printStackTrace();
-         result =0;
-     }finally {
-         return result;
-     }
+    public int deleteKOTItemsByItemToken_new(String ItemNumber, int TokenNumber, int SubUdfNumber) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = 0;
+        try {
+            result = db.delete(TBL_PENDINGKOT, "ItemNumber=" + ItemNumber + " AND TokenNumber=" + TokenNumber + " AND SubUdfNumber=" + SubUdfNumber, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = 0;
+        } finally {
+            return result;
+        }
 
     }
 
@@ -4894,7 +4880,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cvDbValues.put(KEY_Table_Split_No, DestinationTblSplitNo);
 
         return dbFNB.update(TBL_PENDINGKOT, cvDbValues,
-                "TableNumber=" + SourceTable + " AND "+KEY_Table_Split_No+" =" + SourceTblSplitNo, null);
+                "TableNumber=" + SourceTable + " AND " + KEY_Table_Split_No + " =" + SourceTblSplitNo, null);
     }
 
     // -----Update table number after shifting KOT------
@@ -4937,28 +4923,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return dbFNB.insert(TBL_DELETEDKOT, null, cvDbValues);
     }
-public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
-    SQLiteDatabase db = this.getWritableDatabase();
-    long result =0;
-    try {
-        cvDbValues = new ContentValues();
 
-        cvDbValues.put("Reason", objDeletedKOT.getReason());
-        cvDbValues.put("EmployeeId", objDeletedKOT.getEmployeeId());
-        cvDbValues.put("SubUdfNumber", objDeletedKOT.getSubudfNumber());
-        cvDbValues.put("TableNumber", objDeletedKOT.getTableNumber());
-        cvDbValues.put("Time", objDeletedKOT.getTime());
-        cvDbValues.put("TokenNumber", objDeletedKOT.getTokenNumber());
+    public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = 0;
+        try {
+            cvDbValues = new ContentValues();
 
-        result = db.insert(TBL_DELETEDKOT, null, cvDbValues);
-    }catch (Exception e)
-    {
-        result =0;
-        e.printStackTrace();
-    }
-    finally {
-        return result;
-    }
+            cvDbValues.put("Reason", objDeletedKOT.getReason());
+            cvDbValues.put("EmployeeId", objDeletedKOT.getEmployeeId());
+            cvDbValues.put("SubUdfNumber", objDeletedKOT.getSubudfNumber());
+            cvDbValues.put("TableNumber", objDeletedKOT.getTableNumber());
+            cvDbValues.put("Time", objDeletedKOT.getTime());
+            cvDbValues.put("TokenNumber", objDeletedKOT.getTokenNumber());
+
+            result = db.insert(TBL_DELETEDKOT, null, cvDbValues);
+        } catch (Exception e) {
+            result = 0;
+            e.printStackTrace();
+        } finally {
+            return result;
+        }
     }
 
     // -----Delete all KOT items from Pending KOT table-----
@@ -5018,9 +5003,9 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
 
     public long updateBill(BillDetail objBillDetail) {
         ContentValues cv = new ContentValues();
-        cv.put(KEY_BillAmount,objBillDetail.getBillAmount());
-        return dbFNB.update(TBL_BILLDETAIL,cv,KEY_InvoiceNo+"="+objBillDetail.getBillNumber()+" AND "
-                +KEY_InvoiceDate+"="+objBillDetail.getDate()+" AND "+KEY_CustId+" ="+objBillDetail.getCustId(),null);
+        cv.put(KEY_BillAmount, objBillDetail.getBillAmount());
+        return dbFNB.update(TBL_BILLDETAIL, cv, KEY_InvoiceNo + "=" + objBillDetail.getBillNumber() + " AND "
+                + KEY_InvoiceDate + "=" + objBillDetail.getDate() + " AND " + KEY_CustId + " =" + objBillDetail.getCustId(), null);
 
     }
 
@@ -5077,19 +5062,19 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
     }
 
     public int getLastBillNoforDate(String date_str) {
-        Cursor cursor = dbFNB.rawQuery("SELECT MAX(InvoiceNo) as InvoiceNo FROM "+TBL_OUTWARD_SUPPLY_ITEMS_DETAILS+" WHERE "+
-                KEY_InvoiceDate+" LIKE '"+date_str+"'", null);
-        int invno =0;
-        if(cursor!=null && cursor.moveToFirst()){
+        Cursor cursor = dbFNB.rawQuery("SELECT MAX(InvoiceNo) as InvoiceNo FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE " +
+                KEY_InvoiceDate + " LIKE '" + date_str + "'", null);
+        int invno = 0;
+        if (cursor != null && cursor.moveToFirst()) {
             invno = cursor.getInt(cursor.getColumnIndex(KEY_InvoiceNo));
         }
         return invno;
     }
 
     public int getLastBillNo() {
-        Cursor cursor = dbFNB.rawQuery("SELECT MAX(InvoiceNo) as InvoiceNo FROM "+TBL_OUTWARD_SUPPLY_ITEMS_DETAILS, null);
-        int invno =0;
-        if(cursor!=null && cursor.moveToFirst()){
+        Cursor cursor = dbFNB.rawQuery("SELECT MAX(InvoiceNo) as InvoiceNo FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS, null);
+        int invno = 0;
+        if (cursor != null && cursor.moveToFirst()) {
             invno = cursor.getInt(cursor.getColumnIndex(KEY_InvoiceNo));
         }
         return invno;
@@ -5124,7 +5109,7 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
         return dbFNB.update("BillNoConfiguration", cvDbValues, null, null);
     }
 
-    public int UpdateBillNoResetwithDate(String period, String date , int invoiceNo) {
+    public int UpdateBillNoResetwithDate(String period, String date, int invoiceNo) {
 //        Date d = new Date();
 //        CharSequence s = android.text.format.DateFormat.format("dd-MM-yyyy", d.getTime());
 //        Calendar cal = Calendar.getInstance(); //adding one day to current date cal.add(Calendar.DAY_OF_MONTH, 1); Date tommrrow = cal.getTime();
@@ -5156,23 +5141,25 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
     public Cursor getBillDetail(int InvoiceNumber) {
         return dbFNB.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber, null, null, null, null);
     }
+
     public Cursor getBillDetail_counter(int InvoiceNumber) {
         SQLiteDatabase db = getWritableDatabase();
-        if(db!=null)
-        return db.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber, null, null, null, null);
+        if (db != null)
+            return db.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber, null, null, null, null);
         else
             return null;
     }
 
     public Cursor getBillDetail(int InvoiceNumber, String InvoiceDate) {
-        return dbFNB.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber+
-                " AND "+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null, null, null, null);
+        return dbFNB.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber +
+                " AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null, null, null, null);
     }
+
     public Cursor getBillDetail_counter(int InvoiceNumber, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
-        if(db!=null)
-            return db.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber+
-                " AND "+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null, null, null, null);
+        if (db != null)
+            return db.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber +
+                    " AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null, null, null, null);
         else
             return null;
     }
@@ -5197,7 +5184,7 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
 
 
     // -----Retrieve single bill details by Customer Id-----
-    public Cursor getBillDetailByCustomerWithTime(int CustId, int BillStatus, float BillAmount ) {
+    public Cursor getBillDetailByCustomerWithTime(int CustId, int BillStatus, float BillAmount) {
         try {
             Date date1 = new Date();
             CharSequence sdate = android.text.format.DateFormat.format("dd-MM-yyyy", date1.getTime());
@@ -5242,7 +5229,7 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
                 paid =cursor.getInt(cursor.getColumnIndex(KEY_InvoiceNo));
 
         }*/
-   // }
+    // }
 
 //    public Cursor getBillDetailByCustomerWithTime1(int CustId, int BillStatus, float BillAmount ,String time) {
 //
@@ -5252,44 +5239,40 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
 //                "' AND BillAmount = '" + BillAmount + "' AND "+KEY_Time +" LIKE '" + time + "' ", null, null, null, null);
 //    }
 
-    public int getBillDetailByCustomerWithTime1(int CustId, int BillStatus, double BillAmount ,String time) {
+    public int getBillDetailByCustomerWithTime1(int CustId, int BillStatus, double BillAmount, String time) {
 
-        int paid =0;
+        int paid = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        try
-        {
-            Cursor cursor =  db.query(TBL_BILLDETAIL, new String[]{"*"}, "CustId= '" + CustId + "' AND BillStatus = '" + BillStatus +
-                    "'  AND "+KEY_Time +" LIKE '" + time + "' ", null, null, null, null);
-            while(cursor !=null && cursor.moveToNext() && paid < 1 )
-            {
+        try {
+            Cursor cursor = db.query(TBL_BILLDETAIL, new String[]{"*"}, "CustId= '" + CustId + "' AND BillStatus = '" + BillStatus +
+                    "'  AND " + KEY_Time + " LIKE '" + time + "' ", null, null, null, null);
+            while (cursor != null && cursor.moveToNext() && paid < 1) {
                 double billamount = cursor.getDouble(cursor.getColumnIndex(KEY_BillAmount));
-                float ff = Float.parseFloat(String.format("%.2f",billamount));
-               double roundedAmount_database = Math.ceil(ff);
-               double roundedAmount_received = Math.ceil(BillAmount);
+                float ff = Float.parseFloat(String.format("%.2f", billamount));
+                double roundedAmount_database = Math.ceil(ff);
+                double roundedAmount_received = Math.ceil(BillAmount);
                 //Log.d("roundedAmount_database",String.valueOf(roundedAmount_database));
                 //Log.d("roundedAmount_received",String.valueOf(roundedAmount_received));
-                if(roundedAmount_database ==roundedAmount_received )
-                    paid =cursor.getInt(cursor.getColumnIndex(KEY_InvoiceNo));
+                if (roundedAmount_database == roundedAmount_received)
+                    paid = cursor.getInt(cursor.getColumnIndex(KEY_InvoiceNo));
 
             }
-        }catch (Exception e)
-        {
-            paid =0;
+        } catch (Exception e) {
+            paid = 0;
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return paid;
         }
 
     }
 
-    public Cursor getBillDetailByCustomerIdTime(int CustId, int BillStatus, String time,int billingMode  ) {
+    public Cursor getBillDetailByCustomerIdTime(int CustId, int BillStatus, String time, int billingMode) {
 
-        Cursor cursor =null;
+        Cursor cursor = null;
         SQLiteDatabase db = this.getReadableDatabase();
         try {
-             cursor = db.query(TBL_BILLDETAIL, new String[]{"*"}, "CustId= '" + CustId + "' AND BillStatus = '" + BillStatus +
-                    "'  AND " + KEY_Time + " LIKE '" + time + "' AND "+KEY_BillingMode+" = "+billingMode, null, null, null, null);
+            cursor = db.query(TBL_BILLDETAIL, new String[]{"*"}, "CustId= '" + CustId + "' AND BillStatus = '" + BillStatus +
+                    "'  AND " + KEY_Time + " LIKE '" + time + "' AND " + KEY_BillingMode + " = " + billingMode, null, null, null, null);
 
         } catch (Exception e) {
             cursor = null;
@@ -5298,43 +5281,39 @@ public long addDeletedKOT_new(DeletedKOT objDeletedKOT) {
             return cursor;
         }
     }
+
     // -----Void Bill-----
-    public int makeBillVoids(int InvoiceNo , String InvoiceDate) {
-        SQLiteDatabase db ;
+    public int makeBillVoids(int InvoiceNo, String InvoiceDate) {
+        SQLiteDatabase db;
         int result = 0;
-        try
-        {
+        try {
             db = this.getReadableDatabase();
             cvDbValues = new ContentValues();
             cvDbValues.put(KEY_BillStatus, 0);
-            result =db.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo+" AND "+
-                    KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null);
-        }catch (Exception e)
-        {
-           e.printStackTrace();
-            result =0;
-        }
-        finally {
-             return result;
+            result = db.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo + " AND " +
+                    KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = 0;
+        } finally {
+            return result;
         }
 
     }
-public int makeBillVoid(int InvoiceNo ) {
-        SQLiteDatabase db ;
+
+    public int makeBillVoid(int InvoiceNo) {
+        SQLiteDatabase db;
         int result = 0;
-        try
-        {
+        try {
             db = this.getReadableDatabase();
             cvDbValues = new ContentValues();
             cvDbValues.put(KEY_BillStatus, 0);
-            result =db.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo, null);
-        }catch (Exception e)
-        {
-           e.printStackTrace();
-            result =0;
-        }
-        finally {
-             return result;
+            result = db.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = 0;
+        } finally {
+            return result;
         }
 
     }
@@ -5370,11 +5349,12 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return dbFNB.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo, null);
     }
+
     public int updatePendingDeliveryBill_Ledger(int InvoiceNo, float PaidTotalPayment) {
         cvDbValues = new ContentValues();
         cvDbValues.put("BillStatus", 1);
 
-        String whereClaus = KEY_InvoiceNo + "=" + InvoiceNo+" AND "+KEY_BillStatus+" = 2 ";
+        String whereClaus = KEY_InvoiceNo + "=" + InvoiceNo + " AND " + KEY_BillStatus + " = 2 ";
         return dbFNB.update(TBL_OUTWARD_SUPPLY_LEDGER, cvDbValues, whereClaus, null);
     }
 
@@ -5559,21 +5539,22 @@ public int makeBillVoid(int InvoiceNo ) {
         //String QUERY_REPORT = "Select * from "+TBL_BILLDETAIL+" where "+"BillStatus=1 AND InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'";
         //return dbFNB.rawQuery(QUERY_REPORT,null);
         return dbFNB.query(TBL_BILLDETAIL, new String[]{"*"},
-                " BillStatus=1 AND InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null, null, null,KEY_InvoiceDate);
+                " BillStatus=1 AND InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null, null, null, KEY_InvoiceDate);
     }
 
 
     public Cursor getoutwardStock(String Date) {
         Cursor cursor = null;
-        cursor =dbFNB.query(TBL_StockOutward, new String []{"*"},KEY_BusinessDate+" LIKE '"+Date+"'",null, null,null,null,null);
+        cursor = dbFNB.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + Date + "'", null, null, null, null, null);
         return cursor;
     }
 
     public Cursor getinwardStock(String Date) {
         Cursor cursor = null;
-        cursor =dbFNB.query(TBL_StockInward, new String []{"*"},KEY_BusinessDate+" LIKE '"+Date+"'",null, null,null,null,null);
+        cursor = dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + Date + "'", null, null, null, null, null);
         return cursor;
     }
+
     // richa_2012
     // -----Bill wise and Transaction Report-----
     public Cursor getBillingReport(String StartDate, String EndDate, int billingMode) {
@@ -5581,8 +5562,9 @@ public int makeBillVoid(int InvoiceNo ) {
                 "BillStatus=1 AND InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "' AND " + KEY_BillingMode + " LIKE '"
                         + billingMode + "'", null, null, null, KEY_InvoiceDate);
     }
+
     public Cursor getStockOutwardForBusinessdate(String businessDate) {
-        return dbFNB.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate+" LIKE '"+businessDate+"'",
+        return dbFNB.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + businessDate + "'",
                 null, null, null, null);
     }
 
@@ -5590,7 +5572,7 @@ public int makeBillVoid(int InvoiceNo ) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_BusinessDate, businessDate_str);
-        cvdbValues.put(KEY_MenuCode,item.getMenuCode());
+        cvdbValues.put(KEY_MenuCode, item.getMenuCode());
         cvdbValues.put(KEY_ItemName, item.getItemName());
         cvdbValues.put(KEY_OpeningStock, item.getOpeningStock());
         cvdbValues.put(KEY_ClosingStock, item.getClosingStock());
@@ -5603,8 +5585,8 @@ public int makeBillVoid(int InvoiceNo ) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_ClosingStock, item.getClosingStock());
-        l = dbFNB.update(TBL_StockOutward, cvdbValues, KEY_MenuCode+" ="+item.getMenuCode()+" AND "+
-                KEY_BusinessDate+" LIKE '"+businessDate_str+"'", null);
+        l = dbFNB.update(TBL_StockOutward, cvdbValues, KEY_MenuCode + " =" + item.getMenuCode() + " AND " +
+                KEY_BusinessDate + " LIKE '" + businessDate_str + "'", null);
         return l;
     }
 
@@ -5612,57 +5594,58 @@ public int makeBillVoid(int InvoiceNo ) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_OpeningStock, item.getOpeningStock());
-        l = dbFNB.update(TBL_StockOutward, cvdbValues, KEY_MenuCode+" ="+item.getMenuCode()+" AND "+
-                KEY_BusinessDate+" LIKE '"+businessDate_str+"'", null);
+        l = dbFNB.update(TBL_StockOutward, cvdbValues, KEY_MenuCode + " =" + item.getMenuCode() + " AND " +
+                KEY_BusinessDate + " LIKE '" + businessDate_str + "'", null);
         return l;
     }
 
-    public Cursor getOutwardStockItem(String currentdate,int MenuCode) {
-        Cursor cursor =null;
-        cursor =  dbFNB.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate+" LIKE '"+currentdate+"' AND "+
-                KEY_MenuCode+" = "+MenuCode, null, null, null, null);
+    public Cursor getOutwardStockItem(String currentdate, int MenuCode) {
+        Cursor cursor = null;
+        cursor = dbFNB.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + currentdate + "' AND " +
+                KEY_MenuCode + " = " + MenuCode, null, null, null, null);
         return cursor;
     }
-    public Cursor getOutwardStockItem_counter(String currentdate,int MenuCode) {
-        Cursor cursor =null;
+
+    public Cursor getOutwardStockItem_counter(String currentdate, int MenuCode) {
+        Cursor cursor = null;
         SQLiteDatabase db = getWritableDatabase();
-        try{
-            if(db!=null)
-            {
-                cursor =  db.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate+" LIKE '"+currentdate+"' AND "+
-                        KEY_MenuCode+" = "+MenuCode, null, null, null, null);
+        try {
+            if (db != null) {
+                cursor = db.query(TBL_StockOutward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + currentdate + "' AND " +
+                        KEY_MenuCode + " = " + MenuCode, null, null, null, null);
             }
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return cursor;
         }
 
     }
+
     public int clearOutwardStock(String currentdate) {
-       int del =0;
-        del =  dbFNB.delete(TBL_StockOutward, KEY_BusinessDate+" LIKE '"+currentdate+"' ",null);
+        int del = 0;
+        del = dbFNB.delete(TBL_StockOutward, KEY_BusinessDate + " LIKE '" + currentdate + "' ", null);
         return del;
     }
 
 
-    public Cursor getInwardStockItem(String currentdate,int MenuCode) {
-        Cursor cursor =null;
-        cursor =  dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_BusinessDate+" LIKE '"+currentdate+"' AND "+
-                KEY_MenuCode+" = "+MenuCode, null, null, null, null);
+    public Cursor getInwardStockItem(String currentdate, int MenuCode) {
+        Cursor cursor = null;
+        cursor = dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + currentdate + "' AND " +
+                KEY_MenuCode + " = " + MenuCode, null, null, null, null);
         return cursor;
     }
 
     public Cursor getStockInwardForBusinessdate(String businessDate) {
-        return dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_BusinessDate+" LIKE '"+businessDate+"'",
+        return dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_BusinessDate + " LIKE '" + businessDate + "'",
                 null, null, null, null);
     }
+
     public long insertStockInward(ItemStock item, String businessDate_str) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_BusinessDate, businessDate_str);
-        cvdbValues.put(KEY_MenuCode,item.getMenuCode());
+        cvdbValues.put(KEY_MenuCode, item.getMenuCode());
         cvdbValues.put(KEY_ItemName, item.getItemName());
         cvdbValues.put(KEY_OpeningStock, item.getOpeningStock());
         cvdbValues.put(KEY_ClosingStock, item.getClosingStock());
@@ -5673,7 +5656,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
     public Cursor getInwardStock(String itemname) {
         Cursor cursor = null;
-        cursor =dbFNB.query(TBL_StockInward, new String []{"*"},KEY_ItemName+" LIKE '"+itemname+"'",null, null,null,null,null);
+        cursor = dbFNB.query(TBL_StockInward, new String[]{"*"}, KEY_ItemName + " LIKE '" + itemname + "'", null, null, null, null, null);
         return cursor;
     }
 
@@ -5681,8 +5664,8 @@ public int makeBillVoid(int InvoiceNo ) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_OpeningStock, item.getOpeningStock());
-        l = dbFNB.update(TBL_StockInward, cvdbValues, KEY_MenuCode+" ="+item.getMenuCode()+" AND "+
-                KEY_BusinessDate+" LIKE '"+businessDate_str+"'", null);
+        l = dbFNB.update(TBL_StockInward, cvdbValues, KEY_MenuCode + " =" + item.getMenuCode() + " AND " +
+                KEY_BusinessDate + " LIKE '" + businessDate_str + "'", null);
         return l;
     }
 
@@ -5690,8 +5673,8 @@ public int makeBillVoid(int InvoiceNo ) {
         long l = 0;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_ClosingStock, item.getClosingStock());
-        l = dbFNB.update(TBL_StockInward, cvdbValues, KEY_MenuCode+" ="+item.getMenuCode()+" AND "+
-                KEY_BusinessDate+" LIKE '"+businessDate_str+"'", null);
+        l = dbFNB.update(TBL_StockInward, cvdbValues, KEY_MenuCode + " =" + item.getMenuCode() + " AND " +
+                KEY_BusinessDate + " LIKE '" + businessDate_str + "'", null);
         return l;
     }
 
@@ -5703,13 +5686,13 @@ public int makeBillVoid(int InvoiceNo ) {
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }*/
-    public Cursor getTaxDetailforBill(String Invoiceno, String Invoicedate, String taxPercentName, String taxAmountName)
-    {
-        String selectQuery = "Select "+taxPercentName+" , "+taxAmountName+" ,"+KEY_TaxableValue+","+KEY_DiscountAmount+" FROM "+TBL_OUTWARD_SUPPLY_LEDGER+
-                " WHERE "+KEY_InvoiceNo+" LIKE '"+Invoiceno+"' AND "+KEY_InvoiceDate+" LIKE '"+Invoicedate+"'";
+    public Cursor getTaxDetailforBill(String Invoiceno, String Invoicedate, String taxPercentName, String taxAmountName) {
+        String selectQuery = "Select " + taxPercentName + " , " + taxAmountName + " ," + KEY_TaxableValue + "," + KEY_DiscountAmount + " FROM " + TBL_OUTWARD_SUPPLY_LEDGER +
+                " WHERE " + KEY_InvoiceNo + " LIKE '" + Invoiceno + "' AND " + KEY_InvoiceDate + " LIKE '" + Invoicedate + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
+
     public Cursor getTaxReport(String StartDate, String EndDate) {
         /*return dbFNB.rawQuery("SELECT * FROM BillDetail, BillItem, TaxConfig WHERE BillDetail.BillStatus=1 AND "
                 + "BillItem.BillNumber=BillDetail.BillNumber AND BillItem.TaxPercent=TaxConfig.TaxPercentage AND "
@@ -5725,17 +5708,15 @@ public int makeBillVoid(int InvoiceNo ) {
                 "OutwardSuppyItemsDetails.InvoiceDate BETWEEN '"+StartDate+"' AND '"+EndDate+"'", null);*/
         return dbFNB.rawQuery("SELECT  CGSTRate,CGSTAmount,Value FROM OutwardSuppyItemsDetails,OutwardSupplyLedger  WHERE OutwardSuppyItemsDetails.BillStatus =1 " +
                 " AND OutwardSuppyItemsDetails.InvoiceNo = OutwardSupplyLedger.InvoiceNo " +
-                " AND OutwardSuppyItemsDetails.InvoiceDate BETWEEN '"+StartDate+"' AND '"+EndDate+"'", null);
+                " AND OutwardSuppyItemsDetails.InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
     }
 
     public Cursor getTaxReport_Service(String StartDate, String EndDate) {
 
         return dbFNB.rawQuery("SELECT  ServiceTaxPercent,ServiceTaxAmount,Value FROM OutwardSuppyItemsDetails,OutwardSupplyLedger WHERE OutwardSuppyItemsDetails.BillStatus =1 " +
                 " AND OutwardSuppyItemsDetails.InvoiceNo = OutwardSupplyLedger.InvoiceNo " +
-                " AND OutwardSuppyItemsDetails.InvoiceDate BETWEEN '"+StartDate+"' AND '"+EndDate+"'", null);
+                " AND OutwardSuppyItemsDetails.InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
     }
-
-
 
 
     // -----Service Tax Report-----
@@ -5799,6 +5780,7 @@ public int makeBillVoid(int InvoiceNo ) {
                 " WHERE BillStatus=1 AND " +
                 TBL_OUTWARD_SUPPLY_LEDGER + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "' ", null);
     }
+
     // -----Day wise and Month wise Report-----
     public Cursor getDaywiseReport(String StartDate, String EndDate) {
         return dbFNB.query(TBL_BILLDETAIL, new String[]{"*"},
@@ -5841,32 +5823,30 @@ public int makeBillVoid(int InvoiceNo ) {
     // -----Waiter wise Report-----
     public Cursor getWaiterwiseReport(String StartDate, String EndDate) {
         return dbFNB.rawQuery(
-                "SELECT * FROM " + TBL_BILLDETAIL + ", "+TBL_USERS+" WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
-                        + TBL_BILLDETAIL + "."+KEY_EmployeeId+"="+TBL_USERS+"."+KEY_USER_ID+" AND " + TBL_BILLDETAIL + ".EmployeeId>0 AND "
-                        + KEY_ROLE_ID+" LIKE '3' AND " + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
+                "SELECT * FROM " + TBL_BILLDETAIL + ", " + TBL_USERS + " WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
+                        + TBL_BILLDETAIL + "." + KEY_EmployeeId + "=" + TBL_USERS + "." + KEY_USER_ID + " AND " + TBL_BILLDETAIL + ".EmployeeId>0 AND "
+                        + KEY_ROLE_ID + " LIKE '3' AND " + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
                 null);
     }
 
     public Cursor getSupplierwiseReport(String StartDate, String EndDate) {
         return dbFNB.rawQuery(
-                "SELECT SupplierCode, SupplierName, Amount, AdditionalChargeAmount FROM " + TBL_PURCHASEORDER +" WHERE "+
-                        KEY_isGoodinward+"=1 AND "+KEY_InvoiceDate+" BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
+                "SELECT SupplierCode, SupplierName, Amount, AdditionalChargeAmount FROM " + TBL_PURCHASEORDER + " WHERE " +
+                        KEY_isGoodinward + "=1 AND " + KEY_InvoiceDate + " BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
     }
 
     // -----Waiter detailed Report-----
     public Cursor getWaiterDetailedReport(int WaiterId, String StartDate, String EndDate) {
         Cursor cursor = null;
-        try
-        {
-            if(!dbFNB.isOpen())
+        try {
+            if (!dbFNB.isOpen())
                 dbFNB = this.getReadableDatabase();
             cursor = dbFNB.rawQuery(
-                    "SELECT * FROM " + TBL_BILLDETAIL + " , "+TBL_USERS+" WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
-                            + TBL_BILLDETAIL + ".EmployeeId= "+TBL_USERS+".UserId AND  " + TBL_BILLDETAIL + ".EmployeeId=" + WaiterId + " AND "
+                    "SELECT * FROM " + TBL_BILLDETAIL + " , " + TBL_USERS + " WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
+                            + TBL_BILLDETAIL + ".EmployeeId= " + TBL_USERS + ".UserId AND  " + TBL_BILLDETAIL + ".EmployeeId=" + WaiterId + " AND "
                             + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
                     null);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return cursor;
@@ -5874,9 +5854,9 @@ public int makeBillVoid(int InvoiceNo ) {
 
     // -----Rider wise Report-----
     public Cursor getRiderwiseReport(String StartDate, String EndDate) {
-        return dbFNB.rawQuery("SELECT * FROM  " + TBL_BILLDETAIL + " , "+TBL_USERS+" WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
-                        + TBL_BILLDETAIL + ".EmployeeId= "+TBL_USERS+".UserId AND " + TBL_BILLDETAIL + ".EmployeeId>0 AND "
-                        + KEY_ROLE_ID+" LIKE '4' AND "  + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
+        return dbFNB.rawQuery("SELECT * FROM  " + TBL_BILLDETAIL + " , " + TBL_USERS + " WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
+                        + TBL_BILLDETAIL + ".EmployeeId= " + TBL_USERS + ".UserId AND " + TBL_BILLDETAIL + ".EmployeeId>0 AND "
+                        + KEY_ROLE_ID + " LIKE '4' AND " + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
                 null);
     }
 
@@ -5884,16 +5864,14 @@ public int makeBillVoid(int InvoiceNo ) {
     public Cursor getRiderDetailedReport(int RiderId, String StartDate, String EndDate) {
         Cursor cursor = null;
         try {
-            if(!dbFNB.isOpen())
+            if (!dbFNB.isOpen())
                 dbFNB = this.getReadableDatabase();
             cursor = dbFNB.rawQuery(
-                    "SELECT * FROM " + TBL_BILLDETAIL + " , "+TBL_USERS+" WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
-                            + TBL_BILLDETAIL + ".EmployeeId = "+TBL_USERS+".UserId AND " + TBL_BILLDETAIL + ".EmployeeId=" + RiderId + " AND "
+                    "SELECT * FROM " + TBL_BILLDETAIL + " , " + TBL_USERS + " WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
+                            + TBL_BILLDETAIL + ".EmployeeId = " + TBL_USERS + ".UserId AND " + TBL_BILLDETAIL + ".EmployeeId=" + RiderId + " AND "
                             + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
                     null);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return cursor;
@@ -5901,7 +5879,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
     // -----User wise Report-----
     public Cursor getUserwiseReport(String StartDate, String EndDate) {
-        return dbFNB.rawQuery("SELECT * FROM " + TBL_BILLDETAIL + ", "+TBL_USERS+" WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
+        return dbFNB.rawQuery("SELECT * FROM " + TBL_BILLDETAIL + ", " + TBL_USERS + " WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
                         + TBL_BILLDETAIL + ".UserId=Users.UserId AND " + TBL_BILLDETAIL + ".InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'",
                 null);
     }
@@ -5909,15 +5887,13 @@ public int makeBillVoid(int InvoiceNo ) {
     // -----User detailed Report-----
     public Cursor getUserDetailedReport(String UserId, String StartDate, String EndDate) {
         Cursor cursor = null;
-        try
-        {
-            if(!dbFNB.isOpen())
+        try {
+            if (!dbFNB.isOpen())
                 dbFNB = this.getReadableDatabase();
             cursor = dbFNB.rawQuery("SELECT * FROM " + TBL_BILLDETAIL + ", Users WHERE " + TBL_BILLDETAIL + ".BillStatus=1 AND "
                     + TBL_BILLDETAIL + ".UserId='" + UserId + "' AND " + TBL_BILLDETAIL + ".UserId=Users.UserId AND "
                     + TBL_BILLDETAIL + "." + KEY_InvoiceDate + "  BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return cursor;
@@ -5933,14 +5909,13 @@ public int makeBillVoid(int InvoiceNo ) {
     // -----Customer Detailed Report-----
     public Cursor getCustomerDetailedReport(int CustId, String StartDate, String EndDate) {
         Cursor cursor = null;
-        try{
+        try {
             if (!dbFNB.isOpen())
                 dbFNB = this.getReadableDatabase();
-            cursor =  dbFNB.rawQuery("SELECT * FROM OutwardSuppyItemsDetails, Customer WHERE OutwardSuppyItemsDetails.BillStatus=1 AND "
+            cursor = dbFNB.rawQuery("SELECT * FROM OutwardSuppyItemsDetails, Customer WHERE OutwardSuppyItemsDetails.BillStatus=1 AND "
                     + "OutwardSuppyItemsDetails.CustId=" + CustId + " AND Customer.CustId=" + CustId + " AND "
                     + "OutwardSuppyItemsDetails.InvoiceDate BETWEEN '" + StartDate + "' AND '" + EndDate + "'", null);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -6000,17 +5975,18 @@ public int makeBillVoid(int InvoiceNo ) {
         l = dbFNB.insert(TBL_Supplier, null, cvdbValues);
         return l;
     }
+
     public long updateSupplierDetails(String supplierType_str, String suppliergstin_str, String suppliername_str,
-                                    String supplierphn_str, String supplieraddress_str, int suppliercode) {
+                                      String supplierphn_str, String supplieraddress_str, int suppliercode) {
         long l = 0;
-        String whereclause = KEY_SupplierCode+"="+suppliercode;
+        String whereclause = KEY_SupplierCode + "=" + suppliercode;
         ContentValues cvdbValues = new ContentValues();
         cvdbValues.put(KEY_SupplierType, supplierType_str);
         cvdbValues.put(KEY_GSTIN, suppliergstin_str);
         cvdbValues.put(KEY_SUPPLIERNAME, suppliername_str);
         cvdbValues.put(KEY_SupplierPhone, supplierphn_str);
         cvdbValues.put(KEY_SupplierAddress, supplieraddress_str);
-        l = dbFNB.update(TBL_Supplier,cvdbValues,KEY_SupplierCode+"="+suppliercode,null );
+        l = dbFNB.update(TBL_Supplier, cvdbValues, KEY_SupplierCode + "=" + suppliercode, null);
         return l;
     }
 
@@ -6049,6 +6025,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return dbFNB.update(TBL_GOODSINWARD, cvDbValues, KEY_ItemName + " LIKE '" + ingredientname + "'", null);
     }
+
     public long updateSupplierCountInGoodsInward(String ingredientname, int count) {
         cvDbValues = new ContentValues();
         cvDbValues.put(KEY_SupplierCount, count);
@@ -6063,23 +6040,22 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.update(TBL_GOODSINWARD, cvDbValues, KEY_ItemName + " LIKE '" + ingredientname + "'", null);
     }
 
-    public long addLinkage(String supplierCode_str, String  menuCode_str)
-    {
+    public long addLinkage(String supplierCode_str, String menuCode_str) {
         cvDbValues = new ContentValues();
         cvDbValues.put(KEY_MenuCode, menuCode_str);
         cvDbValues.put(KEY_SupplierCode, supplierCode_str);
-        return  dbFNB.insert(TBL_SupplierItemLinkage, null, cvDbValues);
+        return dbFNB.insert(TBL_SupplierItemLinkage, null, cvDbValues);
     }
-    public long deleteLinkage(String supplierCode_str, String  menuCode_str)
-    {
-        String deleteClause = KEY_SupplierCode+" = "+supplierCode_str+" AND "+KEY_MenuCode+" = "+menuCode_str;
-        return  dbFNB.delete(TBL_SupplierItemLinkage, deleteClause,null);
+
+    public long deleteLinkage(String supplierCode_str, String menuCode_str) {
+        String deleteClause = KEY_SupplierCode + " = " + supplierCode_str + " AND " + KEY_MenuCode + " = " + menuCode_str;
+        return dbFNB.delete(TBL_SupplierItemLinkage, deleteClause, null);
 
     }
-    public Cursor isLinked(int supplierCode, int  menuCode)
-    {
+
+    public Cursor isLinked(int supplierCode, int menuCode) {
         String selectquery = "Select * FROM " + TBL_SupplierItemLinkage + " WHERE " + KEY_SupplierCode + " = "
-                + supplierCode + " AND "+KEY_MenuCode+" = "+menuCode;
+                + supplierCode + " AND " + KEY_MenuCode + " = " + menuCode;
         Cursor cursor = dbFNB.rawQuery(selectquery, null);
         return cursor;
     }
@@ -6139,12 +6115,12 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.update(TBL_ITEM_Inward, cvDbValues, "MenuCode=" + objItem.getMenuCode(), null);
     }
 
-    public long resetStock_inward(int supplierCode, int menuCode,String itemName) {
+    public long resetStock_inward(int supplierCode, int menuCode, String itemName) {
 
         cvDbValues = new ContentValues();
 
         cvDbValues.put(KEY_Quantity, 0);
-        String whereClause = KEY_MenuCode+" = "+menuCode+" AND "+KEY_ItemName+" LIKE '"+itemName+"' AND "+KEY_SupplierCode+" = "+supplierCode;
+        String whereClause = KEY_MenuCode + " = " + menuCode + " AND " + KEY_ItemName + " LIKE '" + itemName + "' AND " + KEY_SupplierCode + " = " + supplierCode;
         return dbFNB.update(TBL_ITEM_Inward, cvDbValues, whereClause, null);
     }
 
@@ -6164,10 +6140,11 @@ public int makeBillVoid(int InvoiceNo ) {
         cvDbValues.put(KEY_SupplyType, objItem.getSupplyType());
         cvDbValues.put("ImageUri", objItem.getImageUri());
         cvDbValues.put(KEY_UOM, objItem.getMOU());
-        cvDbValues.put(KEY_Count,1);
-        cvDbValues.put(KEY_AverageRate,objItem.getAverageRate());
+        cvDbValues.put(KEY_Count, 1);
+        cvDbValues.put(KEY_AverageRate, objItem.getAverageRate());
         return dbFNB.insert(TBL_ITEM_Inward, null, cvDbValues);
     }
+
     public long addItem_InwardDatabase(ItemInward objItem) {
         cvDbValues = new ContentValues();
 
@@ -6184,9 +6161,10 @@ public int makeBillVoid(int InvoiceNo ) {
         cvDbValues.put(KEY_SGSTRate, objItem.getSGSTRate());
         cvDbValues.put(KEY_IGSTRate, objItem.getIGSTRate());
         cvDbValues.put(KEY_cessRate, objItem.getCessRate());
-        cvDbValues.put(KEY_Count,1);
+        cvDbValues.put(KEY_Count, 1);
         return dbFNB.insert(TBL_ITEM_Inward, null, cvDbValues);
     }
+
     public int updateItem_InwardDatabase(ItemInward objItem) {
 
         cvDbValues = new ContentValues();
@@ -6204,11 +6182,10 @@ public int makeBillVoid(int InvoiceNo ) {
         cvDbValues.put(KEY_SGSTRate, objItem.getSGSTRate());
         cvDbValues.put(KEY_IGSTRate, objItem.getIGSTRate());
         cvDbValues.put(KEY_cessRate, objItem.getCessRate());
-        cvDbValues.put(KEY_Count,1);
+        cvDbValues.put(KEY_Count, 1);
 
         return dbFNB.update(TBL_ITEM_Inward, cvDbValues, "MenuCode=" + objItem.getiMenuCode(), null);
     }
-
 
 
     public int updateItem_inward(int MenuCode, int taxationtype, String g_s, int suppliercode, String suppliername,
@@ -6260,15 +6237,15 @@ public int makeBillVoid(int InvoiceNo ) {
     public Cursor getAllSupplierName_nonGST() {
 
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TBL_Supplier+" ORDER BY SupplierName ASC"/* + " WHERE " + KEY_SupplierType + " LIKE 'UnRegistered'"*/;
+        String selectQuery = "SELECT  * FROM " + TBL_Supplier + " ORDER BY SupplierName ASC"/* + " WHERE " + KEY_SupplierType + " LIKE 'UnRegistered'"*/;
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);// selectQuery,selectedArgument
         return cursor;
     }
 
-    public  long deleteSupplier(int supplierCode)
-    {
+    public long deleteSupplier(int supplierCode) {
         return dbFNB.delete(TBL_Supplier, KEY_SupplierCode + "=" + supplierCode, null);
     }
+
     public Cursor getAllInwardItemNames() {
 
         Cursor cursor = null;
@@ -6276,6 +6253,7 @@ public int makeBillVoid(int InvoiceNo ) {
         cursor = dbFNB.rawQuery(selectQuery, null);// selectQuery,selectedArgument
         return cursor;
     }
+
     public Cursor getAllInwardItems() {
 
         Cursor cursor = null;
@@ -6377,10 +6355,11 @@ public int makeBillVoid(int InvoiceNo ) {
         cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
+
     public Cursor getIngredientsForMenuCode(int menucode, String status) {
         Cursor cursor = null;
         String selectQuery = "Select *  FROM " + TBL_INGREDIENTS + " WHERE " + KEY_MenuCode +
-                " = " + menucode +" AND "+KEY_Status+" LIKE '"+status+"'";
+                " = " + menucode + " AND " + KEY_Status + " LIKE '" + status + "'";
         cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
@@ -6395,7 +6374,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
     public int DeleteSavedIngredients(int menucode, String status) {
         //String WhereClause = KEY_MenuCode + " = " + menucode + " AND " + KEY_Status + " LIKE '" + status + "'";
-        String WhereClause = KEY_MenuCode + " = " + menucode ;
+        String WhereClause = KEY_MenuCode + " = " + menucode;
         return dbFNB.delete(TBL_INGREDIENTS, WhereClause, null);
     }
 
@@ -6449,9 +6428,9 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.update(TBL_GOODSINWARD, cvDbValues, whereClause, null);
     }
 
-    public int deleteItemInGoodsInward(String  itemname) {
+    public int deleteItemInGoodsInward(String itemname) {
 
-        return dbFNB.delete(TBL_GOODSINWARD, KEY_ItemName + " LIKE '"+itemname+"'", null);
+        return dbFNB.delete(TBL_GOODSINWARD, KEY_ItemName + " LIKE '" + itemname + "'", null);
     }
 
 
@@ -6459,18 +6438,19 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return dbFNB.delete(TBL_PURCHASEORDER, KEY_SupplierCode + "=" + suppliercode + " AND " + KEY_PurchaseOrderNo + " = " + purchaseorder, null);
     }
-    public long deletePurchaseOrderEntry(String puchaseOrderNo, String supplierCode,String itemname,
-                                        double rate, double quantity) {
 
-        String deleteClause = KEY_SupplierCode + " Like '" + supplierCode + "' AND " +KEY_PurchaseOrderNo +
-                " LIKE '" + puchaseOrderNo+"' AND "+KEY_ItemName+" LIKE '"+itemname+"' AND "+KEY_Rate+"="+rate+
-                " AND "+KEY_Quantity+"="+quantity;
+    public long deletePurchaseOrderEntry(String puchaseOrderNo, String supplierCode, String itemname,
+                                         double rate, double quantity) {
+
+        String deleteClause = KEY_SupplierCode + " Like '" + supplierCode + "' AND " + KEY_PurchaseOrderNo +
+                " LIKE '" + puchaseOrderNo + "' AND " + KEY_ItemName + " LIKE '" + itemname + "' AND " + KEY_Rate + "=" + rate +
+                " AND " + KEY_Quantity + "=" + quantity;
         return dbFNB.delete(TBL_PURCHASEORDER, deleteClause, null);
     }
 
     public List<String> getPurchaseOrderlist_inward_nonGST(int suppliercode) {
         List<String> list = new ArrayList<String>();
-        String selectQuery = "Select DISTINCT  " + KEY_PurchaseOrderNo + "  FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_SupplierCode + " LIKE '" + suppliercode + "' AND "+KEY_isGoodinward+" = 0";
+        String selectQuery = "Select DISTINCT  " + KEY_PurchaseOrderNo + "  FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_SupplierCode + " LIKE '" + suppliercode + "' AND " + KEY_isGoodinward + " = 0";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         list.add("NA");
         //list.add("Make New Purchase Order");
@@ -6483,7 +6463,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
     public List<String> getPurchaseOrderlist(int suppliercode) {
         List<String> list = new ArrayList<String>();
-        String selectQuery = "Select DISTINCT  " + KEY_PurchaseOrderNo + "  FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_SupplierCode + " LIKE '" + suppliercode + "' AND "+KEY_isGoodinward+" = 0";
+        String selectQuery = "Select DISTINCT  " + KEY_PurchaseOrderNo + "  FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_SupplierCode + " LIKE '" + suppliercode + "' AND " + KEY_isGoodinward + " = 0";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         while (cursor != null && cursor.moveToNext()) {
             String item = cursor.getString(cursor.getColumnIndex(KEY_PurchaseOrderNo));
@@ -6523,36 +6503,40 @@ public int makeBillVoid(int InvoiceNo ) {
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
-    public Cursor getPurchaseOrder_for_gstin(String startDate, String endDate,String gstin ) {
+
+    public Cursor getPurchaseOrder_for_gstin(String startDate, String endDate, String gstin) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_GSTIN + " Like '" + gstin + "' AND " +
-                KEY_InvoiceDate+" BETWEEN '"+startDate+"' AND '"+endDate+"' AND "+KEY_isGoodinward+" LIKE '1'";
+                KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " + KEY_isGoodinward + " LIKE '1'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
-    public Cursor getPurchaseOrder_for_gstin(String invoiceNo,String invoiceDate,String gstin,String purchaseorder ) {
+
+    public Cursor getPurchaseOrder_for_gstin(String invoiceNo, String invoiceDate, String gstin, String purchaseorder) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_GSTIN + " Like '" + gstin + "' AND " +
                 /*KEY_PurchaseOrderNo+" LIKE '"+purchaseorder+"' AND "+*/
-                KEY_InvoiceDate+" LIKE '"+invoiceDate+"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_isGoodinward+" LIKE '1'";
+                KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_isGoodinward + " LIKE '1'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
-    public Cursor getPurchaseOrder_for_unregisteredSupplier(String invoiceNo,String invoiceDate,String purchaseorder, String supplierCode ) {
+
+    public Cursor getPurchaseOrder_for_unregisteredSupplier(String invoiceNo, String invoiceDate, String purchaseorder, String supplierCode) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_PURCHASEORDER + " WHERE " + KEY_SupplierCode + " Like '" + supplierCode + "' AND " +
-                KEY_SupplierType+" LIKE 'UnRegistered' AND "+
+                KEY_SupplierType + " LIKE 'UnRegistered' AND " +
                 /*KEY_PurchaseOrderNo+" LIKE '"+purchaseorder+"' AND "+*/
-                KEY_InvoiceDate+" LIKE '"+invoiceDate+"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_isGoodinward+" LIKE '1'";
+                KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_isGoodinward + " LIKE '1'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
-    public Cursor getPurchaseOrder_for_unregistered(String startDate,String endDate ) {
+
+    public Cursor getPurchaseOrder_for_unregistered(String startDate, String endDate) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_PURCHASEORDER + " WHERE " +
                 /*KEY_PurchaseOrderNo+" LIKE '"+purchaseorder+"' AND "+*/
-                KEY_SupplierType+" LIKE 'UnRegistered' AND "+
-                KEY_InvoiceDate+" BETWEEN '"+startDate+"' AND '"+endDate+"' AND "+KEY_isGoodinward+" LIKE '1'";
+                KEY_SupplierType + " LIKE 'UnRegistered' AND " +
+                KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " + KEY_isGoodinward + " LIKE '1'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
@@ -6580,14 +6564,14 @@ public int makeBillVoid(int InvoiceNo ) {
         cvDbValues.put(KEY_UOM, po.getUOM());
         cvDbValues.put(KEY_Value, po.getValue());
         cvDbValues.put(KEY_TaxableValue, po.getTaxableValue());
-        cvDbValues.put(KEY_IGSTRate,po.getIgstRate());
-        cvDbValues.put(KEY_IGSTAmount,po.getIgstAmount());
-        cvDbValues.put(KEY_CGSTRate,po.getCgstRate());
-        cvDbValues.put(KEY_CGSTAmount,po.getCgstAmount());
-        cvDbValues.put(KEY_SGSTRate,po.getSgstRate());
-        cvDbValues.put(KEY_SGSTAmount,po.getSgstAmount());
-        cvDbValues.put(KEY_cessRate,po.getCsRate());
-        cvDbValues.put(KEY_cessAmount,po.getCsAmount());
+        cvDbValues.put(KEY_IGSTRate, po.getIgstRate());
+        cvDbValues.put(KEY_IGSTAmount, po.getIgstAmount());
+        cvDbValues.put(KEY_CGSTRate, po.getCgstRate());
+        cvDbValues.put(KEY_CGSTAmount, po.getCgstAmount());
+        cvDbValues.put(KEY_SGSTRate, po.getSgstRate());
+        cvDbValues.put(KEY_SGSTAmount, po.getSgstAmount());
+        cvDbValues.put(KEY_cessRate, po.getCsRate());
+        cvDbValues.put(KEY_cessAmount, po.getCsAmount());
 
         cvDbValues.put(KEY_Amount, po.getAmount());
         cvDbValues.put(KEY_AdditionalChargeName, po.getAdditionalCharge());
@@ -6597,6 +6581,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return dbFNB.insert(TBL_PURCHASEORDER, null, cvDbValues);
     }
+
     public long UpdatePurchaseOrder(PurchaseOrder po) {
         cvDbValues = new ContentValues();
 
@@ -6615,12 +6600,12 @@ public int makeBillVoid(int InvoiceNo ) {
         cvDbValues.put(KEY_UOM, po.getUOM());
         cvDbValues.put(KEY_Value, po.getValue());
         cvDbValues.put(KEY_TaxableValue, po.getTaxableValue());
-        cvDbValues.put(KEY_IGSTRate,po.getIgstRate());
-        cvDbValues.put(KEY_IGSTAmount,po.getIgstAmount());
-        cvDbValues.put(KEY_CGSTRate,po.getCgstRate());
-        cvDbValues.put(KEY_CGSTAmount,po.getCgstAmount());
-        cvDbValues.put(KEY_SGSTRate,po.getSgstRate());
-        cvDbValues.put(KEY_SGSTAmount,po.getSgstAmount());
+        cvDbValues.put(KEY_IGSTRate, po.getIgstRate());
+        cvDbValues.put(KEY_IGSTAmount, po.getIgstAmount());
+        cvDbValues.put(KEY_CGSTRate, po.getCgstRate());
+        cvDbValues.put(KEY_CGSTAmount, po.getCgstAmount());
+        cvDbValues.put(KEY_SGSTRate, po.getSgstRate());
+        cvDbValues.put(KEY_SGSTAmount, po.getSgstAmount());
         cvDbValues.put(KEY_Amount, po.getAmount());
         cvDbValues.put(KEY_AdditionalChargeName, po.getAdditionalCharge());
         cvDbValues.put(KEY_AdditionalChargeAmount, po.getAdditionalChargeAmount());
@@ -6694,24 +6679,25 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.update(TBL_PURCHASEORDER, cvDbValues, whereClause, null);
     }
 
-    public Cursor getGSTR2_b2bA_invoices_for_gstin_registered(String startDate, String endDate,String gstin ) {
+    public Cursor getGSTR2_b2bA_invoices_for_gstin_registered(String startDate, String endDate, String gstin) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_GSTR2_AMEND + " WHERE " + KEY_GSTIN + " Like '" + gstin + "' AND " +
-                KEY_InvoiceDate+" BETWEEN '"+startDate+"' AND '"+endDate+"' AND  "+KEY_SupplierType+" LIKE 'Registered'";
+                KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND  " + KEY_SupplierType + " LIKE 'Registered'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
-    public Cursor getGSTR2_b2bA_ammends_for_gstin_registered(String invoiceNo,String invoiceDate,String gstin,String invoiceNo_ori,
-                                                  String invoicedate_ori)
-    {
+
+    public Cursor getGSTR2_b2bA_ammends_for_gstin_registered(String invoiceNo, String invoiceDate, String gstin, String invoiceNo_ori,
+                                                             String invoicedate_ori) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_GSTR2_AMEND + " WHERE " + KEY_GSTIN + " Like '" + gstin + "' AND " +
-                KEY_InvoiceDate+" LIKE '"+invoiceDate+"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+KEY_SupplierType+
-                " LIKE 'Registered' AND "+KEY_OriginalInvoiceNo+" LIKE '"+invoiceNo_ori+"' AND  "+KEY_OriginalInvoiceDate+" LIKE '"
-                +invoicedate_ori+"'";
+                KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " + KEY_SupplierType +
+                " LIKE 'Registered' AND " + KEY_OriginalInvoiceNo + " LIKE '" + invoiceNo_ori + "' AND  " + KEY_OriginalInvoiceDate + " LIKE '"
+                + invoicedate_ori + "'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
+
     // richa 2712_inward
     public ArrayList<String> getAllSupplierName() {
         ArrayList<String> list = new ArrayList<String>();
@@ -6746,6 +6732,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return cursor;
     }
+
     public Cursor getLinkedSupplierCodeForItem(int menucode) {
         String selectQuery = "Select *  FROM " + TBL_SupplierItemLinkage + " WHERE " + KEY_MenuCode + " LIKE '" + menucode + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
@@ -6814,21 +6801,24 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.query(TBL_TABLEBOOKING, new String[]{"*"}, "MobileNo=" + MobileNo, null, null,
                 null, null);
     }
+
     // -----Retrieve single Table Booking-----
-    public Cursor checkBookingStatus(int iTableNo,String bookingtimeStart, String bookingTimeEnd) {
-        return dbFNB.query(TBL_TABLEBOOKING, new String[]{"*"}, KEY_TableNo+" = " +iTableNo+" AND "+
-                        KEY_TimeForBooking+" Between  '"+bookingtimeStart+"' AND '"+bookingTimeEnd+"'", null, null,
+    public Cursor checkBookingStatus(int iTableNo, String bookingtimeStart, String bookingTimeEnd) {
+        return dbFNB.query(TBL_TABLEBOOKING, new String[]{"*"}, KEY_TableNo + " = " + iTableNo + " AND " +
+                        KEY_TimeForBooking + " Between  '" + bookingtimeStart + "' AND '" + bookingTimeEnd + "'", null, null,
                 null, null);
     }
+
     // -----Retrieve single Table Booking-----
     public Cursor getBookedTableBetweenTime(String bookingtimeStart, String bookingTimeEnd) {
         return dbFNB.query(TBL_TABLEBOOKING, new String[]{"*"},
-                KEY_TimeForBooking+" Between  '"+bookingtimeStart+"' AND '"+bookingTimeEnd+"'", null, null,
+                KEY_TimeForBooking + " Between  '" + bookingtimeStart + "' AND '" + bookingTimeEnd + "'", null, null,
                 null, null);
     }
+
     public Cursor getCurrentlyUsedTableBetweenTime(String bookingtimeStart, String bookingTimeEnd) {
         return dbFNB.query(TBL_PENDINGKOT, new String[]{KEY_TableNumber},
-                KEY_Time+" Between  '"+bookingtimeStart+"' AND '"+bookingTimeEnd+"'", null, null,
+                KEY_Time + " Between  '" + bookingtimeStart + "' AND '" + bookingTimeEnd + "'", null, null,
                 null, null);
     }
 
@@ -6868,10 +6858,11 @@ public int makeBillVoid(int InvoiceNo ) {
 
         return dbFNB.delete(TBL_TABLEBOOKING, "TableNo=" + TableNo, null);
     }
-    public int DeleteTableBooking_WithDetails(String CustName,String Time,String TableNo, String CustPhone) {
 
-        String whereString = KEY_CustName+" LIKE '"+CustName+"' AND "+KEY_TimeForBooking+" LIKE '"+Time+"' AND "+KEY_TableNo+" = "+
-                Integer.parseInt(TableNo)+" AND "+KEY_MobileNo+" = "+Integer.parseInt(CustPhone);
+    public int DeleteTableBooking_WithDetails(String CustName, String Time, String TableNo, String CustPhone) {
+
+        String whereString = KEY_CustName + " LIKE '" + CustName + "' AND " + KEY_TimeForBooking + " LIKE '" + Time + "' AND " + KEY_TableNo + " = " +
+                Integer.parseInt(TableNo) + " AND " + KEY_MobileNo + " = " + Integer.parseInt(CustPhone);
         return dbFNB.delete(TBL_TABLEBOOKING, whereString, null);
     }
 
@@ -6949,7 +6940,7 @@ public int makeBillVoid(int InvoiceNo ) {
             //Log.d(TAG,"Inserted Successfully with code "+status);
         } catch (Exception e) {
             status = 0;
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return status;
     }
@@ -6967,7 +6958,7 @@ public int makeBillVoid(int InvoiceNo ) {
                 }
         } catch (Exception e) {
             str = "";
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return str;
     }
@@ -6984,7 +6975,7 @@ public int makeBillVoid(int InvoiceNo ) {
                 }
         } catch (Exception e) {
             str = "";
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return str;
     }
@@ -7012,8 +7003,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
         for (int i = 0; i < checkedItems.size(); i++) {
             long status = 0;
-            if(checkedItems.get(checkedItems.keyAt(i)) == false)
-            {
+            if (checkedItems.get(checkedItems.keyAt(i)) == false) {
                 continue;
             }
             ContentValues contentValues = new ContentValues();
@@ -7029,13 +7019,13 @@ public int makeBillVoid(int InvoiceNo ) {
                 //Log.d(TAG,"Inserted Successfully with code "+status);
             } catch (Exception e) {
                 status = 0;
-                Log.d(TAG,e.toString());
+                Log.d(TAG, e.toString());
             }
         }
     }
 
-    public int  deleteAccessesForRole(String roleName) {
-        int status =0;
+    public int deleteAccessesForRole(String roleName) {
+        int status = 0;
         try {
             status = dbFNB.delete(TBL_USERROLEACCESS, "RoleId" + " = ?", new String[]{String.valueOf(roleName)});
             //status = dbFNB.insert(TBL_USERROLEACCESS, null, contentValues);
@@ -7046,10 +7036,11 @@ public int makeBillVoid(int InvoiceNo ) {
             //Log.d(TAG,"Inserted Successfully with code "+status);
         } catch (Exception e) {
             status = 0;
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return status;
     }
+
     public void deleteRole(String roleName) {
         dbFNB.delete(TBL_USERSROLE, "RoleName" + " = ?", new String[]{String.valueOf(roleName)});
     }
@@ -7113,7 +7104,7 @@ public int makeBillVoid(int InvoiceNo ) {
 
         } catch (Exception e) {
             status = 0;
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return status;
     }
@@ -7176,19 +7167,17 @@ public int makeBillVoid(int InvoiceNo ) {
         return dbFNB.query(TBL_USERS, new String[]{"*"}, "UserId='" + UserId + "'", null, null, null, null);
 
     }
+
     public Cursor getUsers_counter(String UserId) {
         Cursor cursor = null;
-        try
-        {
+        try {
             SQLiteDatabase db = getWritableDatabase();
             cursor = db.query(TBL_USERS, new String[]{"*"}, "UserId='" + UserId + "'", null, null, null, null);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(myContext, e.getMessage(), Toast.LENGTH_SHORT).show();
             cursor = null;
-        }
-        finally {
+        } finally {
             return cursor;
         }
 
@@ -7207,7 +7196,7 @@ public int makeBillVoid(int InvoiceNo ) {
         } catch (Exception e) {
             contact = null;
             e.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         // return contact
@@ -7228,7 +7217,7 @@ public int makeBillVoid(int InvoiceNo ) {
         } catch (Exception e) {
             e.printStackTrace();
             adhatTxt = null;
-        }finally {
+        } finally {
             db.close();
         }
         return adhatTxt;
@@ -7343,7 +7332,7 @@ public int makeBillVoid(int InvoiceNo ) {
     public int getUsersIdByName(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         int id = -1;
-        try{
+        try {
             Cursor cursor = db.query(TBL_USERS, null, "Name=?", new String[]{String.valueOf(name)}, null, null, null, null);
             //if (cursor != null)
             if (cursor.moveToFirst()) {
@@ -7351,9 +7340,9 @@ public int makeBillVoid(int InvoiceNo ) {
             } else {
                 id = 0;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         // return contact
@@ -7363,7 +7352,7 @@ public int makeBillVoid(int InvoiceNo ) {
     public int getCustomersIdByName(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         int id = -1;
-        try{
+        try {
             Cursor cursor = db.query(TBL_CUSTOMER, null, "CustName=?", new String[]{String.valueOf(name)}, null, null, null, null);
             //if (cursor != null)
             if (cursor.moveToFirst()) {
@@ -7371,9 +7360,9 @@ public int makeBillVoid(int InvoiceNo ) {
             } else {
                 id = 0;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             db.close();
         }
         // return contact
@@ -7430,8 +7419,8 @@ public int makeBillVoid(int InvoiceNo ) {
 
     public void addGSTR2B2BItems(ArrayList<GetGSTR2B2BFinal> finalsList) {
 
-        if(finalsList == null || finalsList.size() <0)
-            return ;
+        if (finalsList == null || finalsList.size() < 0)
+            return;
         Iterator<GetGSTR2B2BFinal> iterator = finalsList.iterator();
         while (iterator.hasNext()) {
             GetGSTR2B2BFinal element = iterator.next();
@@ -7619,19 +7608,18 @@ public int makeBillVoid(int InvoiceNo ) {
     }
 
 
-    public long addOwnerDetails(String name, String gstin, String phone, String email, String address, String pos, String office, String RefernceNo, String billPrefix)
-    {
+    public long addOwnerDetails(String name, String gstin, String phone, String email, String address, String pos, String office, String RefernceNo, String billPrefix) {
         long status = 0;
         ContentValues cvDbValues = new ContentValues();
-        cvDbValues.put(KEY_Owner_Name,name);
-        cvDbValues.put(KEY_GSTIN,gstin);
-        cvDbValues.put(KEY_PhoneNo,phone);
-        cvDbValues.put(KEY_USER_EMAIL,email);
-        cvDbValues.put(KEY_USER_ADDRESS,address);
-        cvDbValues.put(KEY_POS,pos);
-        cvDbValues.put(KEY_IsMainOffice,office);
-        cvDbValues.put(KEY_REFERENCE_NO,RefernceNo);
-        cvDbValues.put(KEY_BillNoPrefix,billPrefix);
+        cvDbValues.put(KEY_Owner_Name, name);
+        cvDbValues.put(KEY_GSTIN, gstin);
+        cvDbValues.put(KEY_PhoneNo, phone);
+        cvDbValues.put(KEY_USER_EMAIL, email);
+        cvDbValues.put(KEY_USER_ADDRESS, address);
+        cvDbValues.put(KEY_POS, pos);
+        cvDbValues.put(KEY_IsMainOffice, office);
+        cvDbValues.put(KEY_REFERENCE_NO, RefernceNo);
+        cvDbValues.put(KEY_BillNoPrefix, billPrefix);
 
         cvDbValues.put(KEY_DeviceId, "MACID_00");
         cvDbValues.put(KEY_DeviceName, "TAB2200+");
@@ -7649,27 +7637,27 @@ public int makeBillVoid(int InvoiceNo ) {
             //Log.d(TAG,"Inserted Successfully with code "+status);
         } catch (Exception e) {
             status = 0;
-            Log.d(TAG,e.toString());
+            Log.d(TAG, e.toString());
         }
         return status;
 
     }
 
-    public int updateOwnerDetails(String BillNoPrefix)
-    {
-        int result =0;
-        try{
+    public int updateOwnerDetails(String BillNoPrefix) {
+        int result = 0;
+        try {
             cvDbValues = new ContentValues();
             cvDbValues.put(KEY_BillNoPrefix, BillNoPrefix);
-            result= dbFNB.update(TBL_OWNER_DETAILS, cvDbValues, null, null);
-        }catch (Exception e){
+            result = dbFNB.update(TBL_OWNER_DETAILS, cvDbValues, null, null);
+        } catch (Exception e) {
             e.printStackTrace();
             result = 0;
-        }finally {
+        } finally {
             //db.close();
             return result;
         }
     }
+
     public String getGstin_owner() {
         String gstin = "";
         String selectQuery = "Select * FROM " + TBL_OWNER_DETAILS;
@@ -7679,24 +7667,25 @@ public int makeBillVoid(int InvoiceNo ) {
         }
         return gstin;
     }
+
     public String getBillNoPrefix() {
         String billNoPrefix = "";
         SQLiteDatabase db = getWritableDatabase();
         String selectQuery = "Select BillNoPrefix FROM " + TBL_OWNER_DETAILS;
-        try{
+        try {
             Cursor result = db.rawQuery(selectQuery, null);
             if (result != null && result.moveToFirst()) {
                 billNoPrefix = result.getString(result.getColumnIndex(KEY_BillNoPrefix));
-                if(billNoPrefix == null)
+                if (billNoPrefix == null)
                     billNoPrefix = "";
             }
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             billNoPrefix = "";
         }
         return billNoPrefix.trim();
     }
+
     public String getOwnerPOS() {
         String pos = "";
         String selectQuery = "Select POS FROM " + TBL_OWNER_DETAILS;
@@ -7706,20 +7695,21 @@ public int makeBillVoid(int InvoiceNo ) {
         }
         return pos;
     }
+
     public String getOwnerPOS_counter() {
         String pos = "";
         String selectQuery = "Select POS FROM " + TBL_OWNER_DETAILS;
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             Cursor result = db.rawQuery(selectQuery, null);
             if (result != null && result.moveToFirst()) {
                 pos = result.getString(result.getColumnIndex("POS"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             pos = "0";
-        }finally {
+        } finally {
             return pos;
         }
 
@@ -7746,55 +7736,56 @@ public int makeBillVoid(int InvoiceNo ) {
                 endDate + "'  ";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
             list.add(gstin);
         }
 
         return list;
     }
+
     public Cursor getGSTR1B2b_A_for_gstin(String StartDate, String EndDate, String gstin) {
         String b2b = "B2B";
 
         String selectQuery = "SELECT InvoiceNo, InvoiceDate, GSTIN,OriginalInvoiceNo,InvoiceNo," +
                 " InvoiceDate, OriginalInvoiceDate, TaxableValue , CustStateCode, ReverseCharge,ProvisionalAssess,EcommerceGSTIN FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + StartDate +
-                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2BA' AND "+KEY_GSTIN+" LIKE '"+gstin+"'";
+                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2BA' AND " + KEY_GSTIN + " LIKE '" + gstin + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getGSTR1B2b_A_for_gstin(String StartDate, String EndDate, String gstin, String invoiceNo) {
         String b2b = "B2B";
         // csrate & csAmount is not extracted as not implemented for now - richa
         String selectQuery = "SELECT DISTINCT InvoiceNo, InvoiceDate, GSTIN,OriginalInvoiceNo,InvoiceNo," +
                 " InvoiceDate, OriginalInvoiceDate, TaxableValue , POS, ReverseCharge,ProvisionalAssess,EcommerceGSTIN FROM " + TBL_GSTR1_AMEND + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + StartDate +
-                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2BA' AND "+KEY_GSTIN+" LIKE '"+gstin+"' AND "
-                +KEY_InvoiceNo+" LIKE '"+invoiceNo+"'";
+                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2BA' AND " + KEY_GSTIN + " LIKE '" + gstin + "' AND "
+                + KEY_InvoiceNo + " LIKE '" + invoiceNo + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public ArrayList<String> getGSTR1B2B_A_invoiceListList(String startDate, String endDate, String gstin) {
         String selectQuery = "SELECT DISTINCT InvoiceNo FROM " + TBL_GSTR1_AMEND + " WHERE  " +
                 KEY_BusinessType + " = 'B2BA' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate +
-                "' AND "+ KEY_GSTIN+" LIKE '"+gstin+"'";
+                "' AND " + KEY_GSTIN + " LIKE '" + gstin + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String invoiceNo = cursor.getString(cursor.getColumnIndex("InvoiceNo"));
             list.add(invoiceNo);
         }
 
         return list;
     }
+
     public ArrayList<String> getGSTR1B2B_gstinList(String startDate, String endDate) {
         String selectQuery = "SELECT DISTINCT GSTIN FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE  " +
-                KEY_BusinessType + " = 'B2B' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND "+
-                KEY_BillStatus+" = 1";
+                KEY_BusinessType + " = 'B2B' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " +
+                KEY_BillStatus + " = 1";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
             list.add(gstin);
         }
@@ -7806,21 +7797,24 @@ public int makeBillVoid(int InvoiceNo ) {
         String b2b = "B2B";
 
         String selectQuery = "SELECT * FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE " + KEY_InvoiceDate + " BETWEEN '" + StartDate +
-                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2B' AND "+KEY_GSTIN+" LIKE '"+gstin+"'";
+                "' AND '" + EndDate + "' AND " + KEY_BusinessType + " LIKE 'B2B' AND " + KEY_GSTIN + " LIKE '" + gstin + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getGSTR1B2CSAItems(String startDate, String endDate) {
         String selectQuery = "SELECT * FROM " + TBL_GSTR1_AMEND + " WHERE  " + KEY_BusinessType + " = 'B2CSA' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getGSTR1B2CSAItems1(String startDate) {
         String selectQuery = "SELECT * FROM " + TBL_GSTR1_AMEND + " WHERE  " + KEY_BusinessType + " = 'B2CSA' AND " + KEY_MONTH +
                 " LIKE '" + startDate + "' ";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getGSTR1B2BAItems(String startDate, String endDate) {
         String selectQuery = "SELECT * FROM " + TBL_GSTR1_AMEND + " WHERE  " + KEY_BusinessType + " = 'B2BA' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
@@ -7833,85 +7827,87 @@ public int makeBillVoid(int InvoiceNo ) {
                 endDate + "' ";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String pos = cursor.getString(cursor.getColumnIndex("POS"));
             String state_cd = cursor.getString(cursor.getColumnIndex("CustStateCode"));
-            if(pos!=null && state_cd!=null && !pos.equalsIgnoreCase(state_cd) )
-            {
-                if(!list.contains(state_cd))
+            if (pos != null && state_cd != null && !pos.equalsIgnoreCase(state_cd)) {
+                if (!list.contains(state_cd))
                     list.add(state_cd);
             }
         }
 
         return list;
-    }public ArrayList<String> getGSTR1B2CL_stateCodeList_ammend(String startDate, String endDate) {
+    }
+
+    public ArrayList<String> getGSTR1B2CL_stateCodeList_ammend(String startDate, String endDate) {
         String selectQuery = "SELECT  CustStateCode FROM " + TBL_GSTR1_AMEND + " WHERE  " +
                 KEY_BusinessType + " = 'B2CLA' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" +
                 endDate + "' ";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
 //            String pos = cursor.getString(cursor.getColumnIndex("POS"));
             String state_cd = cursor.getString(cursor.getColumnIndex("CustStateCode"));
-            if(!list.contains(state_cd))
+            if (!list.contains(state_cd))
                 list.add(state_cd);
         }
 
         return list;
     }
+
     public ArrayList<String> getGSTR1B2CL_stateCodeList(String startDate, String endDate) {
         String selectQuery = "SELECT  CustStateCode, POS FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE  " +
-                KEY_BusinessType + " = 'B2C' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND "+
-                KEY_BillStatus+" = 1 AND "+KEY_TaxableValue+" > 250000";
+                KEY_BusinessType + " = 'B2C' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " +
+                KEY_BillStatus + " = 1 AND " + KEY_TaxableValue + " > 250000";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String pos = cursor.getString(cursor.getColumnIndex("POS"));
             String state_cd = cursor.getString(cursor.getColumnIndex("CustStateCode"));
-            if(!pos.equalsIgnoreCase(state_cd))
-            {
-                if(!list.contains(state_cd))
+            if (!pos.equalsIgnoreCase(state_cd)) {
+                if (!list.contains(state_cd))
                     list.add(state_cd);
             }
         }
 
         return list;
     }
+
     public Cursor getGSTR1B2CL_stateCodeCursor_ammend(String startDate, String endDate, String stateCd) {
         String selectQuery = "SELECT  CustStateCode, POS, Invoicedate, InvoiceNo,OriginalInvoicedate, " +
                 "OriginalInvoiceNo,CustName,TaxableValue," +
                 "ProvisionalAssess, EcommerceGSTIN FROM " + TBL_GSTR1_AMEND + " WHERE  " +
                 KEY_BusinessType + " = 'B2CLA' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" +
-                endDate + "' AND "+KEY_CustStateCode+" LIKE '"+stateCd+"'";
+                endDate + "' AND " + KEY_CustStateCode + " LIKE '" + stateCd + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
+
     public Cursor getGSTR1B2CL_stateCodeCursor(String startDate, String endDate, String stateCd) {
         String selectQuery = "SELECT  CustStateCode, POS, Invoicedate, InvoiceNo,CustName,TaxableValue," +
                 "ProvisionalAssess, EcommerceGSTIN FROM " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE  " +
                 KEY_BusinessType + " = 'B2C' AND " + KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" +
-                endDate + "' AND "+KEY_CustStateCode+" LIKE '"+stateCd+"' AND "+
-                KEY_BillStatus+" = 1 AND "+KEY_TaxableValue+" > 250000";
+                endDate + "' AND " + KEY_CustStateCode + " LIKE '" + stateCd + "' AND " +
+                KEY_BillStatus + " = 1 AND " + KEY_TaxableValue + " > 250000";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
+
     public Cursor getGSTR1B2CL_invoices(String InvoiceNo, String InvoiceDate, String custState, String custName) {
         String selectQuery = "SELECT  * FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE  " +
                 KEY_BusinessType + " = 'B2C' AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "' AND " +
-                KEY_InvoiceNo + " LIKE '"+InvoiceNo+"' AND "+KEY_CustStateCode+" LIKE '"+custState+"' AND "+KEY_CustName+
-                " LIKE '"+custName+"'";
+                KEY_InvoiceNo + " LIKE '" + InvoiceNo + "' AND " + KEY_CustStateCode + " LIKE '" + custState + "' AND " + KEY_CustName +
+                " LIKE '" + custName + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
+
     public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate, String custState, String custName,
                                                String pos) {
         String selectQuery = "SELECT  * FROM " + TBL_GSTR1_AMEND + " WHERE  " +
                 KEY_BusinessType + " = 'B2CLA' AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "' AND " +
-                KEY_InvoiceNo + " LIKE '"+InvoiceNo+"' AND "+KEY_CustStateCode+" LIKE '"+custState+"' AND "+KEY_CustName+
-                " LIKE '"+custName+/*"' AND "+KEY_POS+" LIKE '"+pos+*/"'";
+                KEY_InvoiceNo + " LIKE '" + InvoiceNo + "' AND " + KEY_CustStateCode + " LIKE '" + custState + "' AND " + KEY_CustName +
+                " LIKE '" + custName +/*"' AND "+KEY_POS+" LIKE '"+pos+*/"'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         return cursor;
     }
@@ -7933,52 +7929,53 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor getGSTR1_CDN(String startDate, String endDate) {
         String selectQuery = "SELECT * FROM CreditDebitOutward WHERE  " +
                 KEY_NoteDate + " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public Cursor isNotePresentforInvoice(String invoiceNo, String invoiceDate, String notetype) {
         String selectQuery = "SELECT * FROM CreditDebitOutward WHERE  " + KEY_InvoiceNo + " LIKE '" + invoiceNo +
-                "' and " + KEY_InvoiceDate + " Like '" + invoiceDate + "' AND " +KEY_NoteType+" LIKE '" +notetype + "'";
-        Cursor result = dbFNB.rawQuery(selectQuery, null);
-        return result;
-    }public Cursor getNoteDetails(String noteNo, String noteDate, String gstin) {
-        String selectQuery = "SELECT * FROM CreditDebitOutward WHERE  " + KEY_NoteNo + " LIKE '" + noteNo +
-                "' and " + KEY_NoteDate + " Like '" + noteDate + "' AND " +KEY_GSTIN+" LIKE '" +gstin + "'";
+                "' and " + KEY_InvoiceDate + " Like '" + invoiceDate + "' AND " + KEY_NoteType + " LIKE '" + notetype + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
-    public Cursor getInvoices_outward(String startDate, String endDate)
-    {
-        String selectQuery = "Select * from "+TBL_OUTWARD_SUPPLY_ITEMS_DETAILS+" WHERE BillStatus =1 AND "+KEY_InvoiceDate+
-                " BETWEEN '"+startDate+"' AND '"+endDate+"'";
+
+    public Cursor getNoteDetails(String noteNo, String noteDate, String gstin) {
+        String selectQuery = "SELECT * FROM CreditDebitOutward WHERE  " + KEY_NoteNo + " LIKE '" + noteNo +
+                "' and " + KEY_NoteDate + " Like '" + noteDate + "' AND " + KEY_GSTIN + " LIKE '" + gstin + "'";
+        Cursor result = dbFNB.rawQuery(selectQuery, null);
+        return result;
+    }
+
+    public Cursor getInvoices_outward(String startDate, String endDate) {
+        String selectQuery = "Select * from " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE BillStatus =1 AND " + KEY_InvoiceDate +
+                " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         return dbFNB.rawQuery(selectQuery, null);
     }
-    public Cursor getAllInvoices_outward(String startDate, String endDate)
-    {
-        String selectQuery = "Select * from "+TBL_OUTWARD_SUPPLY_ITEMS_DETAILS+" WHERE "+KEY_InvoiceDate+
-                " BETWEEN '"+startDate+"' AND '"+endDate+"'";
+
+    public Cursor getAllInvoices_outward(String startDate, String endDate) {
+        String selectQuery = "Select * from " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " WHERE " + KEY_InvoiceDate +
+                " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         return dbFNB.rawQuery(selectQuery, null);
     }
 
 
     public ArrayList<String> gethsn_list_for_invoices(Cursor cursor) {
-        ArrayList<String > list = new ArrayList<>();
-        while (cursor!=null && cursor.moveToNext())
-        {
+        ArrayList<String> list = new ArrayList<>();
+        while (cursor != null && cursor.moveToNext()) {
             String invNo = cursor.getString(cursor.getColumnIndex("InvoiceNo"));
             String invDt = cursor.getString(cursor.getColumnIndex("InvoiceDate"));
 
-            String selectQuery = "SELECT  HSNCode FROM "+TBL_OUTWARD_SUPPLY_LEDGER+" WHERE  "
-                    + KEY_InvoiceDate + " LIKE '" + invDt + "' AND " + KEY_InvoiceNo +" LIKE '"+invNo+"'";
+            String selectQuery = "SELECT  HSNCode FROM " + TBL_OUTWARD_SUPPLY_LEDGER + " WHERE  "
+                    + KEY_InvoiceDate + " LIKE '" + invDt + "' AND " + KEY_InvoiceNo + " LIKE '" + invNo + "'";
             Cursor result = dbFNB.rawQuery(selectQuery, null);
-            while (result!=null && result.moveToNext())
-            {
+            while (result != null && result.moveToNext()) {
                 String hsn_new = result.getString(result.getColumnIndex("HSNCode"));
-                if(!list.contains(hsn_new))
-                {
+                if (!list.contains(hsn_new)) {
                     list.add(hsn_new);
                 }
             }
@@ -7986,12 +7983,11 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
         return list;
     }
 
-    public Cursor gethsn(String startDate , String endDate, String hsn , String BusinessType)
-    {
-        String selectQuery = "Select OutwardSuppyItemsDetails.POS, OutwardSupplyLedger.* from "+TBL_OUTWARD_SUPPLY_LEDGER+", " +TBL_OUTWARD_SUPPLY_ITEMS_DETAILS+" Where  OutwardSupplyLedger."+KEY_InvoiceDate+
-                " BETWEEN '"+startDate+"' AND '"+endDate+"' AND OutwardSupplyLedger."+KEY_HSNCode+" LIKE '"+hsn+"' AND OutwardSupplyLedger."+
-                KEY_BusinessType+" LIKE '" +BusinessType+"' "+
-                "AND "+TBL_OUTWARD_SUPPLY_ITEMS_DETAILS+".InvoiceNo = OutwardSupplyLedger.InvoiceNo AND " +
+    public Cursor gethsn(String startDate, String endDate, String hsn, String BusinessType) {
+        String selectQuery = "Select OutwardSuppyItemsDetails.POS, OutwardSupplyLedger.* from " + TBL_OUTWARD_SUPPLY_LEDGER + ", " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + " Where  OutwardSupplyLedger." + KEY_InvoiceDate +
+                " BETWEEN '" + startDate + "' AND '" + endDate + "' AND OutwardSupplyLedger." + KEY_HSNCode + " LIKE '" + hsn + "' AND OutwardSupplyLedger." +
+                KEY_BusinessType + " LIKE '" + BusinessType + "' " +
+                "AND " + TBL_OUTWARD_SUPPLY_ITEMS_DETAILS + ".InvoiceNo = OutwardSupplyLedger.InvoiceNo AND " +
                 "OutwardSuppyItemsDetails.InvoiceDate =OutwardSupplyLedger.InvoiceDate  AND OutwardSuppyItemsDetails.BillStatus = 1 ";
         return dbFNB.rawQuery(selectQuery, null);
     }
@@ -8002,85 +7998,86 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                 " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
-            if(gstin==null)
+            if (gstin == null)
                 continue;
             else
                 list.add(gstin);
         }
         return list;
     }
+
     public ArrayList<String> getGSTR2_CDN_gstinlist(String startDate, String endDate) {
         String selectQuery = "SELECT DISTINCT GSTIN FROM CreditDebitInward WHERE  " + KEY_NoteDate +
                 " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
-            if(gstin==null)
+            if (gstin == null)
                 continue;
             else
                 list.add(gstin);
         }
         return list;
     }
+
     public Cursor getGSTR2_CDN_forgstin(String startDate, String endDate, String gstin) {
         String selectQuery = "SELECT * FROM CreditDebitInward WHERE  " + KEY_GSTIN + " = '" + gstin +
                 "' and " + KEY_NoteDate + " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         Cursor result = dbFNB.rawQuery(selectQuery, null);
         return result;
     }
+
     public ArrayList<String> getGSTR2_b2b_gstinList(String startDate, String endDate) {
-        String selectQuery = "SELECT DISTINCT GSTIN FROM "+TBL_PURCHASEORDER+" WHERE  " + KEY_InvoiceDate +
-                " BETWEEN '" + startDate + "' AND '" + endDate + "' AND "+KEY_SupplierType+" LIKE 'Registered' AND "+
-                KEY_isGoodinward+" LIKE '1'";
+        String selectQuery = "SELECT DISTINCT GSTIN FROM " + TBL_PURCHASEORDER + " WHERE  " + KEY_InvoiceDate +
+                " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " + KEY_SupplierType + " LIKE 'Registered' AND " +
+                KEY_isGoodinward + " LIKE '1'";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
-            if(gstin==null)
+            if (gstin == null)
                 continue;
             else
                 list.add(gstin);
         }
         return list;
     }
+
     public ArrayList<String> getGSTR2_b2b_A_gstinList(String startDate, String endDate) {
-        String selectQuery = "SELECT DISTINCT GSTIN FROM "+TBL_GSTR2_AMEND+" WHERE  " + KEY_InvoiceDate +
-                " BETWEEN '" + startDate + "' AND '" + endDate + "' AND "+KEY_SupplierType+" LIKE 'Registered' ";
+        String selectQuery = "SELECT DISTINCT GSTIN FROM " + TBL_GSTR2_AMEND + " WHERE  " + KEY_InvoiceDate +
+                " BETWEEN '" + startDate + "' AND '" + endDate + "' AND " + KEY_SupplierType + " LIKE 'Registered' ";
         Cursor cursor = dbFNB.rawQuery(selectQuery, null);
         ArrayList<String> list = new ArrayList<>();
-        while(cursor!=null && cursor.moveToNext())
-        {
+        while (cursor != null && cursor.moveToNext()) {
             String gstin = cursor.getString(cursor.getColumnIndex("GSTIN"));
-            if(gstin==null)
+            if (gstin == null)
                 continue;
             else
                 list.add(gstin);
         }
         return list;
     }
-    public Cursor getGSTR2_b2b_A_unregisteredSupplierList(String startDate,String endDate ) {
+
+    public Cursor getGSTR2_b2b_A_unregisteredSupplierList(String startDate, String endDate) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_GSTR2_AMEND + " WHERE " +
                 /*KEY_PurchaseOrderNo+" LIKE '"+purchaseorder+"' AND "+*/
-                KEY_SupplierType+" LIKE 'UnRegistered' AND "+
-                KEY_InvoiceDate+" BETWEEN '"+startDate+"' AND '"+endDate+"'";
+                KEY_SupplierType + " LIKE 'UnRegistered' AND " +
+                KEY_InvoiceDate + " BETWEEN '" + startDate + "' AND '" + endDate + "'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
 
-    public Cursor getGSTR2_A_ammend_for_supplierName(String invoiceNo,String invoiceDate,String invoiceNo_ori,String invoiceDate_ori,
-                                                     String supplierName, String pos_supplier ) {
+    public Cursor getGSTR2_A_ammend_for_supplierName(String invoiceNo, String invoiceDate, String invoiceNo_ori, String invoiceDate_ori,
+                                                     String supplierName, String pos_supplier) {
         Cursor result = null;
         String queryString = "Select * FROM " + TBL_GSTR2_AMEND + " WHERE " + KEY_OriginalInvoiceNo + " Like '" + invoiceNo_ori + "' AND " +
-                KEY_OriginalInvoiceDate+" LIKE '"+invoiceDate_ori+"' AND "+ KEY_SupplierType+" LIKE 'UnRegistered' AND "+
-                KEY_InvoiceDate+" LIKE '"+invoiceDate+"' AND "+KEY_InvoiceNo+" LIKE '"+invoiceNo+"' AND "+
-                KEY_GSTIN+" LIKE '"+supplierName+"' AND "+KEY_POS+" LIKE '"+pos_supplier+"'";
+                KEY_OriginalInvoiceDate + " LIKE '" + invoiceDate_ori + "' AND " + KEY_SupplierType + " LIKE 'UnRegistered' AND " +
+                KEY_InvoiceDate + " LIKE '" + invoiceDate + "' AND " + KEY_InvoiceNo + " LIKE '" + invoiceNo + "' AND " +
+                KEY_GSTIN + " LIKE '" + supplierName + "' AND " + KEY_POS + " LIKE '" + pos_supplier + "'";
         result = dbFNB.rawQuery(queryString, null);
         return result;
     }
@@ -8089,13 +8086,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemDepartments() {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select DeptCode as _id, DeptName from Department", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
-            if(db.isOpen())
+        } finally {
+            if (db.isOpen())
                 db.close();
         }
         return cursor;
@@ -8104,13 +8101,11 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Items> getItemItems() {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Items> list = null;
-        try{
-            Cursor cursor = db.query(TBL_ITEM_Outward,null,null,null,null,null,null);
-            if(cursor!=null)
-            {
+        try {
+            Cursor cursor = db.query(TBL_ITEM_Outward, null, null, null, null, null, null);
+            if (cursor != null) {
                 list = new ArrayList<Items>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Items items = new Items(
                             cursor.getString(cursor.getColumnIndex("ItemName")),
                             cursor.getString(cursor.getColumnIndex("ImageUri")),
@@ -8119,10 +8114,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8132,13 +8127,11 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Items> getItemItems(int CategCode) {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Items> list = null;
-        try{
+        try {
             Cursor cursor = db.query(TBL_ITEM_Outward, new String[]{"MenuCode", "ItemName", "ImageUri"}, "CategCode=" + CategCode, null, null, null, null);
-            if(cursor!=null)
-            {
+            if (cursor != null) {
                 list = new ArrayList<Items>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Items items = new Items(
                             cursor.getString(cursor.getColumnIndex("ItemName")),
                             cursor.getString(cursor.getColumnIndex("ImageUri")),
@@ -8147,10 +8140,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8159,14 +8152,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Items> getItemItems_dept(int deptCode) {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Items> list = null;
-        try{
+        try {
             Cursor cursor = db.query(TBL_ITEM_Outward, new String[]{"MenuCode", "ItemName", "ImageUri"},
-                    KEY_DeptCode+"=" + deptCode, null, null, null, null);
-            if(cursor!=null)
-            {
+                    KEY_DeptCode + "=" + deptCode, null, null, null, null);
+            if (cursor != null) {
                 list = new ArrayList<Items>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Items items = new Items(
                             cursor.getString(cursor.getColumnIndex("ItemName")),
                             cursor.getString(cursor.getColumnIndex("ImageUri")),
@@ -8175,10 +8166,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8188,21 +8179,19 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Department> getItemDepartment() {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Department> list = null;
-        try{
+        try {
             Cursor cursor = db.query(TBL_DEPARTMENT, new String[]{"DeptCode", "DeptName"}, null, null, null, null, null);
-            if(cursor!=null)
-            {
+            if (cursor != null) {
                 list = new ArrayList<Department>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Department items = new Department(cursor.getString(cursor.getColumnIndex("DeptName")), cursor.getInt(cursor.getColumnIndex("DeptCode")));
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8211,21 +8200,19 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Category> getAllItemCategory() {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Category> list = null;
-        try{
+        try {
             Cursor cursor = db.rawQuery("Select * from Category", null);
-            if(cursor!=null)
-            {
+            if (cursor != null) {
                 list = new ArrayList<Category>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Category items = new Category(cursor.getString(cursor.getColumnIndex("CategName")), cursor.getInt(cursor.getColumnIndex("CategCode")), cursor.getInt(cursor.getColumnIndex("DeptCode")));
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8234,21 +8221,19 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<Category> getAllItemCategory(int DeptCode) {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<Category> list = null;
-        try{
+        try {
             Cursor cursor = db.rawQuery("Select CategCode as _id, CategName, DeptCode from Category where DeptCode=" + DeptCode, null);
-            if(cursor!=null)
-            {
+            if (cursor != null) {
                 list = new ArrayList<Category>();
-                while (cursor.moveToNext())
-                {
+                while (cursor.moveToNext()) {
                     Category items = new Category(cursor.getString(cursor.getColumnIndex("CategName")), cursor.getInt(cursor.getColumnIndex("_id")), cursor.getInt(cursor.getColumnIndex("DeptCode")));
                     list.add(items);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return list;
@@ -8258,12 +8243,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemss(int MenuCode) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_ITEM_Outward, new String[]{"*"}, "MenuCode=" + MenuCode, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8273,12 +8258,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getBillSettings() {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_BILLSETTING, new String[]{"*"}, null, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8287,29 +8272,30 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getKOTModifierByModes_new(String strModes) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_KOTMODIFIER,
                     new String[]{"ModifierId", "ModifierDescription", "ModifierAmount", "IsChargeable", "ModifierModes"}, "IsChargeable = '1' AND ModifierModes='" + strModes + "'", null,
                     null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
 
     }
+
     public Cursor getKOTItems_new(int CustId, String OrderMode) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_PENDINGKOT, new String[]{"*"}, "CustId=" + CustId + " AND OrderMode=" + OrderMode,
                     null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8318,16 +8304,15 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
 
 
     // -----Retrieve single TaxConfig-----
-    public Cursor getTaxConfigs(int TaxId)
-    {
+    public Cursor getTaxConfigs(int TaxId) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_TAXCONFIG, new String[]{"TaxId", "TaxDescription", "TaxPercentage", "TotalPercentage"}, "TaxId=" + TaxId, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8337,12 +8322,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getFnbCustomer(String strCustPhone) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_CUSTOMER, new String[]{"*"}, "CustContactNumber='" + strCustPhone + "'", null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8353,12 +8338,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
 
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_CUSTOMER, new String[]{"*"}, "CustId=" + iCustId, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8367,7 +8352,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Insert Customer-----
     public long addCustomers(Customer objCustomer) {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             ContentValues cvDbValues = new ContentValues();
             cvDbValues.put("CustName", objCustomer.getCustName());
             cvDbValues.put("LastTransaction", objCustomer.getLastTransaction());
@@ -8377,10 +8362,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
             cvDbValues.put("CreditAmount", objCustomer.getCreditAmount());
             cvDbValues.put(KEY_GSTIN, objCustomer.getStrCustGSTIN());
             return db.insert(TBL_CUSTOMER, null, cvDbValues);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8389,12 +8374,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getAllSubTaxConfigs(String TaxId) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_SUBTAXCONFIG, new String[]{"SubTaxId", "SubTaxDescription", "SubTaxPercent"}, "TaxId=" + TaxId, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8403,13 +8388,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForOtherChargesPrints(String jBillingMode) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
-            cursor = db.rawQuery("Select * from " + TBL_KOTMODIFIER + " where ModifierModes LIKE '" + jBillingMode+ "' AND "+
-                    KEY_IsChargeable+" LIKE '1'", null);
-        }catch (Exception e){
+        try {
+            cursor = db.rawQuery("Select * from " + TBL_KOTMODIFIER + " where ModifierModes LIKE '" + jBillingMode + "' AND " +
+                    KEY_IsChargeable + " LIKE '1'", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8419,12 +8404,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForSalesTaxPrints(int InvoiceNo) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(TaxAmount) as TaxAmount, TaxPercent from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "' GROUP BY TaxPercent", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8433,13 +8418,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForIGSTTaxPrints(int InvoiceNo, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(IGSTAmount) as IGSTAmount, IGSTRate from " + TBL_BILLITEM +
-                    " where InvoiceNo = '" + InvoiceNo + "' AND +"+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"' GROUP BY IGSTRate", null);
-        }catch (Exception e){
+                    " where InvoiceNo = '" + InvoiceNo + "' AND +" + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "' GROUP BY IGSTRate", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8448,13 +8433,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForCGSTTaxPrints(int InvoiceNo, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(CGSTAmount) as CGSTAmount, CGSTRate from " + TBL_BILLITEM +
-                    " where InvoiceNo = '" + InvoiceNo + "' AND InvoiceDate LIKE '"+InvoiceDate+"' GROUP BY CGSTRate", null);
-        }catch (Exception e){
+                    " where InvoiceNo = '" + InvoiceNo + "' AND InvoiceDate LIKE '" + InvoiceDate + "' GROUP BY CGSTRate", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8477,12 +8462,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForServiceTaxPrints(int InvoiceNo) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(ServiceTaxAmount) as TaxAmount, ServiceTaxPercent from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "' GROUP BY TaxPercent", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8491,27 +8476,28 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForSGSTTaxPrints(int InvoiceNo, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(SGSTAmount) as SGSTAmount, SGSTRate from " + TBL_BILLITEM +
-                    " where InvoiceNo = '" + InvoiceNo + "' AND "+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"' GROUP BY SGSTRate", null);
-        }catch (Exception e){
+                    " where InvoiceNo = '" + InvoiceNo + "' AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "' GROUP BY SGSTRate", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
     }
+
     public Cursor getItemsForcessTaxPrints(int InvoiceNo, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select SUM(cessAmount) as cessAmount, cessRate from " + TBL_BILLITEM +
-                    " where InvoiceNo = '" + InvoiceNo + "' AND "+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"' GROUP BY cessRate", null);
-        }catch (Exception e){
+                    " where InvoiceNo = '" + InvoiceNo + "' AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "' GROUP BY cessRate", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8520,14 +8506,14 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForTaxSlabPrints(int InvoiceNo, String InvoiceDate) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select IGSTRate, CGSTRate, SGSTRate, IGSTAmount, CGSTAmount, SGSTAmount, TaxableValue  from " + TBL_BILLITEM +
-                    " where InvoiceNo = '" + InvoiceNo + "' AND "+KEY_InvoiceDate+" LIKE '"+InvoiceDate+"'", null);
-        }catch (Exception e){
+                    " where InvoiceNo = '" + InvoiceNo + "' AND " + KEY_InvoiceDate + " LIKE '" + InvoiceDate + "'", null);
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
             db.close();
-        }finally {
+        } finally {
             return cursor;
 
         }
@@ -8553,7 +8539,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Retrieve new bill Number-----
     public int getNewBillNumber() {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             Cursor result;
             result = db.rawQuery("SELECT " + KEY_InvoiceNo + " FROM BillNoConfiguration", null);
             if (result.moveToFirst()) {
@@ -8561,10 +8547,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
             } else {
                 return 1;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return 1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8573,7 +8559,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Insert Bill Items-----
     public long addBillItems(BillItem objBillItem) {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             ContentValues cvDbValues = new ContentValues();
             cvDbValues.put(KEY_InvoiceNo, objBillItem.getBillNumber());
             cvDbValues.put(KEY_BillingMode, objBillItem.getBillingMode()); // richa_2012
@@ -8613,10 +8599,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
             cvDbValues.put(KEY_BillStatus, objBillItem.getBillStatus());
 
             return db.insert(TBL_BILLITEM, null, cvDbValues);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8630,7 +8616,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public long addBilll(BillDetail objBillDetail, String gstin) {
         long rData = -1;
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             ContentValues cvDbValues = new ContentValues();
             cvDbValues.put(KEY_BillingMode, objBillDetail.getBillingMode()); // richa_2012
             cvDbValues.put(KEY_InvoiceNo, objBillDetail.getBillNumber());
@@ -8669,10 +8655,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
             cvDbValues.put(KEY_SubTotal, objBillDetail.getSubTotal());
 
             rData = db.insert(TBL_BILLDETAIL, null, cvDbValues);
-        }catch (Exception e){
-            Log.d(TAG,e.toString());
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
             rData = -1;
-        }finally {
+        } finally {
             //db.close();
         }
         return rData;
@@ -8688,13 +8674,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Delete Customer items from Pending KOT table-----
     public int deleteKOTItem(int CustId, String OrderMode) {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             int result = db.delete(TBL_PENDINGKOT, "CustId=" + CustId + " AND OrderMode=" + OrderMode, null);
             return result;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return 1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8707,30 +8693,31 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Insert Complimentary Bill-----
     public long addComplimentaryBillDetails(ComplimentaryBillDetail objComplimentaryBillDetail) {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             ContentValues cvDbValues = new ContentValues();
             cvDbValues.put(KEY_InvoiceNo, objComplimentaryBillDetail.getBillNumber());
             cvDbValues.put("ComplimentaryReason", objComplimentaryBillDetail.getComplimentaryReason());
             cvDbValues.put("PaidAmount", objComplimentaryBillDetail.getPaidAmount());
             return db.insert(TBL_COMPLIMENTARYBILLDETAIL, null, cvDbValues);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return 1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
+
     public int UpdateBillNoResetInvoiceNos(int invno) {
         SQLiteDatabase db = getWritableDatabase();
-        int result =0;
-        try{
+        int result = 0;
+        try {
             cvDbValues = new ContentValues();
             cvDbValues.put("InvoiceNo", invno);
-            result= db.update("BillNoConfiguration", cvDbValues, null, null);
-        }catch (Exception e){
+            result = db.update("BillNoConfiguration", cvDbValues, null, null);
+        } catch (Exception e) {
             e.printStackTrace();
             result = 0;
-        }finally {
+        } finally {
             //db.close();
             return result;
         }
@@ -8739,25 +8726,26 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemLists(String Name) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("SELECT * FROM " + TBL_ITEM_Outward + "  WHERE ItemName LIKE '" + Name + "%'", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
     }
+
     public Cursor getItemDetail(String Name) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("SELECT * FROM " + TBL_ITEM_Outward + "  WHERE ItemName LIKE '" + Name + "'", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8766,7 +8754,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public List<String> getAllItemsNames() {
         SQLiteDatabase db = getWritableDatabase();
         List<String> list = new ArrayList<String>();
-        try{
+        try {
             // Select All Query
             String selectQuery = "SELECT  ItemName FROM " + TBL_ITEM_Outward;
             Cursor cursor = db.rawQuery(selectQuery, null);// selectQuery,selectedArguments
@@ -8779,10 +8767,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                     // data
                 } while (cursor.moveToNext());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         // returning lables
@@ -8793,7 +8781,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
         SQLiteDatabase db = getWritableDatabase();
         List<String> list = new ArrayList<String>();
 
-        try{
+        try {
             // Select All Query
             String selectQuery = "SELECT  MenuCode FROM " + TBL_ITEM_Outward;
             Cursor cursor = db.rawQuery(selectQuery, null);// selectQuery,selectedArguments
@@ -8806,10 +8794,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                     // data
                 } while (cursor.moveToNext());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             list = null;
-        }finally {
+        } finally {
             //db.close();
         }
         // returning lables
@@ -8820,26 +8808,27 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getBillDetails(int InvoiceNumber) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_BILLDETAIL, new String[]{"*"}, KEY_InvoiceNo + "=" + InvoiceNumber, null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
     }
+
     public Cursor getUserr(String UserId, String Password) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.query(TBL_USERS, new String[]{"*"}, "LoginId ='" + UserId + "' AND Password ='" + Password + "'",
                     null, null, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8849,14 +8838,14 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public int makeBillVoids(int InvoiceNo) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             ContentValues cvDbValues = new ContentValues();
             cvDbValues.put(KEY_BillStatus, 0);
             return db.update(TBL_BILLDETAIL, cvDbValues, KEY_InvoiceNo + "=" + InvoiceNo, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8865,12 +8854,12 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public Cursor getItemsForReprintBills(int InvoiceNo) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = null;
-        try{
+        try {
             cursor = db.rawQuery("Select * from " + TBL_BILLITEM + " where InvoiceNo = '" + InvoiceNo + "'", null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             cursor = null;
-        }finally {
+        } finally {
             //db.close();
         }
         return cursor;
@@ -8879,7 +8868,7 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----update Reprint Count for duplicate bill print-----
     public int updateBillRepintCounts(int InvoiceNo) {
         SQLiteDatabase db = getWritableDatabase();
-        try{
+        try {
             Cursor result = getBillDetails(InvoiceNo);
             if (result.moveToFirst()) {
                 cvDbValues = new ContentValues();
@@ -8892,11 +8881,11 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                 Toast.makeText(myContext, "No bill found with bill number " + InvoiceNo, Toast.LENGTH_SHORT).show();
                 return -1;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
 
-        }finally {
+        } finally {
             //db.close();
         }
     }
@@ -8904,13 +8893,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     // -----Delete Items from Item Table-----
     public int deleteAllOutwardItem() {
         SQLiteDatabase db = getWritableDatabase();
-        int del =0;
-        try{
+        int del = 0;
+        try {
             del = db.delete(TBL_ITEM_Outward, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             del = 0;
-        }finally {
+        } finally {
             //db.close();
         }
         return del;
@@ -8919,10 +8908,9 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
     public ArrayList<ItemOutward> getAllItem() {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<ItemOutward> dataList = new ArrayList<ItemOutward>();
-        try{
+        try {
             Cursor cursorItem = db.query(TBL_ITEM_Outward, new String[]{"*"}, null, null, null, null, null);
-            while(cursorItem!=null && cursorItem.moveToNext())
-            {
+            while (cursorItem != null && cursorItem.moveToNext()) {
                 ItemOutward item = new ItemOutward();
                 item.setMenuCode(cursorItem.getInt(cursorItem.getColumnIndex("MenuCode")));
                 item.setItemName(cursorItem.getString(cursorItem.getColumnIndex("ItemName")));
@@ -8941,10 +8929,10 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
                 item.setItemId(cursorItem.getInt(cursorItem.getColumnIndex("ItemId")));
                 dataList.add(item);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             dataList = null;
             e.printStackTrace();
-        }finally {
+        } finally {
             //db.close();
         }
         return dataList;
@@ -8953,13 +8941,13 @@ public Cursor getGSTR1B2CL_invoices_ammend(String InvoiceNo, String InvoiceDate,
 
     public int deleteAllInwardItem() {
         SQLiteDatabase db = getWritableDatabase();
-        int del =0;
-        try{
+        int del = 0;
+        try {
             del = db.delete(TBL_ITEM_Inward, null, null);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             del = 0;
-        }finally {
+        } finally {
             //db.close();
         }
         return del;

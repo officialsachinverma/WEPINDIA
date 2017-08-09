@@ -188,12 +188,15 @@
                             android:layout_width="120dp"
                             android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                            android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                            android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                             android:background="@drawable/background_btn"
                             android:textColor="@android:color/white"
                             android:theme="@style/WepButtonWithMarigin"
-                            android:layout_marginRight="10dp"
-                            android:text="Add Item" />
+                            android:text="Add Item"
+                            android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                     </LinearLayout>
 
@@ -230,7 +233,8 @@
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:text="SNo"
-                                android:textSize="17dp" />
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                             <TextView
                                 android:id="@+id/textView10"
@@ -243,7 +247,8 @@
                                 android:textStyle="bold"
                                 android:text="Ingredients"
 
-                                android:textSize="17dp" />
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -254,7 +259,8 @@
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:text="Quantity"
-                                android:textSize="17dp" />
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -265,7 +271,8 @@
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:text="UoM "
-                                android:textSize="17dp"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"
                                 android:id="@+id/textView6" />
 
                             <TextView
@@ -278,7 +285,8 @@
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:layout_marginRight="2dp"
-                                android:textSize="17dp" />
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp"/>
                         </LinearLayout>
 
                         <ListView
@@ -319,28 +327,30 @@
                                 android:layout_width="130dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginTop="5dp"
                                 android:background="@drawable/background_btn"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:layout_marginLeft="@dimen/btn_marigin"
-                                android:layout_marginRight="@dimen/btn_marigin"
+                                android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                                android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                                 android:onClick="PrintIngredients"
-                                android:text="Print Ingred. List" />
+                                android:text="Print Ingred. List"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                             <com.wep.common.app.views.WepButton
                                 android:id="@+id/btnSave"
                                 android:layout_width="120dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginTop="5dp"
                                 android:background="@drawable/background_btn"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:layout_marginLeft="@dimen/btn_marigin"
-                                android:layout_marginRight="@dimen/btn_marigin"
+                                android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                                android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                                 android:onClick="Save"
-                                android:text="Save" />
+                                android:text="Save"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
 
                             <com.wep.common.app.views.WepButton
@@ -348,14 +358,15 @@
                                 android:layout_width="120dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:layout_marginLeft="@dimen/btn_marigin"
-                                android:layout_marginRight="@dimen/btn_marigin"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                                android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                                 android:background="@drawable/background_btn"
                                 android:onClick="Submit"
-                                android:text="Submit" />
+                                android:text="Submit"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
 
                             <com.wep.common.app.views.WepButton
@@ -363,28 +374,30 @@
                                 android:layout_width="120dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:layout_marginLeft="@dimen/btn_marigin"
-                                android:layout_marginRight="@dimen/btn_marigin"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                                android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                                 android:background="@drawable/background_btn"
                                 android:onClick="Clear"
-                                android:text="Clear" />
+                                android:text="Clear"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
 
                             <com.wep.common.app.views.WepButton
                                 android:id="@+id/btnCloseItem"
                                 android:layout_width="120dp"
                                 android:layout_height="45dp"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
                                 android:theme="@style/WepButtonWithMarigin"
-                                android:layout_marginLeft="@dimen/btn_marigin"
-                                android:layout_marginRight="@dimen/btn_marigin"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginBottom="@dimen/_5dp_720dp_4dp_600dp"
+                                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                                android:layout_marginTop="@dimen/_5dp_720dp_4dp_600dp"
                                 android:background="@drawable/background_btn"
                                 android:onClick="Close"
-                                android:text="Close" />
+                                android:text="Close"
+                                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"/>
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -428,7 +441,8 @@
                             android:text="SNo"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="17dp" />
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -439,7 +453,8 @@
                             android:text="Items"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="17dp" />
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -450,7 +465,8 @@
                             android:text="Delete"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="17dp" />
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
 
                     </LinearLayout>
 

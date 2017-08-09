@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_wep" />
+
+    <RelativeLayout
+        android:id="@+id/lnrKOTStatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <ScrollView
+            android:id="@+id/scrlKOTStatusTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="#DDDDDD">
+
+            <TableLayout
+                android:id="@+id/tblKOTStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:collapseColumns="5">
+
+                <TableRow
+                    android:id="@+id/rowCaptionKOTStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryLight">
+
+                    <TextView
+                        android:id="@+id/tvCaptionSNo"
+                        android:layout_width="@dimen/_100dp_720dp_95dp_600dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="S.No"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionTokenNo"
+                        android:layout_width="@dimen/_120dp_720dp_115dp_600dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="KOT No"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionTableNo"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Table No"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionWaiterNo"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Waiter No"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionInTime"
+                        android:layout_width="@dimen/_120dp_720dp_115dp_600dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="In Time"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionTimeCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time Count"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+
+                    <TextView
+                        android:id="@+id/tvCaptionKOTStatus"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Status"
+                        android:textAllCaps="false"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/txtColorAccent"
+                        android:textSize="@dimen/table_text_heading_16sp_720dp_14sp_600dp" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tvKOTStatusHorizontalLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_above="@+id/rowButtonsKOTStatus"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="3dp"
+            android:background="#000000" />
+
+        <TableRow
+            android:id="@+id/rowButtonsKOTStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp">
+
+            <EditText
+                android:id="@+id/etSearchTable"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:hint="Search Table"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnSearchKOTStatus"
+                android:layout_width="@dimen/_100dp_720dp_95dp_600dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                android:background="@drawable/background_btn"
+                android:onClick="SearchKOTStatus"
+                android:text="Search"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+            <Button
+                android:id="@+id/btnClearKOTStatus"
+                android:layout_width="@dimen/_100dp_720dp_95dp_600dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                android:background="@drawable/background_btn"
+                android:onClick="ClearKOTStatus"
+                android:text="Clear"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+
+            <Button
+                android:id="@+id/btnCloseKOTStatus"
+                android:layout_width="@dimen/_100dp_720dp_95dp_600dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp_720dp_7dp_600dp"
+                android:background="@drawable/background_btn"
+                android:onClick="CloseKOTStatus"
+                android:text="Close"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/button_14sp_720dp_12sp_600dp"
+                android:theme="@style/WepButtonWithMarigin" />
+        </TableRow>
+
+    </RelativeLayout>
+
+</RelativeLayout>
