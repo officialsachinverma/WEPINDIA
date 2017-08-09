@@ -16,144 +16,14 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" line="3343" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" line="3350" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b3634b2-61eb-4eec-9c17-c4e6f231d0c0" name="Default" comment="bug fixing &#10;1. text alignment in Item Outward&#10;2. back button missing in Table booking page&#10;3. text misallignment in take for customer details when entered in multiple lines.&#10;4. keyboard freezes if back button on toolbar is clicked&#10;5. changing background of Employee details&#10;5. Modifing back press message">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/adapters/TableBookingAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/AddRolesActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/BillingCounterSalesActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/BillingDineInActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/BillingHomeDeliveryActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/CustomerOrdersActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/ItemManagementActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/ItemOutwardAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/KOTStatusActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/OutwardSupplyItemsAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/TableBookingActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/TableBookingResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/backup/UserManagementActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_2_recycler_row_table_booking.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_adapter.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_add_role.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_billing_dinein.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_customer_orders.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_customerdetail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment__display_owner_detail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment__gstr1__b2_b__amend.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment__gstr1__b2_cl_amend.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment__gstr1__b2_cs__amend.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment__gstr2__b2_b__amend.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_category.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_coupon.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_credit_note.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_department.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_discount.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_header_footer_text.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_kitchen.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_other_taxes.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_payment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_settings_gst.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_settings_machine.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_settings_other.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_settings_price.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_settings_print.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_home.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_home_delivery_billing.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_itemmaster.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_kotstatus.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_login.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_master.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_order_page_content_homedelivery.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_outwarditem.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_paymentreceipt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_recycler_row_table_booking.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_report.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_stock.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_table.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_tablebooking.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_tablestatus.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_user_management.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-sw600dp/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-sw720dp/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/AddRolesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/AddRolesActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingDineInActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingDineInActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ConfigurationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ConfigurationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/CustomerDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/CustomerDetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/CustomerOrdersActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/CustomerOrdersActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2B_Amend.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2B_Amend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2CL_Amend.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2CL_Amend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2CS_Amend.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR1_B2CS_Amend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR2_B2B_Amend.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GST/fragments/Fragment_GSTR2_B2B_Amend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GoodsInwardNoteActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/GoodsInwardNoteActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/HomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/IngredientManagementActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/IngredientManagementActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/InwardItemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/InwardItemActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ItemManagementActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ItemManagementActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ItemSupplierLinkageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/ItemSupplierLinkageActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/KOTStatusActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/KOTStatusActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/MasterActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/MasterActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/PaymentReceiptActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/PaymentReceiptActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/PurchaseOrderActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/PurchaseOrderActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/StockActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/StockActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/SupplierDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/SupplierDetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableBookingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableBookingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableStatusActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/TableStatusActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/UserManagementActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/UserManagementActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/adapters/SupplierAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/adapters/SupplierAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentCategory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentCategory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentCoupon.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentCoupon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentDepartment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentDepartment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentDiscount.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentDiscount.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentKitchen.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentKitchen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentOtherTaxes.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentOtherTaxes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentPayment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentPayment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsGST.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsGST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsHeaderFooter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsHeaderFooter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsMachine.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsMachine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsOther.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsOther.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsPrice.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsPrice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsPrint.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/FragmentSettingsPrint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/Fragment_DisplayOwnerDetail.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/Fragment_DisplayOwnerDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/Fragment_Outward_Credit_Debit_Note.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/Fragment_Outward_Credit_Debit_Note.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/ReportFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/fragments/ReportFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_billing_dinein.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_billing_dinein.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_goods_inward_note.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_goods_inward_note.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_delivery_billing.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_delivery_billing.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_ingredient_management.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ingredient_management.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inward.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inward.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inward_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inward_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_supplier_linkage.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_supplier_linkage.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_purchase_order.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_purchase_order.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_stock.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_stock.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_supplier_details.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_supplier_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_department.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_department.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_upgrade_software.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_upgrade_software.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gstAPI/build.gradle" afterPath="$PROJECT_DIR$/gstAPI/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gstAPI/gstAPI.iml" afterPath="$PROJECT_DIR$/gstAPI/gstAPI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mSwipe/build.gradle" afterPath="$PROJECT_DIR$/mSwipe/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mSwipe/mSwipe.iml" afterPath="$PROJECT_DIR$/mSwipe/mSwipe.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/printers/build.gradle" afterPath="$PROJECT_DIR$/printers/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/printers/printers.iml" afterPath="$PROJECT_DIR$/printers/printers.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/printers/src/main/java/com/wepindia/printers/heydey/HomeActivity.java" afterPath="$PROJECT_DIR$/printers/src/main/java/com/wepindia/printers/heydey/HomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upgradeModule/build.gradle" afterPath="$PROJECT_DIR$/upgradeModule/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wepbase/build.gradle" afterPath="$PROJECT_DIR$/wepbase/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wepbase/src/main/java/com/wep/common/app/Database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/wepbase/src/main/java/com/wep/common/app/Database/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wepbase/wepbase.iml" afterPath="$PROJECT_DIR$/wepbase/wepbase.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml" />
     </list>
     <ignored path="wepfnb_datamini.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -262,8 +132,8 @@
       <file leaf-file-name="test_billing_counter_sales.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="353" column="28" selection-start-line="353" selection-start-column="28" selection-end-line="353" selection-end-column="28" />
+            <state relative-caret-position="330">
+              <caret line="789" column="54" selection-start-line="789" selection-start-column="54" selection-end-line="789" selection-end-column="54" />
               <folding>
                 <element signature="e#16107#16156#0" expanded="true" />
               </folding>
@@ -274,11 +144,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BillingCounterSalesActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="745" column="57" selection-start-line="745" selection-start-column="57" selection-end-line="745" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test_order_page_content_homedelivery.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test_order_page_content_homedelivery.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="695" column="16" selection-start-line="695" selection-start-column="16" selection-end-line="699" selection-end-column="51" />
+            <state relative-caret-position="126">
+              <caret line="712" column="32" selection-start-line="712" selection-start-column="32" selection-end-line="712" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -6582,7 +6462,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_payment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_department.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_fragment_category.xml" />
@@ -6601,7 +6480,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_outwarditem.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_paymentreceipt.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_itemmaster.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_order_page_content_homedelivery.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_billing_dinein.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
@@ -6633,6 +6511,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_home_delivery_billing.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java" />
       </list>
     </option>
   </component>
@@ -7672,31 +7552,31 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java</url>
-          <line>3331</line>
+          <line>3338</line>
           <properties />
           <option name="timeStamp" value="438" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java</url>
-          <line>3376</line>
+          <line>3383</line>
           <properties />
           <option name="timeStamp" value="443" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java</url>
-          <line>5463</line>
+          <line>5461</line>
           <properties />
           <option name="timeStamp" value="444" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java</url>
-          <line>3937</line>
+          <line>3944</line>
           <properties />
           <option name="timeStamp" value="445" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java</url>
-          <line>4832</line>
+          <line>4830</line>
           <properties />
           <option name="timeStamp" value="446" />
         </line-breakpoint>
@@ -7720,19 +7600,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java</url>
-          <line>1168</line>
+          <line>1175</line>
           <properties />
           <option name="timeStamp" value="527" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java</url>
-          <line>6237</line>
+          <line>6235</line>
           <properties />
           <option name="timeStamp" value="536" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java</url>
-          <line>6251</line>
+          <line>6249</line>
           <properties />
           <option name="timeStamp" value="540" />
         </line-breakpoint>
@@ -7750,7 +7630,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java</url>
-          <line>506</line>
+          <line>507</line>
           <properties />
           <option name="timeStamp" value="570" />
         </line-breakpoint>
@@ -8408,22 +8288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="160" column="48" selection-start-line="160" selection-start-column="48" selection-end-line="160" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="196" column="52" selection-start-line="196" selection-start-column="52" selection-end-line="196" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wepbase/src/main/res/drawable/background_btn.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -8443,10 +8307,26 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingHomeDeliveryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1360">
+          <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/wepindia/pos/BillingCounterSalesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="745" column="57" selection-start-line="745" selection-start-column="57" selection-end-line="745" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test_order_page_content_homedelivery.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="695" column="16" selection-start-line="695" selection-start-column="16" selection-end-line="699" selection-end-column="51" />
+        <state relative-caret-position="126">
+          <caret line="712" column="32" selection-start-line="712" selection-start-column="32" selection-end-line="712" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -8456,8 +8336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test_billing_counter_sales.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="353" column="28" selection-start-line="353" selection-start-column="28" selection-end-line="353" selection-end-column="28" />
+        <state relative-caret-position="330">
+          <caret line="789" column="54" selection-start-line="789" selection-start-column="54" selection-end-line="789" selection-end-column="54" />
           <folding>
             <element signature="e#16107#16156#0" expanded="true" />
           </folding>

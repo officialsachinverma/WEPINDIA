@@ -152,6 +152,7 @@ public class BillingCounterSalesActivity extends WepPrinterBaseActivity implemen
     private TextView mRateTextView;
     private TextView mAmountTextView;
     private TextView mDeleteTextView;
+    private TextView tvitemline, tvcategline, tvdeptline;
 
 
     @Override
@@ -524,6 +525,9 @@ public class BillingCounterSalesActivity extends WepPrinterBaseActivity implemen
         mRateTextView = (TextView) findViewById(R.id.tvColRate);
         mAmountTextView = (TextView) findViewById(R.id.tvColAmount);
         mDeleteTextView = (TextView) findViewById(R.id.tvColDelete);
+        tvdeptline = (TextView) findViewById(R.id.tvdeptline);
+        tvcategline = (TextView) findViewById(R.id.tvcategline);
+        tvitemline = (TextView) findViewById(R.id.tvitemline);
 
 
         btn_PrintBill = (WepButton) findViewById(R.id.btn_PrintBill);
@@ -733,10 +737,13 @@ public class BillingCounterSalesActivity extends WepPrinterBaseActivity implemen
                     //GetItemDetails();
                     boxDept.setVisibility(View.GONE);
                     boxCat.setVisibility(View.GONE);
+                    tvdeptline.setVisibility(View.GONE);
+                    tvcategline.setVisibility(View.GONE);
                 } else if (fastBillingMode.equalsIgnoreCase("2")) {
                     gridViewItems.setNumColumns(4);
                     //GetItemDetailswithoutDeptCateg();
                     boxCat.setVisibility(View.GONE);
+                    tvcategline.setVisibility(View.GONE);
                 } else {
             /*GetItemDetailswithoutDeptCateg();
             lstvwDepartment.setAdapter(null);

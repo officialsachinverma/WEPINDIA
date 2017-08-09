@@ -736,6 +736,12 @@
                             android:textAllCaps="false"
                             android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_below="@+id/btnLabel1"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="#000000" />
+
                         <ListView
                             android:id="@+id/listViewFilter1"
                             android:layout_width="match_parent"
@@ -770,6 +776,12 @@
                             android:textAllCaps="false"
                             android:textColor="@color/white" />
 
+                        <TextView
+                            android:layout_below="@+id/btnLabel2"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="#000000" />
+
                         <ListView
                             android:id="@+id/listViewFilter2"
                             android:layout_width="match_parent"
@@ -795,8 +807,6 @@
                         android:layout_weight="1"
                         android:background="@color/colorCard">
 
-
-
                         <Button
                             android:id="@+id/btnLabel3"
                             android:layout_width="match_parent"
@@ -805,6 +815,12 @@
                             android:text="Item"
                             android:textAllCaps="false"
                             android:textColor="@color/white" />
+
+                        <TextView
+                            android:layout_below="@+id/btnLabel3"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="#000000" />
 
                         <GridView
                             android:id="@+id/listViewFilter3"

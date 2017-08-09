@@ -305,7 +305,6 @@ public class BillingHomeDeliveryActivity extends WepPrinterBaseActivity {
             tvBillNumber.setText(String.valueOf(iBillNumber));
             if (FASTBILLINGMODE != null) {
 
-
                 if (FASTBILLINGMODE.equalsIgnoreCase("1")) {
                     // setting visibility of buttons
                     btndepart.setVisibility(View.GONE);
@@ -350,7 +349,6 @@ public class BillingHomeDeliveryActivity extends WepPrinterBaseActivity {
                 if (!strMakeOrder.equalsIgnoreCase("YES") && !strMakeOrder.equalsIgnoreCase("")) {
                     //Tender();
                 }
-
             }
 
 
